@@ -1,0 +1,26 @@
+---
+import Base from './Base.astro';
+import { useT, localePath, type Lang } from '../i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  lang?: Lang;
+  path: string;
+}
+const { title, description, heading, lang = 'vi', path } = Astro.props;
+const t = useT(lang);
+---
+
+<Base title={title} description={description} lang={lang} path={path}>
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <h1 class="text-3xl font-bold tracking-tight text-muc">{heading}</h1>
+    <slot>
+      <p class="mt-4 max-w-lg text-sm leading-relaxed text-muc/70">{t('chung.dang_hoan_thien')}</p>
+    </slot>
+    <a href={localePath(lang, '/')} class="mt-8 inline-flex text-sm font-semibold text-duoc hover:text-duoc-dam hover:underline">
+      &larr; {t('chung.quay_lai')}
+    </a>
+  </div>
+</Base>

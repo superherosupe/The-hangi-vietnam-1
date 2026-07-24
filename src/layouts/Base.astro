@@ -1,0 +1,85 @@
+---
+import '@fontsource/be-vietnam-pro/vietnamese-400.css';
+import '@fontsource/be-vietnam-pro/vietnamese-500.css';
+import '@fontsource/be-vietnam-pro/vietnamese-600.css';
+import '@fontsource/be-vietnam-pro/vietnamese-700.css';
+import '@fontsource/be-vietnam-pro/400.css';
+import '@fontsource/be-vietnam-pro/500.css';
+import '@fontsource/be-vietnam-pro/600.css';
+import '@fontsource/be-vietnam-pro/700.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../data/site';
+import { localePath, type Lang } from '../i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: Lang;
+  /** duong dan chuan khong co prefix ngon ngu, vd "/san-pham" */
+  path?: string;
+  noIndex?: boolean;
+}
+
+const { title, description, lang = 'vi', path = '/', noIndex = false } = Astro.props;
+const site = Astro.site ?? new URL('https://thehangi-vietnam.github.io');
+const urlVi = new URL(localePath('vi', path), site).href;
+const urlEn = new URL(localePath('en', path), site).href;
+const canonical = lang === 'vi' ? urlVi : urlEn;
+
+const jsonLdOrganization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.ten_day_du,
+  alternateName: SITE.ten_thuong_hieu,
+  taxID: SITE.ma_so_thue,
+  foundingDate: SITE.nam_thanh_lap,
+  url: site.href,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '195/10/2 Đường Điện Biên Phủ, Phường 15',
+    addressLocality: 'Quận Bình Thạnh, TP. Hồ Chí Minh',
+    addressCountry: 'VN',
+  },
+};
+---
+
+<html lang={lang === 'vi' ? 'vi-VN' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noIndex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="vi-VN" href={urlVi} />
+    <link rel="alternate" hreflang="en" href={urlEn} />
+    <link rel="alternate" hreflang="x-default" href={urlVi} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === 'vi' ? 'vi_VN' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <meta name="generator" content={Astro.generator} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdOrganization)} />
+    <slot name="head" />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a
+      href="#noi-dung-chinh"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-duoc focus:px-4 focus:py-2 focus:text-white"
+    >
+      {lang === 'vi' ? 'Bỏ qua điều hướng' : 'Skip to content'}
+    </a>
+    <Header lang={lang} path={path} />
+    <main id="noi-dung-chinh" class="flex-1">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

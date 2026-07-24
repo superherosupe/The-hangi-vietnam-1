@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Bang mau "NHAN DUOC" - dermocosmetic */
+  --color-duoc: #0e7490; /* Xanh duoc - chu dao */
+  --color-duoc-dam: #0b5c73; /* Xanh duoc dam - hover, heading */
+  --color-muc: #123840; /* Muc xanh - text chinh */
+  --color-bacha: #e9f4f3; /* Bac ha suong - nen khoi xen ke */
+  --color-ngoclam: #2aa8a0; /* Ngoc lam sang - icon, chip */
+  --color-hophach: #d98e2b; /* Ho phach - canh bao, badge TBYT */
+  --color-hophach-nhat: #faf3e6; /* Nen badge ho phach */
+
+  --font-sans: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  @apply bg-white font-sans text-muc antialiased;
+}
+
+/* Focus ring nhin ro tren moi phan tu tuong tac */
+:focus-visible {
+  outline: 3px solid var(--color-duoc);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--color-bacha);
+  color: var(--color-duoc-dam);
+}
+
+/* Chuoi orchestrated duy nhat luc load trang chu */
+@media (prefers-reduced-motion: no-preference) {
+  .len-nhe {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: len-nhe 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .len-nhe-2 {
+    animation-delay: 0.12s;
+  }
+  .len-nhe-3 {
+    animation-delay: 0.24s;
+  }
+  .len-nhe-4 {
+    animation-delay: 0.36s;
+  }
+  @keyframes len-nhe {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

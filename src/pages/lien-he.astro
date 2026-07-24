@@ -1,0 +1,19 @@
+---
+import TrangDangHoanThien from '../layouts/TrangDangHoanThien.astro';
+import { SITE } from '../data/site';
+---
+
+<TrangDangHoanThien
+  title="Liên hệ | The Hangi Việt Nam"
+  description="Liên hệ The Hangi Việt Nam để nhận báo giá, tài liệu chuyên môn hoặc trao đổi hợp tác phân phối."
+  heading="Liên hệ"
+  path="/lien-he"
+>
+  <div class="mt-4 max-w-2xl space-y-3 text-sm leading-relaxed text-muc/80">
+    <p><strong>{SITE.ten_day_du}</strong></p>
+    <p>Trụ sở: {SITE.tru_so}</p>
+    <p>Văn phòng: {SITE.van_phong}</p>
+    <!-- CHUA CO hotline/email - form lien he se duoc dung o buoc 6 -->
+    <p class="text-muc/50">Hotline và email đang được cập nhật. Form liên hệ sẽ sớm có mặt tại đây.</p>
+  </div>
+</TrangDangHoanThien>

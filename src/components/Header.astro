@@ -1,0 +1,93 @@
+---
+import { Image } from 'astro:assets';
+import logoIcon from '../assets/logo-icon.png';
+import { useT, localePath, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  path: string;
+}
+const { lang, path } = Astro.props;
+const t = useT(lang);
+const p = (href: string) => localePath(lang, href);
+
+const navItems = [
+  { href: '/san-pham', label: t('nav.san_pham') },
+  { href: '/cong-nghe', label: t('nav.hoat_chat') },
+  { href: '/gioi-thieu', label: t('nav.gioi_thieu') },
+  { href: '/doi-tac', label: t('nav.doi_tac') },
+  { href: '/lien-he', label: t('nav.lien_he') },
+];
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="sticky top-0 z-40 border-b border-bacha bg-white/95 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <a href={p('/')} class="flex items-center gap-2.5" aria-label={t('site.ten')}>
+      <Image src={logoIcon} alt="" width={72} height={76} loading="eager" class="h-9 w-auto" aria-hidden="true" />
+      <span class="flex flex-col leading-none">
+        <span class="text-lg font-bold tracking-tight text-[#1b5fa8]">THE HANGI</span>
+        <span class="mt-0.5 text-[10px] font-medium uppercase tracking-[0.22em] text-muc/50"
+          >{lang === 'vi' ? 'Việt Nam' : 'Vietnam'}</span
+        >
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label={lang === 'vi' ? 'Điều hướng chính' : 'Main navigation'}>
+      {
+        navItems.map((item) => (
+          <a
+            href={p(item.href)}
+            aria-current={current === p(item.href) ? 'page' : undefined}
+            class:list={[
+              'rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors hover:bg-bacha hover:text-duoc-dam',
+              current === p(item.href) ? 'bg-bacha text-duoc-dam' : 'text-muc',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <nav class="flex items-center rounded-full border border-bacha p-0.5 text-xs font-semibold" aria-label="Ngôn ngữ / Language">
+        <a
+          href={localePath('vi', path)}
+          aria-current={lang === 'vi' ? 'true' : undefined}
+          class:list={['rounded-full px-2.5 py-1', lang === 'vi' ? 'bg-duoc text-white' : 'text-muc hover:text-duoc']}
+          >VI</a
+        >
+        <a
+          href={localePath('en', path)}
+          aria-current={lang === 'en' ? 'true' : undefined}
+          class:list={['rounded-full px-2.5 py-1', lang === 'en' ? 'bg-duoc text-white' : 'text-muc hover:text-duoc']}
+          >EN</a
+        >
+      </nav>
+
+      <details class="relative md:hidden">
+        <summary
+          class="flex h-9 w-9 cursor-pointer list-none items-center justify-center rounded-full border border-bacha text-muc [&::-webkit-details-marker]:hidden"
+          aria-label={t('nav.mo_menu')}
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M2 4.5h14M2 9h14M2 13.5h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </summary>
+        <nav
+          class="absolute right-0 top-11 z-50 flex w-52 flex-col rounded-2xl border border-bacha bg-white p-2 shadow-lg"
+          aria-label={lang === 'vi' ? 'Menu di động' : 'Mobile menu'}
+        >
+          {
+            navItems.map((item) => (
+              <a href={p(item.href)} class="rounded-xl px-3 py-2.5 text-sm font-medium text-muc hover:bg-bacha hover:text-duoc-dam">
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

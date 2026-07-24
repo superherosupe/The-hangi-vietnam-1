@@ -1,0 +1,22 @@
+---
+import { useT, type Lang } from '../i18n';
+
+interface Props {
+  phanLoai: string;
+  lang: Lang;
+}
+const { phanLoai, lang } = Astro.props;
+const t = useT(lang);
+const laTBYT = phanLoai.startsWith('thiet-bi-y-te');
+const label = t(`badge.${phanLoai}` as Parameters<typeof t>[0]);
+---
+
+<span
+  class:list={[
+    'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold',
+    laTBYT ? 'bg-hophach-nhat text-[#8a5a10]' : 'bg-bacha text-duoc-dam',
+  ]}
+>
+  <span class:list={['h-1.5 w-1.5 rounded-full', laTBYT ? 'bg-hophach' : 'bg-ngoclam']} aria-hidden="true"></span>
+  {label}
+</span>

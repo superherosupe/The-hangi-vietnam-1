@@ -1,0 +1,76 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { useT, type Lang } from '../i18n';
+
+interface Props {
+  sp: CollectionEntry<'products'>;
+  lang: Lang;
+}
+const { sp, lang } = Astro.props;
+const t = useT(lang);
+const d = sp.data;
+const coNoiDung = d.khau_hieu || d.thanh_phan_chinh.length > 0 || d.cong_nghe.length > 0;
+---
+
+{
+  coNoiDung && (
+    <section class="mt-14" aria-labelledby="thong-tin-sp">
+      <div class="rounded-3xl bg-bacha/60 px-5 py-10 sm:px-10">
+        <p class="text-center font-mono text-[11px] font-medium uppercase tracking-[0.24em] text-ngoclam">
+          {t('sp.thong_tin_san_pham')}
+        </p>
+        {d.khau_hieu && (
+          <h2 id="thong-tin-sp" class="mx-auto mt-2 max-w-2xl text-center text-2xl font-bold tracking-tight text-muc sm:text-3xl">
+            {d.khau_hieu}
+          </h2>
+        )}
+
+        {d.thanh_phan_chinh.length > 0 && (
+          <div class="mt-10">
+            <h3 class="text-center text-sm font-bold uppercase tracking-[0.14em] text-duoc-dam">
+              {t('sp.thanh_phan_chinh')}
+            </h3>
+            <ul
+              class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-(--cot-lg)"
+              style={`--cot-lg: repeat(${d.thanh_phan_chinh.length}, minmax(0, 1fr));`}
+            >
+              {d.thanh_phan_chinh.map((tp) => (
+                <li class="relative flex min-h-[104px] flex-col items-center justify-center overflow-hidden rounded-2xl bg-white px-3 py-5 text-center shadow-sm ring-1 ring-bacha transition-shadow hover:shadow-[0_8px_24px_rgba(14,116,144,0.14)]">
+                  <span class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-duoc to-ngoclam" aria-hidden="true" />
+                  <span class="text-[15px] font-bold leading-tight text-muc">{tp.ten}</span>
+                  {tp.mo_ta && <span class="mt-1.5 text-[11px] leading-snug text-muc/55">{tp.mo_ta}</span>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {d.cong_nghe.length > 0 && (
+          <div class="mt-12">
+            <h3 class="text-center text-sm font-bold uppercase tracking-[0.14em] text-duoc-dam">
+              {t('sp.cong_nghe_loi')}
+            </h3>
+            <div class="mt-5 grid gap-4 md:grid-cols-3">
+              {d.cong_nghe.map((cn, i) => (
+                <article class="flex flex-col rounded-2xl bg-gradient-to-br from-duoc-dam via-duoc to-ngoclam p-6 text-white shadow-[0_10px_30px_rgba(14,116,144,0.25)]">
+                  <span
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/15 font-mono text-sm font-medium text-white ring-1 ring-white/30"
+                    aria-hidden="true"
+                  >
+                    0{i + 1}
+                  </span>
+                  <h4 class="mt-4 text-base font-bold leading-snug">{cn.ten}</h4>
+                  <p class="mt-2 text-sm leading-relaxed text-white/85">{cn.mo_ta}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <p class="mt-9 border-t border-muc/10 pt-4 text-center text-[11px] leading-relaxed text-muc/45">
+          {t('sp.theo_nsx')}
+        </p>
+      </div>
+    </section>
+  )
+}

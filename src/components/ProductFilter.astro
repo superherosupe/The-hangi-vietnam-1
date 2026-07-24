@@ -1,0 +1,218 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { useT, type Lang } from '../i18n';
+
+interface Props {
+  sanPham: CollectionEntry<'products'>[];
+  lang: Lang;
+}
+const { sanPham, lang } = Astro.props;
+const t = useT(lang);
+
+// Dem so san pham cho tung gia tri filter (tinh o build time)
+function dem<T extends string>(layGiaTri: (sp: CollectionEntry<'products'>) => T): Map<T, number> {
+  const m = new Map<T, number>();
+  for (const sp of sanPham) {
+    const v = layGiaTri(sp);
+    m.set(v, (m.get(v) ?? 0) + 1);
+  }
+  return m;
+}
+
+const demNhom = dem((sp) => sp.data.nhom);
+const demPhanLoai = dem((sp) => sp.data.phan_loai_phap_ly);
+const demThuongHieu = dem((sp) => sp.data.thuong_hieu);
+
+const hangLoc: { nhan: string; param: string; pills: { nhan: string; giaTri: string; soLuong: number }[] }[] = [
+  {
+    nhan: t('loc.nhom'),
+    param: 'nhom',
+    pills: [...demNhom].map(([giaTri, soLuong]) => ({
+      nhan: t(`nhom.${giaTri}` as Parameters<typeof t>[0]),
+      giaTri,
+      soLuong,
+    })),
+  },
+  {
+    nhan: t('loc.phan_loai'),
+    param: 'phan-loai',
+    pills: [...demPhanLoai].map(([giaTri, soLuong]) => ({
+      nhan: t(`badge.${giaTri}` as Parameters<typeof t>[0]),
+      giaTri,
+      soLuong,
+    })),
+  },
+  {
+    nhan: t('loc.thuong_hieu'),
+    param: 'thuong-hieu',
+    pills: [...demThuongHieu].map(([ten, soLuong]) => ({
+      nhan: ten,
+      giaTri: ten.toLowerCase(),
+      soLuong,
+    })),
+  },
+];
+---
+
+<!-- Thanh loc sticky - pill toggle, dong bo URL query param, khong can framework -->
+<div class="sticky top-[65px] z-30 -mx-4 border-b border-bacha bg-white/95 px-4 py-4 backdrop-blur sm:-mx-6 sm:px-6" id="thanh-loc">
+  <div class="relative">
+    <svg
+      class="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-muc/40"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="m21 21-4.34-4.34M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15Z"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      />
+    </svg>
+    <input
+      type="search"
+      id="tim-sp"
+      placeholder={t('loc.tim')}
+      aria-label={t('loc.tim_nhan')}
+      autocomplete="off"
+      class="w-full rounded-full border border-bacha bg-white py-2.5 pl-10 pr-4 text-sm text-muc placeholder:text-muc/40 focus:border-duoc focus:outline-none sm:max-w-sm"
+    />
+  </div>
+
+  {
+    hangLoc.map(
+      (hang) =>
+        hang.pills.length > 0 && (
+          <div class="mt-3 flex items-baseline gap-3">
+            <span class="w-24 shrink-0 font-mono text-[10px] font-medium uppercase tracking-wider text-muc/50">
+              {hang.nhan}
+            </span>
+            <div class="-my-1 flex gap-2 overflow-x-auto py-1" role="group" aria-label={hang.nhan}>
+              {hang.pills.map((pill) => (
+                <a
+                  href={`?${hang.param}=${encodeURIComponent(pill.giaTri)}`}
+                  data-loc-param={hang.param}
+                  data-loc-value={pill.giaTri}
+                  aria-pressed="false"
+                  class="pill whitespace-nowrap rounded-full border border-bacha px-3.5 py-1.5 text-xs font-semibold text-muc transition-colors hover:border-duoc/40 hover:bg-bacha"
+                >
+                  {pill.nhan} ({pill.soLuong})
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+    )
+  }
+
+  <div class="mt-3 flex items-center justify-between text-sm">
+    <p class="text-muc/60">
+      <span id="so-ket-qua" class="font-bold text-muc">{sanPham.length}</span>
+      {t('loc.tim_thay')}
+    </p>
+    <a href="?" id="xoa-loc" class="invisible font-semibold text-duoc hover:text-duoc-dam hover:underline">
+      &#10005; {t('loc.xoa')}
+    </a>
+  </div>
+</div>
+
+<!-- Trang thai rong -->
+<div id="trong" class="hidden py-20 text-center">
+  <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-bacha text-duoc" aria-hidden="true">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+      <path
+        d="m21 21-4.34-4.34M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15ZM8 10.5h5"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      />
+    </svg>
+  </span>
+  <p class="mx-auto mt-4 max-w-xs text-sm leading-relaxed text-muc/70">{t('loc.khong_thay')}</p>
+  <a href="?" data-xoa-loc class="mt-5 inline-flex rounded-full border border-duoc/30 px-5 py-2 text-sm font-semibold text-duoc hover:bg-bacha">
+    &#10005; {t('loc.xoa')}
+  </a>
+</div>
+
+<style>
+  .pill[aria-pressed='true'] {
+    background: var(--color-duoc);
+    border-color: var(--color-duoc);
+    color: #fff;
+  }
+  .pill[aria-pressed='true']::before {
+    content: '\25CF  ';
+    font-size: 8px;
+    vertical-align: 2px;
+  }
+</style>
+
+<script>
+  // Loc phia client ~1KB: dong bo URL <-> trang thai pill <-> grid. Khong reload trang.
+  const luoi = document.getElementById('luoi-sp');
+  const the = luoi ? ([...luoi.querySelectorAll('[data-nhom]')] as HTMLElement[]) : [];
+  const oTrong = document.getElementById('trong');
+  const oDem = document.getElementById('so-ket-qua');
+  const nutXoa = document.getElementById('xoa-loc');
+  const oTim = document.getElementById('tim-sp') as HTMLInputElement | null;
+  const PARAMS = ['nhom', 'phan-loai', 'thuong-hieu'] as const;
+
+  function apDung() {
+    const u = new URLSearchParams(location.search);
+    const q = (u.get('q') ?? '').toLowerCase();
+    if (oTim && oTim.value.toLowerCase() !== q) oTim.value = q;
+    let dem = 0;
+    for (const c of the) {
+      const hien =
+        PARAMS.every((p) => {
+          const v = u.get(p);
+          return !v || c.getAttribute(`data-${p}`) === v;
+        }) &&
+        (!q || (c.dataset.search ?? '').includes(q));
+      c.classList.toggle('hidden', !hien);
+      if (hien) dem++;
+    }
+    if (oDem) oDem.textContent = String(dem);
+    oTrong?.classList.toggle('hidden', dem > 0);
+    const dangLoc = q || PARAMS.some((p) => u.get(p));
+    nutXoa?.classList.toggle('invisible', !dangLoc);
+    for (const pill of document.querySelectorAll<HTMLElement>('[data-loc-param]')) {
+      pill.setAttribute('aria-pressed', String(u.get(pill.dataset.locParam!) === pill.dataset.locValue));
+    }
+  }
+
+  function chuyen(url: string) {
+    history.pushState({}, '', url);
+    apDung();
+  }
+
+  document.addEventListener('click', (e) => {
+    const muc = (e.target as HTMLElement).closest<HTMLElement>('[data-loc-param]');
+    if (muc) {
+      e.preventDefault();
+      const u = new URLSearchParams(location.search);
+      const p = muc.dataset.locParam!;
+      const v = muc.dataset.locValue!;
+      u.get(p) === v ? u.delete(p) : u.set(p, v);
+      chuyen(u.size ? `${location.pathname}?${u}` : location.pathname);
+      return;
+    }
+    if ((e.target as HTMLElement).closest('#xoa-loc, [data-xoa-loc]')) {
+      e.preventDefault();
+      chuyen(location.pathname);
+    }
+  });
+
+  oTim?.addEventListener('input', () => {
+    const u = new URLSearchParams(location.search);
+    oTim.value ? u.set('q', oTim.value) : u.delete('q');
+    history.replaceState({}, '', u.size ? `${location.pathname}?${u}` : location.pathname);
+    apDung();
+  });
+
+  window.addEventListener('popstate', apDung);
+  apDung();
+</script>

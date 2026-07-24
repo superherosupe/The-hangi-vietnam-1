@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thehangi-vietnam.github.io/sitemap-index.xml

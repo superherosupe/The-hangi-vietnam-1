@@ -1,0 +1,27 @@
+---
+import { localePath, type Lang } from '../i18n';
+
+interface Props {
+  ten: string;
+  lang: Lang;
+  /** khi true chi hien thi, khong link */
+  tinh?: boolean;
+}
+const { ten, lang, tinh = false } = Astro.props;
+const href = `${localePath(lang, '/san-pham')}?hoat-chat=${encodeURIComponent(ten.toLowerCase())}`;
+---
+
+{
+  tinh ? (
+    <span class="inline-flex items-center rounded-full border border-ngoclam/40 bg-white px-3 py-1 text-xs font-semibold text-duoc-dam">
+      {ten}
+    </span>
+  ) : (
+    <a
+      href={href}
+      class="inline-flex items-center rounded-full border border-ngoclam/40 bg-white px-3 py-1 text-xs font-semibold text-duoc-dam transition-colors hover:border-ngoclam hover:bg-bacha"
+    >
+      {ten}
+    </a>
+  )
+}

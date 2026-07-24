@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ProductFilter from '../../components/ProductFilter.astro';
+import BannerChuyenMon from '../../components/BannerChuyenMon.astro';
+import { useT } from '../../i18n';
+
+const lang = 'vi' as const;
+const t = useT(lang);
+
+const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/'))).sort(
+  (a, b) => a.data.thu_tu - b.data.thu_tu
+);
+---
+
+<Base
+  title="Sản phẩm | The Hangi Việt Nam"
+  description="Danh mục sản phẩm thẩm mỹ - da liễu do The Hangi Việt Nam phân phối độc quyền, đầy đủ số công bố tại Việt Nam."
+  lang={lang}
+  path="/san-pham"
+>
+  <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <BannerChuyenMon lang={lang} />
+    <h1 class="mt-8 text-3xl font-bold tracking-tight text-muc">{t('danhmuc.tieude')}</h1>
+    <p class="mb-6 mt-2 max-w-xl text-sm leading-relaxed text-muc/70">{t('danhmuc.mota')}</p>
+    <ProductFilter sanPham={sanPham} lang={lang} />
+    <div id="luoi-sp" class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {sanPham.map((sp, i) => <ProductCard sp={sp} lang={lang} eager={i < 3} />)}
+    </div>
+  </div>
+</Base>
