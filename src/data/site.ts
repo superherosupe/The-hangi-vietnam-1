@@ -15,6 +15,7 @@ export const SITE = {
   hotline: '', // CHUA CO
   email: '', // CHUA CO
   nguoi_dai_dien: 'HE, XIAOCHEN',
+  nguoi_chiu_trach_nhiem_noi_dung: 'Deema - Trương Mậu Tuấn Hùng',
   nam_thanh_lap: '2023',
   pham_vi: 'Seoul (HQ) - TP. Hồ Chí Minh - Hà Nội',
 } as const;
