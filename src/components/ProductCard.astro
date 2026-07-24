@@ -17,31 +17,31 @@ const href = localePath(lang, `/san-pham/${slug}`);
 
 <!-- Card san pham: anh, ten, thuong hieu, badge phap ly. KHONG hien cong dung (Muc 6.2) -->
 <article
-  class="group relative flex flex-col overflow-hidden rounded-2xl border border-bacha bg-white transition-shadow hover:shadow-[0_8px_30px_rgba(14,116,144,0.12)]"
+  class="group relative flex flex-col overflow-hidden rounded-2xl border border-bacha/80 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-duoc/30 hover:shadow-[0_12px_40px_rgba(14,116,144,0.13)]"
   data-nhom={sp.data.nhom}
   data-phan-loai={sp.data.phan_loai_phap_ly}
   data-thuong-hieu={sp.data.thuong_hieu.toLowerCase()}
   data-search={`${sp.data.ten} ${sp.data.ma_san_pham}`.toLowerCase()}
 >
-  <div class="aspect-square overflow-hidden bg-bacha">
+  <div class="aspect-square overflow-hidden bg-gradient-to-br from-bacha/50 to-white p-5">
     <Image
       src={sp.data.anh}
       alt={sp.data.anh_alt}
       width={640}
       height={640}
       loading={eager ? 'eager' : 'lazy'}
-      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+      class="h-full w-full rounded-lg object-contain transition-transform duration-500 group-hover:scale-[1.04]"
     />
   </div>
-  <div class="flex flex-1 flex-col gap-2 p-4">
+  <div class="flex flex-1 flex-col gap-2 p-5 pt-0">
     <BadgePhapLy phanLoai={sp.data.phan_loai_phap_ly} lang={lang} />
-    <h3 class="text-base font-bold leading-snug text-muc">
-      <a href={href} class="after:absolute after:inset-0 after:content-[''] group-hover:text-duoc-dam">
+    <h3 class="text-lg font-bold leading-snug text-muc">
+      <a href={href} class="after:absolute after:inset-0 after:content-[''] group-hover:text-duoc">
         {sp.data.ten}
       </a>
     </h3>
-    <p class="text-sm text-muc/60">{sp.data.thuong_hieu}</p>
-    <p class="mt-auto pt-2 font-mono text-[11px] leading-tight text-muc/50">
+    <p class="text-sm font-medium text-muc/50">{sp.data.thuong_hieu}</p>
+    <p class="mt-auto pt-2 font-mono text-[12px] leading-relaxed text-muc/45">
       {sp.data.ma_san_pham}<br />
       {t('danhmuc.so_cong_bo')}: {sp.data.so_luu_hanh_hoac_cong_bo}
     </p>

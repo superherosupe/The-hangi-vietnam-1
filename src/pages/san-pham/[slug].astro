@@ -7,7 +7,7 @@ import BannerChuyenMon from '../../components/BannerChuyenMon.astro';
 import ChipHoatChat from '../../components/ChipHoatChat.astro';
 import ThongTinSanPham from '../../components/ThongTinSanPham.astro';
 import { SITE } from '../../data/site';
-import { useT, localePath } from '../../i18n';
+import { useT, localePath, BASE } from '../../i18n';
 
 export async function getStaticPaths() {
   const sanPham = await getCollection('products', (sp) => sp.id.startsWith('vi/'));
@@ -153,7 +153,7 @@ const jsonLdProduct = {
                 {d.tai_lieu.map((tl) => (
                   <li>
                     <a
-                      href={tl.file}
+                      href={`${BASE}${tl.file}`}
                       class="inline-flex items-center gap-2 rounded-xl border border-bacha px-3.5 py-2.5 text-sm font-medium text-duoc transition-colors hover:border-duoc/40 hover:bg-bacha"
                     >
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">

@@ -39,17 +39,17 @@ const chuyenDe = [
 <Base title="The Hangi Việt Nam - Phân phối sản phẩm thẩm mỹ, da liễu chính hãng" description={t('site.mota')} lang={lang} path="/">
   <!-- HERO -->
   <section class="relative overflow-hidden">
-    <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px] bg-gradient-to-b from-bacha via-white to-white" aria-hidden="true"></div>
-    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 pt-12 sm:px-6 md:grid-cols-[1.1fr_0.9fr] md:pt-16">
+    <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[560px] bg-gradient-to-b from-duoc/8 via-bacha/70 to-white" aria-hidden="true"></div>
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 pt-12 sm:px-6 md:grid-cols-[1.1fr_0.9fr] md:pt-20">
       <div>
-        <p class="len-nhe inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-xs font-semibold text-duoc shadow-sm ring-1 ring-bacha">
-          <span class="h-1.5 w-1.5 rounded-full bg-ngoclam" aria-hidden="true"></span>
+        <p class="len-nhe inline-flex items-center gap-2 rounded-full bg-duoc/10 px-4 py-1.5 text-xs font-semibold text-duoc-dam shadow-sm">
+          <span class="h-1.5 w-1.5 rounded-full bg-duoc" aria-hidden="true"></span>
           {t('hero.tagline')}
         </p>
         <h1 class="len-nhe len-nhe-2 mt-5 max-w-xl text-4xl font-bold leading-[1.15] tracking-tight text-muc sm:text-5xl">
           Chăm sóc da khoa học, bắt đầu từ <span class="text-duoc">nguồn gốc rõ ràng</span>.
         </h1>
-        <p class="len-nhe len-nhe-3 mt-5 max-w-lg text-base leading-relaxed text-muc/70">{t('hero.sub')}</p>
+        <p class="len-nhe len-nhe-3 mt-5 max-w-lg text-base leading-relaxed text-muc/60">{t('hero.sub')}</p>
         <ul class="len-nhe len-nhe-3 mt-6 flex flex-wrap gap-2" aria-label={t('sp.hoat_chat')}>
           {hoatChatNoiBat.map((hc) => (
             <li><ChipHoatChat ten={hc} lang={lang} /></li>
@@ -58,13 +58,13 @@ const chuyenDe = [
         <div class="len-nhe len-nhe-4 mt-8 flex flex-wrap gap-3">
           <a
             href={p('/san-pham')}
-            class="rounded-full bg-duoc px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-duoc-dam"
+            class="rounded-full bg-duoc px-7 py-3.5 text-[15px] font-semibold text-white shadow-lg shadow-duoc/20 transition-all hover:bg-duoc-dam hover:shadow-duoc/30"
           >
             {t('hero.cta_sanpham')}
           </a>
           <a
             href={p('/doi-tac')}
-            class="rounded-full border border-duoc/25 bg-white px-6 py-3 text-sm font-semibold text-duoc transition-colors hover:border-duoc hover:bg-bacha"
+            class="rounded-full border-2 border-duoc/20 bg-white px-7 py-3.5 text-[15px] font-semibold text-duoc transition-all hover:border-duoc hover:bg-duoc/5"
           >
             {t('hero.cta_doitac')}
           </a>
@@ -112,8 +112,8 @@ const chuyenDe = [
       <p class="mt-2 max-w-xl text-sm leading-relaxed text-muc/70">{t('hoatchat.mota')}</p>
       <div class="mt-8 grid gap-5 md:grid-cols-3">
         {chuyenDe.map((cd) => (
-          <article class="flex flex-col rounded-2xl border border-bacha bg-white p-6 transition-shadow hover:shadow-[0_8px_30px_rgba(14,116,144,0.1)]">
-            <p class="text-[11px] font-semibold uppercase tracking-wider text-ngoclam">{t('hoatchat.hieu_nhanh')}</p>
+          <article class="flex flex-col rounded-2xl border border-bacha/70 bg-white p-6 transition-all hover:-translate-y-1 hover:border-duoc/20 hover:shadow-[0_12px_40px_rgba(14,116,144,0.1)]">
+            <p class="inline-flex w-fit items-center rounded-full bg-duoc/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-duoc">{t('hoatchat.hieu_nhanh')}</p>
             <h3 class="mt-2 text-lg font-bold text-muc">{cd.ten}</h3>
             <p class="mt-2 flex-1 text-sm leading-relaxed text-muc/70">{cd.tomTat}</p>
             <a href={p('/cong-nghe')} class="mt-4 text-sm font-semibold text-duoc hover:text-duoc-dam hover:underline">
@@ -140,14 +140,14 @@ const chuyenDe = [
             { tieude: t('visao.2.tieude'), mota: t('visao.2.mota'), icon: 'M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z' },
             { tieude: t('visao.3.tieude'), mota: t('visao.3.mota'), icon: 'M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25' },
           ].map((mucItem) => (
-            <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-bacha">
-              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-bacha text-duoc" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-bacha/70 transition-all hover:shadow-md hover:ring-duoc/20">
+              <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-duoc/10 text-duoc" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <path d={mucItem.icon} stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
-              <h3 class="mt-4 text-base font-bold text-muc">{mucItem.tieude}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-muc/70">{mucItem.mota}</p>
+              <h3 class="mt-5 text-base font-bold text-muc">{mucItem.tieude}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-muc/60">{mucItem.mota}</p>
             </div>
           ))
         }
@@ -158,16 +158,16 @@ const chuyenDe = [
   <!-- CTA -->
   <section class="py-16">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <div class="overflow-hidden rounded-3xl bg-duoc-dam px-6 py-12 text-center sm:px-12">
+      <div class="overflow-hidden rounded-3xl bg-gradient-to-br from-duoc-dam to-duoc px-6 py-14 text-center sm:px-12 shadow-xl shadow-duoc/15">
         <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">{t('cta.tieude')}</h2>
-        <p class="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-white/80">{t('cta.mota')}</p>
-        <div class="mt-7 flex flex-wrap justify-center gap-3">
-          <a href={p('/lien-he')} class="rounded-full bg-white px-6 py-3 text-sm font-semibold text-duoc-dam transition-colors hover:bg-bacha">
+        <p class="mx-auto mt-3 max-w-lg text-[15px] leading-relaxed text-white/85">{t('cta.mota')}</p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a href={p('/lien-he')} class="rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold text-duoc-dam shadow-sm transition-all hover:bg-bacha hover:shadow-md">
             {t('cta.lien_he')}
           </a>
           <a
             href={p('/doi-tac')}
-            class="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
+            class="rounded-full border-2 border-white/30 px-7 py-3.5 text-[15px] font-semibold text-white transition-all hover:border-white hover:bg-white/10"
           >
             {t('cta.doi_tac')}
           </a>

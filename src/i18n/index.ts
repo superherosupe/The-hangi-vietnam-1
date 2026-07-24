@@ -10,8 +10,12 @@ export function useT(lang: Lang) {
   return (key: TKey): string => dicts[lang][key];
 }
 
-/** Duong dan tuong ung giua hai ngon ngu - giu nguyen trang khi chuyen */
+/** Base path khi deploy duoi duong dan con (GitHub Pages project) - '' khi o goc */
+export const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+/** Duong dan tuong ung giua hai ngon ngu - giu nguyen trang khi chuyen, tu dong kem base */
 export function localePath(lang: Lang, path: string): string {
   const clean = path.replace(/^\/en(\/|$)/, '/');
-  return lang === 'en' ? `/en${clean === '/' ? '' : clean}` : clean;
+  const p = lang === 'en' ? `/en${clean === '/' ? '' : clean}` : clean;
+  return `${BASE}${p}`;
 }

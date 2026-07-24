@@ -3,10 +3,12 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
-// CHUA CO ten mien chinh thuc - dang dung GitHub Pages tam.
-// Khi mua ten mien: doi `site` va xoa `base` neu deploy len ten mien rieng.
+// CHUA CO ten mien chinh thuc - dang dung GitHub Pages tam tai
+// https://superherosupe.github.io/The-hangi-vietnam-1/
+// Khi mua ten mien rieng: doi `site` thanh ten mien va XOA dong `base`.
 export default defineConfig({
-  site: 'https://thehangi-vietnam.github.io',
+  site: 'https://superherosupe.github.io',
+  base: '/The-hangi-vietnam-1',
   output: 'static',
   trailingSlash: 'ignore',
   i18n: {
