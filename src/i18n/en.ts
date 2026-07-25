@@ -70,6 +70,7 @@ const en: Record<keyof typeof vi, string> = {
   'footer.dieu_khoan': 'Terms of use',
 
   'sp.thong_tin_phap_ly': 'Regulatory information',
+  'sp.ma_sp': 'Product code',
   'sp.ten_thiet_bi': 'Medical device name',
   'sp.phan_loai': 'Classification',
   'sp.so_cong_bo': 'Declaration number',

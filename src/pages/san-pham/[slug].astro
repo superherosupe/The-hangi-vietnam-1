@@ -73,10 +73,11 @@ const jsonLdProduct = {
 
       <div>
         <!-- 1. Ten + thuong hieu + badge -->
-        <BadgePhapLy phanLoai={d.phan_loai_phap_ly} lang={lang} />
-        <h1 class="mt-3 text-3xl font-bold tracking-tight text-muc sm:text-4xl">{d.ten}</h1>
-        <p class="mt-1 text-sm font-medium text-muc/60">{d.thuong_hieu}</p>
-        <p class="mt-2 font-mono text-xs text-muc/50">{d.ma_san_pham}</p>
+        <p class="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ngoclam">{d.thuong_hieu}</p>
+        <h1 class="mt-1.5 text-3xl font-bold tracking-tight text-muc sm:text-4xl">{d.ten}</h1>
+        <div class="mt-4">
+          <BadgePhapLy phanLoai={d.phan_loai_phap_ly} lang={lang} />
+        </div>
 
         {
           d.hoat_chat.length > 0 && (
@@ -100,6 +101,7 @@ const jsonLdProduct = {
               [
                 laTBYT && d.ten_thiet_bi ? [t('sp.ten_thiet_bi'), d.ten_thiet_bi] : null,
                 [t('sp.phan_loai'), nhanPhanLoai],
+                [t('sp.ma_sp'), d.ma_san_pham],
                 [t('sp.so_cong_bo'), d.so_luu_hanh_hoac_cong_bo],
                 d.ngay_cong_bo ? [t('sp.ngay_cong_bo'), d.ngay_cong_bo] : null,
                 d.co_so_cong_bo_ten ? [t('sp.co_so_cong_bo'), `${d.co_so_cong_bo_ten} - ${d.co_so_cong_bo_dia_chi}`] : null,

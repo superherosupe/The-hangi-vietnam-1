@@ -23,7 +23,7 @@ const href = localePath(lang, `/san-pham/${slug}`);
   data-thuong-hieu={sp.data.thuong_hieu.toLowerCase()}
   data-search={`${sp.data.ten} ${sp.data.ma_san_pham}`.toLowerCase()}
 >
-  <div class="aspect-square overflow-hidden bg-gradient-to-br from-bacha/50 to-white p-5">
+  <div class="relative aspect-square overflow-hidden bg-gradient-to-br from-bacha/50 to-white p-5">
     <Image
       src={sp.data.anh}
       alt={sp.data.anh_alt}
@@ -32,18 +32,21 @@ const href = localePath(lang, `/san-pham/${slug}`);
       loading={eager ? 'eager' : 'lazy'}
       class="h-full w-full rounded-lg object-contain transition-transform duration-500 group-hover:scale-[1.04]"
     />
+    <span class="absolute left-3 top-3">
+      <BadgePhapLy phanLoai={sp.data.phan_loai_phap_ly} lang={lang} nenTrang />
+    </span>
   </div>
-  <div class="flex flex-1 flex-col gap-2 p-5 pt-0">
-    <BadgePhapLy phanLoai={sp.data.phan_loai_phap_ly} lang={lang} />
-    <h3 class="text-lg font-bold leading-snug text-muc">
+  <div class="flex flex-1 flex-col p-5 pt-4">
+    <p class="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ngoclam">{sp.data.thuong_hieu}</p>
+    <h3 class="mt-1.5 text-lg font-bold leading-tight text-muc">
       <a href={href} class="after:absolute after:inset-0 after:content-[''] group-hover:text-duoc">
         {sp.data.ten}
       </a>
     </h3>
-    <p class="text-sm font-medium text-muc/50">{sp.data.thuong_hieu}</p>
-    <p class="mt-auto pt-2 font-mono text-[12px] leading-relaxed text-muc/45">
-      {sp.data.ma_san_pham}<br />
-      {t('danhmuc.so_cong_bo')}: {sp.data.so_luu_hanh_hoac_cong_bo}
-    </p>
+    <p class="mb-4 mt-1.5 text-[13px] leading-relaxed text-muc/55">{sp.data.quy_cach}</p>
+    <div class="mt-auto border-t border-bacha/70 pt-3">
+      <p class="text-[11px] text-muc/40">{t('danhmuc.so_cong_bo')}</p>
+      <p class="mt-0.5 font-mono text-[11px] text-muc/70">{sp.data.so_luu_hanh_hoac_cong_bo}</p>
+    </div>
   </div>
 </article>

@@ -69,6 +69,7 @@ export default {
   'footer.dieu_khoan': 'Điều khoản sử dụng',
 
   'sp.thong_tin_phap_ly': 'Thông tin pháp lý',
+  'sp.ma_sp': 'Mã sản phẩm',
   'sp.ten_thiet_bi': 'Tên thiết bị y tế',
   'sp.phan_loai': 'Phân loại',
   'sp.so_cong_bo': 'Số công bố',

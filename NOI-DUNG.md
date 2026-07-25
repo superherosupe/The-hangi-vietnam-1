@@ -6,20 +6,88 @@
 
 ---
 
-## 1. QUY TRÌNH CHUNG: SỬA XONG THÌ ĐĂNG LÊN THẾ NÀO?
+## 1. QUY TRÌNH MỘT LẦN LÀM VIỆC (đọc mục này là đủ dùng)
 
-Mọi thay đổi chỉ hiện lên web sau khi "push" lên GitHub. Mở **Git Bash** hoặc **PowerShell** trong thư mục dự án và chạy 3 lệnh:
+1. Mở **VS Code** → File → Open Folder → chọn `C:\Users\Administrator\Desktop\the-hangi-website`
+2. Bấm **Ctrl + `** (phím dưới Esc) để mở Terminal
+3. Bật bản nháp để xem thử:
+   ```
+   npm.cmd run dev
+   ```
+   Mở trình duyệt vào **http://localhost:4321**. Đây là bản chỉ mình bạn thấy.
+4. Sửa file → bấm **Ctrl + S** → trang tự tải lại. Lặp lại tới khi ưng.
+5. Bấm **Ctrl + C** trong Terminal để tắt bản nháp.
+6. Đăng lên web thật - gõ lần lượt 3 lệnh:
+   ```
+   git add -A
+   git commit -m "Cap nhat footer"
+   git push
+   ```
+7. Chờ ~2 phút, mở https://superherosupe.github.io/The-hangi-vietnam-1/ kiểm tra.
+
+### Ý nghĩa 3 lệnh git
+
+| Lệnh | Nghĩa nôm na |
+|---|---|
+| `git add -A` | Gom tất cả file vừa sửa lại |
+| `git commit -m "..."` | Đóng gói + ghi chú "lần này sửa gì" |
+| `git push` | Đẩy lên GitHub, web tự cập nhật sau ~2 phút |
+
+Phần trong dấu nháy của lệnh commit là ghi chú **do bạn tự viết**, mỗi lần đổi cho khớp việc vừa làm: `"Them link Facebook"`, `"Cap nhat hotline"`... Viết không dấu cho chắc. Ghi chú này chỉ để tra lịch sử, không hiện lên web.
+
+Theo dõi quá trình đăng: https://github.com/superherosupe/The-hangi-vietnam-1/actions
+Dấu tích xanh = thành công, dấu X đỏ = có lỗi (bấm vào đọc chi tiết).
+
+---
+
+## 1b. XỬ LÝ LỖI THƯỜNG GẶP
+
+### "npm ... cannot be loaded because running scripts is disabled"
+PowerShell chặn file script. Cách chữa: **thêm `.cmd` sau chữ npm**
+```
+npm.cmd run dev
+npm.cmd run build
+```
+Hoặc đổi loại terminal 1 lần cho xong: **Ctrl + Shift + P** → gõ `Terminal: Select Default Profile` → chọn **Command Prompt** → đóng terminal cũ, mở lại. Từ đó gõ `npm run dev` bình thường.
+
+Các lệnh `git` KHÔNG bị lỗi này.
+
+### "Author identity unknown" khi commit
+Git chưa biết bạn là ai. Chạy 2 lệnh sau, **chỉ 1 lần duy nhất cho cả máy**:
+```
+git config --global user.name "Truong Mau Tuan Hung"
+git config --global user.email "truongmautuanhung.213@gmail.com"
+```
+Rồi commit lại như bình thường.
+
+### Push xong nhưng web không đổi
+Thường do commit thất bại nên không có gì để đẩy (dấu hiệu: push báo "Everything up-to-date"). Chạy lại `git commit` xem có báo lỗi gì không.
+
+### Lỡ sửa hỏng, muốn quay về như cũ
+Xoá mọi sửa đổi chưa đăng, trở lại lần đăng gần nhất:
+```
+git checkout -- .
+```
+
+---
+
+## 1c. HAI QUY TẮC CẦN NHỚ KHI SỬA
+
+**Quy tắc 1: Chữ nhãn và dữ liệu nằm ở 2 file khác nhau**
+
+| Loại | File | Ví dụ |
+|---|---|---|
+| Chữ nhãn, tiêu đề, tên nút | `src/i18n/vi.ts` (+ `en.ts`) | "Người chịu trách nhiệm nội dung" |
+| Dữ liệu thật (tên, số ĐT, địa chỉ) | `src/data/site.ts` | "HE, XIAOCHEN", "0901..." |
+
+Dòng kiểu `{lang === 'vi' ? 'Liên kết' : 'Links'}` có nghĩa: *xem tiếng Việt thì hiện "Liên kết", xem tiếng Anh thì hiện "Links"*. Sửa thì sửa cả 2 phần cho đúng ngôn ngữ, đừng dán link vào đây.
+
+**Quy tắc 2: Link nội bộ và link ra ngoài viết khác nhau**
 
 ```
-git add -A
-git commit -m "Mo ta ngan viec vua sua"
-git push
+Trong web:  <a href={p('/san-pham')}>Sản phẩm</a>
+Ra ngoài:   <a href="https://facebook.com/..." target="_blank" rel="noopener">Facebook</a>
 ```
-
-Chờ khoảng 2 phút là web tự cập nhật. Xem tiến trình tại:
-https://github.com/superherosupe/The-hangi-vietnam-1/actions
-
-**Muốn xem thử trước khi đăng:** chạy `npm run dev` rồi mở http://localhost:4321 trên trình duyệt. Sửa file, lưu, trang tự tải lại. Nhấn Ctrl+C trong cửa sổ lệnh để tắt.
 
 ---
 
@@ -105,6 +173,9 @@ DEPLOY.md                     Hướng dẫn deploy + gắn tên miền riêng
 
 ## 8. KHI GẶP LỖI
 
+Các lỗi terminal thường gặp (npm bị chặn, git chưa biết bạn là ai...) xem **Mục 1b** ở đầu file.
+
 - Build báo lỗi tiếng Việt về "truong phap ly" → thiếu trường trong file sản phẩm, đọc thông báo là biết file nào thiếu gì
 - Web không cập nhật sau khi push → xem tab Actions trên GitHub, run nào đỏ thì bấm vào đọc lỗi
 - Sửa hỏng gì đó không rõ → chạy `git checkout -- .` để hoàn tác về lần commit gần nhất (mất các sửa đổi chưa commit!)
+- Trang nháp hiện lỗi đỏ sau khi sửa → thường do thiếu dấu `}`, `'` hoặc thẻ đóng `</p>`; bấm **Ctrl + Z** nhiều lần để hoàn tác rồi làm lại
