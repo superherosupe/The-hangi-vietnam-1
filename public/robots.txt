@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://superherosupe.github.io/The-hangi-vietnam-1/sitemap-index.xml
