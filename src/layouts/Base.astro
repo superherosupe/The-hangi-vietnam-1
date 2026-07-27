@@ -10,10 +10,13 @@ import '@fontsource/be-vietnam-pro/700.css';
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/500.css';
 import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE } from '../data/site';
+import { SITE, SITE_URL } from '../data/site';
 import { localePath, BASE, type Lang } from '../i18n';
+import anhOgMacDinh from '../assets/products/pllacube-duo-boxes.jpg';
 
 interface Props {
   title: string;
@@ -22,13 +25,21 @@ interface Props {
   /** duong dan chuan khong co prefix ngon ngu, vd "/san-pham" */
   path?: string;
   noIndex?: boolean;
+  /** anh og:image - mac dinh dung anh thuong hieu chung, trang san pham truyen anh san pham */
+  ogImage?: ImageMetadata;
+  ogImageAlt?: string;
 }
 
-const { title, description, lang = 'vi', path = '/', noIndex = false } = Astro.props;
-const site = Astro.site ?? new URL('https://thehangi-vietnam.github.io');
+const { title, description, lang = 'vi', path = '/', noIndex = false, ogImage, ogImageAlt } = Astro.props;
+const site = Astro.site ?? new URL(SITE_URL);
 const urlVi = new URL(localePath('vi', path), site).href;
 const urlEn = new URL(localePath('en', path), site).href;
 const canonical = lang === 'vi' ? urlVi : urlEn;
+
+const ogImgDaXuLy = await getImage({ src: ogImage ?? anhOgMacDinh, width: 1200, height: 630, fit: 'cover', format: 'jpg' });
+const ogImageUrl = new URL(ogImgDaXuLy.src, site).href;
+const ogImageAltText =
+  ogImageAlt ?? (lang === 'vi' ? 'Sản phẩm The Hangi Việt Nam - phân phối độc quyền LABINCUBE' : 'The Hangi Vietnam products - exclusive LABINCUBE distribution');
 
 const jsonLdOrganization = {
   '@context': 'https://schema.org',
@@ -63,7 +74,12 @@ const jsonLdOrganization = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={lang === 'vi' ? 'vi_VN' : 'en_US'} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAltText} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImageUrl} />
     <link rel="icon" href={`${BASE}/favicon.png`} type="image/png" />
     <meta name="generator" content={Astro.generator} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdOrganization)} />

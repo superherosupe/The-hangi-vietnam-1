@@ -1,4 +1,12 @@
 /**
+ * Domain live hien tai - CHUA CO ten mien rieng, dang dung GitHub Pages tam.
+ * Nguon duy nhat cho site/base: astro.config.mjs doc lai 2 hang so nay.
+ * Khi mua ten mien rieng: doi SITE_URL, xoa BASE_PATH (dat = ''), va xem DEPLOY.md.
+ */
+export const SITE_URL = 'https://superherosupe.github.io';
+export const BASE_PATH = '/The-hangi-vietnam-1';
+
+/**
  * Thong tin doanh nghiep - nguon: ho so dang ky kinh doanh.
  */
 export const SITE = {
