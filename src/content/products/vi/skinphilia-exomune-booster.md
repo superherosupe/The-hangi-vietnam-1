@@ -49,8 +49,8 @@ hoat_chat:
   - "Panthenol"
 quy_cach: "Powder 2ml × 4 lọ + Solution 5ml × 4 lọ + 4 nắp nhỏ giọt"
 xuat_xu: "Hàn Quốc"
-anh: "../../../assets/products/skinphilia-booster-main.jpg"
-anh_alt: "Bộ sản phẩm SKINPHILIA EXOMUNE BOOSTER với lọ bột đông khô và lọ tinh chất Niacinamide, thương hiệu SKINPHILIA từ Hàn Quốc"
+anh: "../../../assets/products/skinphilia-booster-workshop.jpg"
+anh_alt: "Bộ sản phẩm SKINPHILIA EXOMUNE BOOSTER — lọ bột đông khô Exosome và lọ tinh chất Niacinamide 10% dành cho điều trị da chuyên nghiệp"
 gallery:
   - src: "../../../assets/products/skinphilia-booster-alt.jpg"
     alt: "Cận cảnh lọ bột và lọ tinh chất SKINPHILIA EXOMUNE BOOSTER trong hộp"

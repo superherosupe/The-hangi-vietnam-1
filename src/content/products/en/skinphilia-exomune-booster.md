@@ -49,8 +49,8 @@ hoat_chat:
   - "Panthenol"
 quy_cach: "Powder 2ml × 4 vials + Solution 5ml × 4 vials + 4 dropper caps"
 xuat_xu: "South Korea"
-anh: "../../../assets/products/skinphilia-booster-main.jpg"
-anh_alt: "SKINPHILIA EXOMUNE BOOSTER kit with freeze-dried powder and Niacinamide solution vials"
+anh: "../../../assets/products/skinphilia-booster-workshop.jpg"
+anh_alt: "SKINPHILIA EXOMUNE BOOSTER — freeze-dried Exosome powder and Niacinamide 10% solution vials for professional skin treatment"
 gallery:
   - src: "../../../assets/products/skinphilia-booster-alt.jpg"
     alt: "Close-up of SKINPHILIA EXOMUNE BOOSTER powder and solution vials in box"
