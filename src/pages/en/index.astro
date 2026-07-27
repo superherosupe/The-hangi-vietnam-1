@@ -15,7 +15,9 @@ const p = (href: string) => localePath(lang, href);
 const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('en/'))).sort(
   (a, b) => a.data.thu_tu - b.data.thu_tu
 );
-const hoatChatNoiBat = ['PLLA', 'PDRN', 'PN', 'HA', 'Glutathione'];
+
+// Generated dynamically from real product data - no hardcoding, avoids linking to an empty page
+const hoatChatNoiBat = [...new Set(sanPham.flatMap((sp) => sp.data.hoat_chat))];
 ---
 
 <Base title="The Hangi Vietnam - Authorized aesthetic and dermatology distribution" description={t('site.mota')} lang={lang} path="/">

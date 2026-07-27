@@ -15,7 +15,8 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
   (a, b) => a.data.thu_tu - b.data.thu_tu
 );
 
-const hoatChatNoiBat = ['PLLA', 'PDRN', 'PN', 'HA', 'Glutathione'];
+// Sinh dong tu du lieu san pham thuc te - khong hardcode, tranh link ve trang rong
+const hoatChatNoiBat = [...new Set(sanPham.flatMap((sp) => sp.data.hoat_chat))];
 
 const chuyenDe = [
   {
