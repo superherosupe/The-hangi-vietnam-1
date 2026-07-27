@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import ProductCard from '../../components/ProductCard.astro';
-import ChipHoatChat from '../../components/ChipHoatChat.astro';
 import { useT, localePath } from '../../i18n';
 import anhHero from '../../assets/products/pllacube-duo-boxes.jpg';
 
@@ -15,9 +14,6 @@ const p = (href: string) => localePath(lang, href);
 const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('en/'))).sort(
   (a, b) => a.data.thu_tu - b.data.thu_tu
 );
-
-// Generated dynamically from real product data - no hardcoding, avoids linking to an empty page
-const hoatChatNoiBat = [...new Set(sanPham.flatMap((sp) => sp.data.hoat_chat))];
 ---
 
 <Base title="The Hangi Vietnam - Authorized aesthetic and dermatology distribution" description={t('site.mota')} lang={lang} path="/">
@@ -33,11 +29,6 @@ const hoatChatNoiBat = [...new Set(sanPham.flatMap((sp) => sp.data.hoat_chat))];
           Science-based skincare, starting from <span class="text-duoc">a transparent origin</span>.
         </h1>
         <p class="len-nhe len-nhe-3 mt-5 max-w-lg text-base leading-relaxed text-muc/70">{t('hero.sub')}</p>
-        <ul class="len-nhe len-nhe-3 mt-6 flex flex-wrap gap-2" aria-label={t('sp.hoat_chat')}>
-          {hoatChatNoiBat.map((hc) => (
-            <li><ChipHoatChat ten={hc} /></li>
-          ))}
-        </ul>
         <div class="len-nhe len-nhe-4 mt-8 flex flex-wrap gap-3">
           <a href={p('/san-pham')} class="rounded-full bg-duoc px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-duoc-dam">
             {t('hero.cta_sanpham')}
