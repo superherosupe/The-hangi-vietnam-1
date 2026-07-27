@@ -2,7 +2,7 @@
 
 > Dành cho người không biết lập trình. Chỉ cần biết mở file bằng Notepad hoặc VS Code.
 > Thư mục dự án: `C:\Users\Administrator\Desktop\the-hangi-website`
-> Web đang chạy tại: https://superherosupe.github.io/The-hangi-vietnam-1/
+> Web sẽ chạy tại: https://thehangivietnam.xyz - cần trỏ DNS + bật Custom domain trên GitHub trước (xem DEPLOY.md). Trong lúc chờ, URL cũ https://superherosupe.github.io/The-hangi-vietnam-1/ có thể tạm hiển thị lỗi giao diện (mất CSS/ảnh), đây là bình thường, sẽ hết khi domain mới live.
 
 ---
 

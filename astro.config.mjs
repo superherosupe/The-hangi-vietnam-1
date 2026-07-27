@@ -4,10 +4,9 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { SITE_URL, BASE_PATH } from './src/data/site.ts';
 
-// CHUA CO ten mien chinh thuc - dang dung GitHub Pages tam tai
-// https://superherosupe.github.io/The-hangi-vietnam-1/
-// Khi mua ten mien rieng: sua SITE_URL/BASE_PATH trong src/data/site.ts (nguon duy nhat,
-// moi noi khac - Base.astro, robots.txt, sitemap - deu doc lai tu day). Xem DEPLOY.md.
+// Ten mien rieng: thehangivietnam.xyz (public/CNAME). SITE_URL/BASE_PATH la nguon duy
+// nhat, moi noi khac - Base.astro, robots.txt, sitemap - deu doc lai tu src/data/site.ts.
+// Con cho user vao GitHub Settings > Pages > Custom domain + tro DNS. Xem DEPLOY.md.
 export default defineConfig({
   site: SITE_URL,
   base: BASE_PATH,

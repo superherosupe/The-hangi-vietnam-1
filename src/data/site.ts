@@ -1,10 +1,11 @@
 /**
- * Domain live hien tai - CHUA CO ten mien rieng, dang dung GitHub Pages tam.
+ * Domain live hien tai - ten mien rieng thehangivietnam.xyz (mua 2026-07-27).
  * Nguon duy nhat cho site/base: astro.config.mjs doc lai 2 hang so nay.
- * Khi mua ten mien rieng: doi SITE_URL, xoa BASE_PATH (dat = ''), va xem DEPLOY.md.
+ * Con cho: user vao GitHub repo Settings > Pages > Custom domain de tro domain nay,
+ * va tro DNS o noi mua domain. Xem DEPLOY.md.
  */
-export const SITE_URL = 'https://superherosupe.github.io';
-export const BASE_PATH = '/The-hangi-vietnam-1';
+export const SITE_URL = 'https://thehangivietnam.xyz';
+export const BASE_PATH = '';
 
 /**
  * Thong tin doanh nghiep - nguon: ho so dang ky kinh doanh.
