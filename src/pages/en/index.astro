@@ -4,7 +4,8 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import { useT, localePath } from '../../i18n';
-import anhHero from '../../assets/products/pllacube-duo-boxes.jpg';
+import anhHero0 from '../../assets/products/pllacube-hero-1.jpg';
+import anhHero1 from '../../assets/products/pllacube-hero-2.jpg';
 import anhHero2 from '../../assets/products/skinphilia-hero.jpg';
 
 const lang = 'en' as const;
@@ -20,13 +21,13 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('en/')
 <Base title="The Hangi Vietnam - Authorized aesthetic and dermatology distribution" description={t('site.mota')} lang={lang} path="/">
   <section class="relative overflow-hidden">
     <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px] bg-gradient-to-b from-bacha via-white to-white" aria-hidden="true"></div>
-    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 pt-12 sm:px-6 md:grid-cols-[1.1fr_0.9fr] md:pt-16">
+    <div class="mx-auto grid max-w-[1520px] items-center gap-10 px-4 pb-16 pt-12 sm:px-6 md:grid-cols-[1.1fr_0.9fr] md:pt-16">
       <div>
         <p class="len-nhe inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-xs font-semibold text-duoc shadow-sm ring-1 ring-bacha">
           <span class="h-1.5 w-1.5 rounded-full bg-ngoclam" aria-hidden="true"></span>
           {t('hero.tagline')}
         </p>
-        <h1 class="len-nhe len-nhe-2 mt-5 max-w-xl text-4xl font-bold leading-[1.15] tracking-tight text-muc sm:text-5xl">
+        <h1 class="len-nhe len-nhe-2 mt-5 max-w-xl text-4xl font-bold leading-[1.15] tracking-tight text-muc sm:text-5xl xl:text-6xl">
           Science-based skincare, starting from <span class="text-duoc">a transparent origin</span>.
         </h1>
         <p class="len-nhe len-nhe-3 mt-5 max-w-lg text-base leading-relaxed text-muc/70">{t('hero.sub')}</p>
@@ -45,8 +46,9 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('en/')
       <div class="hero-carousel-wrap">
         <div class="overflow-hidden rounded-3xl shadow-[0_20px_60px_rgba(14,116,144,0.18)]">
           <div class="hero-carousel" id="heroCarousel">
-            <Image src={anhHero} alt={t('hero.anh_alt')} width={880} loading="eager" fetchpriority="high" class="carousel-img active" data-index="0" />
-            <Image src={anhHero2} alt="SKINPHILIA EXOMUNE BOOSTER &amp; MASK — Umbilical cord blood stem cell exosome from South Korea" width={880} loading="lazy" class="carousel-img" data-index="1" />
+            <Image src={anhHero0} alt={t('hero.anh_alt')} width={880} loading="eager" fetchpriority="high" class="carousel-img active" data-index="0" />
+            <Image src={anhHero1} alt="PLLACUBE PiNk VOL. — PLLA+PN skinbooster with HA and Peptide" width={880} loading="lazy" class="carousel-img" data-index="1" />
+            <Image src={anhHero2} alt="SKINPHILIA EXOMUNE BOOSTER &amp; MASK — Umbilical cord blood stem cell exosome from South Korea" width={880} loading="lazy" class="carousel-img" data-index="2" />
           </div>
         </div>
         <button class="carousel-arrow carousel-prev" aria-label="Previous" id="carouselPrev">
@@ -104,10 +106,10 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('en/')
   </script>
 
   <section class="bg-bacha/60 py-16">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <h2 class="text-2xl font-bold tracking-tight text-muc sm:text-3xl">{t('danhmuc.tieude')}</h2>
+    <div class="mx-auto max-w-[1520px] px-4 sm:px-6">
+      <h2 class="text-2xl font-bold tracking-tight text-muc sm:text-3xl xl:text-4xl">{t('danhmuc.tieude')}</h2>
       <p class="mt-2 max-w-xl text-sm leading-relaxed text-muc/70">{t('danhmuc.mota')}</p>
-      <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {sanPham.map((sp) => (
           <ProductCard sp={sp} lang={lang} />
         ))}

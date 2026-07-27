@@ -6,7 +6,7 @@ const en: Record<keyof typeof vi, string> = {
     'The Hangi Vietnam - authorized distributor of Korean aesthetic and dermatology products and medical supplies.',
 
   'nav.san_pham': 'Products',
-  'nav.hoat_chat': 'Ingredients',
+  'nav.hoat_chat': 'References',
   'nav.gioi_thieu': 'About us',
   'nav.doi_tac': 'Partners',
   'nav.tai_lieu': 'Documents',

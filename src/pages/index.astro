@@ -3,10 +3,10 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ProductCard from '../components/ProductCard.astro';
-import TheBaiHoatChat from '../components/TheBaiHoatChat.astro';
 import { useT, localePath } from '../i18n';
 import { baiVietVi } from '../data/hoat-chat';
-import anhHero from '../assets/products/pllacube-duo-boxes.jpg';
+import anhHero0 from '../assets/products/pllacube-hero-1.jpg';
+import anhHero1 from '../assets/products/pllacube-hero-2.jpg';
 import anhHero2 from '../assets/products/skinphilia-hero.jpg';
 
 const lang = 'vi' as const;
@@ -22,16 +22,16 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
   <!-- HERO -->
   <section class="relative overflow-hidden">
     <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[560px] bg-gradient-to-b from-duoc/8 via-bacha/70 to-white" aria-hidden="true"></div>
-    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 pt-12 sm:px-6 md:grid-cols-[1.1fr_0.9fr] md:pt-20">
+    <div class="mx-auto grid max-w-[1520px] items-center gap-10 px-4 pb-16 pt-12 sm:px-6 md:grid-cols-[1.1fr_0.9fr] md:pt-20">
       <div>
         <p class="len-nhe inline-flex items-center gap-2 rounded-full bg-duoc/10 px-4 py-1.5 text-xs font-semibold text-duoc-dam shadow-sm">
           <span class="h-1.5 w-1.5 rounded-full bg-duoc" aria-hidden="true"></span>
           {t('hero.tagline')}
         </p>
-        <h1 class="len-nhe len-nhe-2 mt-5 max-w-xl text-4xl font-bold leading-[1.15] tracking-tight text-muc sm:text-5xl">
+        <h1 class="len-nhe len-nhe-2 mt-5 max-w-xl text-4xl font-bold leading-[1.15] tracking-tight text-muc sm:text-5xl xl:text-6xl">
           Chăm sóc da khoa học, bắt đầu từ <span class="text-duoc">nguồn gốc rõ ràng</span>.
         </h1>
-        <p class="len-nhe len-nhe-3 mt-5 max-w-lg text-base leading-relaxed text-muc/60">{t('hero.sub')}</p>
+        <p class="len-nhe len-nhe-3 mt-5 max-w-lg text-base xl:text-lg leading-relaxed text-muc/60">{t('hero.sub')}</p>
         <div class="len-nhe len-nhe-4 mt-8 flex flex-wrap gap-3">
           <a
             href={p('/san-pham')}
@@ -50,8 +50,9 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
       <div class="hero-carousel-wrap">
         <div class="overflow-hidden rounded-3xl shadow-[0_20px_60px_rgba(14,116,144,0.18)]">
           <div class="hero-carousel" id="heroCarousel">
-            <Image src={anhHero} alt={t('hero.anh_alt')} width={880} loading="eager" fetchpriority="high" class="carousel-img active" data-index="0" />
-            <Image src={anhHero2} alt="Bộ sản phẩm SKINPHILIA EXOMUNE BOOSTER &amp; MASK — Exosome tế bào gốc máu cuống rốn từ Hàn Quốc" width={880} loading="lazy" class="carousel-img" data-index="1" />
+            <Image src={anhHero0} alt="PLLACUBE Original — Skinbooster PLLA công nghệ INCUBE™ với PDRN, Vitamin C và Glutathione" width={880} loading="eager" fetchpriority="high" class="carousel-img active" data-index="0" />
+            <Image src={anhHero1} alt="PLLACUBE PiNk VOL. — Skinbooster PLLA với HA và Peptide cho làn da căng mịn" width={880} loading="lazy" class="carousel-img" data-index="1" />
+            <Image src={anhHero2} alt="Bộ sản phẩm SKINPHILIA EXOMUNE BOOSTER &amp; MASK — Exosome tế bào gốc máu cuống rốn từ Hàn Quốc" width={880} loading="lazy" class="carousel-img" data-index="2" />
           </div>
         </div>
         <!-- Mũi tên chuyển ảnh -->
@@ -62,10 +63,13 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <p class="carousel-caption caption-0 active">
-          PLLACUBE - 250001723/PCBB-HCM
+          PLLACUBE Original — 250001723/PCBB-HCM
         </p>
         <p class="carousel-caption caption-1">
-          SKINPHILIA - 273613/25/CBMP-QLD
+          PLLACUBE PiNk VOL. — 250001723/PCBB-HCM
+        </p>
+        <p class="carousel-caption caption-2">
+          SKINPHILIA — 273613/25/CBMP-QLD
         </p>
       </div>
     </div>
@@ -198,17 +202,17 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
 
   <!-- DANH MUC SAN PHAM -->
   <section class="bg-bacha/60 py-16">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="mx-auto max-w-[1520px] px-4 sm:px-6">
       <div class="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h2 class="text-2xl font-bold tracking-tight text-muc sm:text-3xl">{t('danhmuc.tieude')}</h2>
+          <h2 class="text-2xl font-bold tracking-tight text-muc sm:text-3xl xl:text-4xl">{t('danhmuc.tieude')}</h2>
           <p class="mt-2 max-w-xl text-sm leading-relaxed text-muc/70">{t('danhmuc.mota')}</p>
         </div>
         <a href={p('/san-pham')} class="text-sm font-semibold text-duoc hover:text-duoc-dam hover:underline">
           {t('danhmuc.xem_tat_ca')} &rarr;
         </a>
       </div>
-      <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {sanPham.map((sp) => (
           <ProductCard sp={sp} lang={lang} />
         ))}
@@ -220,25 +224,31 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
     </div>
   </section>
 
-  <!-- HIEU VE HOAT CHAT -->
+  <!-- TAI LIEU -->
   <section class="py-16">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <h2 class="text-2xl font-bold tracking-tight text-muc sm:text-3xl">{t('hoatchat.tieude')}</h2>
-      <p class="mt-2 max-w-xl text-sm leading-relaxed text-muc/70">{t('hoatchat.mota')}</p>
-      <div class="mt-8 divide-y divide-bacha/60 overflow-hidden rounded-2xl border border-bacha/70 bg-white">
+    <div class="mx-auto max-w-[1520px] px-4 sm:px-6">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-bold tracking-tight text-muc sm:text-3xl xl:text-4xl">Tài liệu tham khảo</h2>
+          <p class="mt-2 max-w-xl text-sm leading-relaxed text-muc/70">Kiến thức hoạt chất và cơ sở khoa học — dành cho cán bộ y tế và đối tác chuyên môn.</p>
+        </div>
+        <a href={p('/hoat-chat')} class="text-sm font-semibold text-duoc hover:text-duoc-dam hover:underline">
+          Xem tất cả &rarr;
+        </a>
+      </div>
+      <div class="mt-8 grid gap-5 md:grid-cols-3">
         {
-          baiVietVi.map((bai, i) => (
-            <TheBaiHoatChat
-              href={`${p('/hoat-chat')}/${bai.id}`}
-              soThuTu={i + 1}
-              tieuDe={bai.tieuDe}
-              tomTat={bai.doanMoDau[0]}
-            />
+          baiVietVi.map((bai) => (
+            <a href={`${p('/hoat-chat')}/${bai.id}`} class="group flex flex-col rounded-2xl border border-bacha/70 bg-white p-6 transition-all hover:-translate-y-1 hover:border-duoc/20 hover:shadow-[0_12px_40px_rgba(14,116,144,0.13)]">
+              <h3 class="mt-4 text-base font-bold leading-snug text-muc group-hover:text-duoc">{bai.tieuDe}</h3>
+              <p class="mt-2 flex-1 text-[12.5px] leading-relaxed text-muc/55 line-clamp-4">{bai.doanMoDau[0]}</p>
+              <span class="mt-4 text-xs font-semibold text-duoc group-hover:underline">Đọc tiếp &rarr;</span>
+            </a>
           ))
         }
       </div>
       <p class="mt-6 text-xs leading-relaxed text-muc/50">
-        Nội dung mang tính giải thích kiến thức chung về hoạt chất, không phải công bố công dụng của bất kỳ sản phẩm cụ thể nào.
+        Nội dung mang tính tham khảo kiến thức chung, không phải công bố công dụng của bất kỳ sản phẩm cụ thể nào.
         Công dụng sản phẩm chỉ được ghi đúng theo hồ sơ công bố tại trang chi tiết.
       </p>
     </div>
@@ -246,8 +256,8 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
 
   <!-- VI SAO CHON THE HANGI -->
   <section class="bg-bacha/60 py-16">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <h2 class="text-2xl font-bold tracking-tight text-muc sm:text-3xl">{t('visao.tieude')}</h2>
+    <div class="mx-auto max-w-[1520px] px-4 sm:px-6">
+      <h2 class="text-2xl font-bold tracking-tight text-muc sm:text-3xl xl:text-4xl">{t('visao.tieude')}</h2>
       <div class="mt-8 grid gap-5 md:grid-cols-3">
         {
           [
@@ -274,7 +284,7 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
 
   <!-- CTA -->
   <section class="py-16">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="mx-auto max-w-[1520px] px-4 sm:px-6">
       <div class="overflow-hidden rounded-3xl bg-gradient-to-br from-duoc-dam to-duoc px-6 py-14 text-center sm:px-12 shadow-xl shadow-duoc/15">
         <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">{t('cta.tieude')}</h2>
         <p class="mx-auto mt-3 max-w-lg text-[15px] leading-relaxed text-white/85">{t('cta.mota')}</p>

@@ -1,7 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
 import BannerChuyenMon from '../../components/BannerChuyenMon.astro';
-import TheBaiHoatChat from '../../components/TheBaiHoatChat.astro';
 import { useT, localePath } from '../../i18n';
 import { baiVietVi } from '../../data/hoat-chat';
 
@@ -10,25 +9,24 @@ const t = useT(lang);
 ---
 
 <Base
-  title="Nền tảng khoa học | The Hangi Việt Nam"
-  description="Các bài chuyên đề về hoạt chất và công nghệ trong sản phẩm thẩm mỹ - da liễu do The Hangi phân phối."
+  title="Tài liệu tham khảo | The Hangi Việt Nam"
+  description="Tổng hợp kiến thức chuyên môn, nghiên cứu khoa học và tài liệu tham khảo về thẩm mỹ - da liễu."
   lang={lang}
   path="/hoat-chat"
 >
-  <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+  <div class="mx-auto max-w-[1520px] px-4 py-10 sm:px-6">
     <BannerChuyenMon lang={lang} />
-    <h1 class="mt-8 text-3xl font-bold tracking-tight text-muc">{t('hoatchatpage.tieude')}</h1>
-    <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muc/70">{t('hoatchatpage.mota')}</p>
+    <h1 class="mt-8 text-3xl font-bold tracking-tight text-muc">Tài liệu tham khảo</h1>
+    <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muc/70">Tổng hợp kiến thức chuyên môn, nghiên cứu khoa học và tài liệu tham khảo — dành cho cán bộ y tế và đối tác.</p>
 
-    <div class="mt-8 divide-y divide-bacha/60 overflow-hidden rounded-2xl border border-bacha/70 bg-white">
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {
-        baiVietVi.map((bai, i) => (
-          <TheBaiHoatChat
-            href={localePath(lang, `/hoat-chat/${bai.id}`)}
-            soThuTu={i + 1}
-            tieuDe={bai.tieuDe}
-            tomTat={bai.doanMoDau[0]}
-          />
+        baiVietVi.map((bai) => (
+          <a href={localePath(lang, `/hoat-chat/${bai.id}`)} class="group flex flex-col rounded-2xl border border-bacha/70 bg-white p-6 transition-all hover:-translate-y-1 hover:border-duoc/20 hover:shadow-[0_12px_40px_rgba(14,116,144,0.13)]">
+            <h3 class="mt-4 text-base font-bold leading-snug text-muc group-hover:text-duoc">{bai.tieuDe}</h3>
+            <p class="mt-2 flex-1 text-[12.5px] leading-relaxed text-muc/55 line-clamp-4">{bai.doanMoDau[0]}</p>
+            <span class="mt-4 text-xs font-semibold text-duoc group-hover:underline">Đọc tiếp &rarr;</span>
+          </a>
         ))
       }
     </div>

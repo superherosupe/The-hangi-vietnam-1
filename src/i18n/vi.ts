@@ -4,7 +4,7 @@ export default {
     'The Hangi Việt Nam - nhà phân phối trang thiết bị, vật tư và sản phẩm thẩm mỹ - da liễu chính hãng từ Hàn Quốc.',
 
   'nav.san_pham': 'Sản phẩm',
-  'nav.hoat_chat': 'Hoạt chất',
+  'nav.hoat_chat': 'Tài liệu tham khảo',
   'nav.gioi_thieu': 'Về chúng tôi',
   'nav.doi_tac': 'Đối tác',
   'nav.tai_lieu': 'Tài liệu',
@@ -35,8 +35,8 @@ export default {
   'danhmuc.sap_ra_mat_mota': 'Các dòng sản phẩm tiếp theo đang trong quá trình đăng ký lưu hành tại Việt Nam.',
   'danhmuc.so_cong_bo': 'Số công bố',
 
-  'hoatchat.tieude': 'Hiểu về hoạt chất',
-  'hoatchat.mota': 'Giải thích ngắn gọn, dễ hiểu. Nội dung chuyên sâu dành cho cán bộ y tế ở mục riêng.',
+  'hoatchat.tieude': 'Tài liệu tham khảo',
+  'hoatchat.mota': 'Kiến thức hoạt chất và cơ sở khoa học — dành cho cán bộ y tế và đối tác chuyên môn.',
 
   'visao.tieude': 'Vì sao chọn The Hangi',
   'visao.1.tieude': 'Công bố rõ ràng',
@@ -110,7 +110,7 @@ export default {
   'tailieu.chung': 'Tài liệu chung',
   'tailieu.xem_sp': 'Xem trang sản phẩm',
 
-  'hoatchatpage.tieude': 'Nền tảng khoa học',
+  'hoatchatpage.tieude': 'Tài liệu tham khảo',
   'hoatchatpage.mota': 'Kiến thức chung, dễ hiểu về các hoạt chất và công nghệ xuất hiện trong sản phẩm thẩm mỹ - da liễu. Nội dung mang tính tham khảo, không phải công bố công dụng của bất kỳ sản phẩm cụ thể nào.',
   'hoatchatpage.luu_y': 'Lưu ý',
 

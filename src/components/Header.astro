@@ -22,7 +22,7 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <header class="sticky top-0 z-40 border-b border-bacha bg-white/95 backdrop-blur">
-  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+  <div class="mx-auto flex max-w-[1520px] items-center justify-between gap-4 px-4 py-3 sm:px-6">
     <a href={p('/')} class="flex items-center gap-2.5" aria-label={t('site.ten')}>
       <Image src={logoIcon} alt="" width={72} height={76} loading="eager" class="h-9 w-auto" aria-hidden="true" />
       <span class="flex flex-col leading-none">

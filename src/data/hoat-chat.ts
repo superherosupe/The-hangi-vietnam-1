@@ -14,6 +14,7 @@ export interface BaiViet {
   doanMoDau: string[];
   muc: MucBaiViet[];
   luuY: string;
+  taiLieuThamKhao?: string[];
 }
 
 export const baiVietVi: BaiViet[] = [
@@ -98,6 +99,68 @@ export const baiVietVi: BaiViet[] = [
     ],
     luuY:
       'Bài viết này chỉ nhằm mục đích cung cấp kiến thức nền tảng, khách quan về nguyên lý công nghệ đóng gói hoạt chất - không phải là công bố công dụng, không phải tư vấn điều trị, và không thay thế chỉ định của bác sĩ hoặc người hành nghề khám chữa bệnh. Với các sản phẩm cụ thể do The Hangi Việt Nam phân phối, thông tin công nghệ và thành phần chính xác được ghi tại trang chi tiết từng sản phẩm, theo đúng tài liệu do nhà sản xuất LABINCUBE cung cấp.',
+  },
+  {
+    id: 'exosome-usc1994',
+    tieuDe: 'Công nghệ Exosome USC1994® là gì?',
+    doanMoDau: [
+      'Exosome là những túi nano siêu nhỏ (50-150nm) được tế bào tiết ra để giao tiếp với nhau. USC1994® là công nghệ Exosome độc quyền từ dịch nuôi cấy tế bào gốc máu cuống rốn - nguồn tế bào gốc trẻ nhất và có khả năng tăng sinh mạnh nhất trong cơ thể người, theo nghiên cứu đăng trên Journal of Cellular Biochemistry (2011).',
+    ],
+    muc: [
+      {
+        tieuDe: 'Exosome hoạt động như thế nào trên da?',
+        doanVan: [
+          'Năm 2017, nhóm nghiên cứu của Kim YJ và cộng sự đã công bố trên Biochemical and Biophysical Research Communications nghiên cứu đầu tiên trên thế giới chứng minh Exosome từ dịch nuôi cấy tế bào gốc máu cuống rốn (USC-CM Exos) có khả năng thẩm thấu trực tiếp vào da người. Khi vào đến lớp trung bì, Exosome kích thích nguyên bào sợi (fibroblast) sản sinh Collagen Type I, III, IV, Fibronectin và Elastin - các protein cấu trúc quyết định độ săn chắc và đàn hồi của da.',
+        ],
+      },
+      {
+        tieuDe: 'Vì sao Exosome từ máu cuống rốn vượt trội?',
+        doanVan: [
+          'Theo nghiên cứu so sánh, tế bào gốc từ máu cuống rốn sản sinh lượng Exosome gấp khoảng 14 lần so với tế bào gốc từ mô mỡ hoặc tủy xương trưởng thành. Kích thước Exosome USC1994® (50-150nm) cũng nhỏ hơn đáng kể - chỉ bằng 1/1700 đường kính lỗ chân lông - cho phép thẩm thấu nhanh và sâu mà không cần xâm lấn mạnh.',
+        ],
+      },
+      {
+        tieuDe: 'Tác dụng chống viêm đã được chứng minh',
+        doanVan: [
+          'Năm 2020, một nghiên cứu trên Biomedicine & Pharmacotherapy xác nhận USC-CM có khả năng ức chế các chất trung gian gây viêm chính trong da: TARC, IL-1β, IL-6 và TNF-α. Điều này giải thích tại sao sản phẩm chứa USC1994® thường được ứng dụng trong các liệu trình phục hồi sau laser, vi kim - nơi phản ứng viêm là yếu tố chính gây đỏ, sưng và kéo dài thời gian nghỉ dưỡng.',
+        ],
+      },
+    ],
+    luuY:
+      'Bài viết này chỉ nhằm mục đích cung cấp kiến thức nền tảng, khách quan về công nghệ Exosome dựa trên các nghiên cứu đã công bố - không phải là công bố công dụng của bất kỳ sản phẩm cụ thể nào, không phải tư vấn điều trị. Với các sản phẩm cụ thể do The Hangi Việt Nam phân phối, thông tin công dụng chính xác (theo đúng hồ sơ công bố tại Việt Nam) được ghi tại trang chi tiết từng sản phẩm.',
+  taiLieuThamKhao: [
+    'Kim YJ, Yoo SM, Park HH, et al. Exosomes derived from human umbilical cord blood mesenchymal stem cells stimulates rejuvenation of human skin. Biochem Biophys Res Commun. 2017;493(2):1102-1108. PMID: 28919421.',
+    'Kim YJ, et al. Conditioned media from human umbilical cord blood-derived mesenchymal stem cells stimulate rejuvenation function in human skin. Biochem Biophys Rep. 2018;16:96-101. PMID: 29387642.',
+    'Effects of conditioned media from human umbilical cord blood-derived mesenchymal stem cells in the skin immune response. Biomed Pharmacother. 2020;131:110789. PMID: 33152947.',
+  ],
+  },
+  {
+    id: 'co-che-tai-tao-da',
+    tieuDe: 'Cơ chế tái tạo da bằng tế bào gốc máu cuống rốn',
+    doanMoDau: [
+      'Tế bào gốc trung mô (MSC) từ máu cuống rốn được xem là nguồn tế bào gốc "trẻ nhất" có thể thu thập an toàn sau sinh. Không như tế bào gốc từ mô mỡ hay tủy xương của người trưởng thành (vốn đã chịu ảnh hưởng của lão hóa), tế bào gốc máu cuống rốn duy trì khả năng tăng sinh liên tục và tiết ra lượng lớn yếu tố tăng trưởng (Growth Factors).',
+    ],
+    muc: [
+      {
+        tieuDe: 'Ba cơ chế chính trên da',
+        doanVan: [
+          'Các nghiên cứu đã xác định 3 cơ chế chính khi dịch nuôi cấy tế bào gốc máu cuống rốn được ứng dụng trên da: (1) Tăng sinh tế bào da - kích thích nguyên bào sợi và tế bào sừng phân chia nhanh hơn so với tế bào gốc từ mỡ và tủy xương; (2) Tổng hợp protein cấu trúc - thúc đẩy sản sinh Collagen I/III/IV, Fibronectin và Elastin, có thể quan sát được sau 24 giờ trong thí nghiệm; (3) Ức chế viêm - giảm tiết các cytokine gây viêm TARC, IL-1β, IL-6, TNF-α thông qua con đường PGE2.',
+        ],
+      },
+      {
+        tieuDe: 'Điều gì làm nên sự khác biệt?',
+        doanVan: [
+          'USC1994® là tên thương mại của dịch nuôi cấy tế bào gốc máu cuống rốn đã được chuẩn hóa, chứa 1.470+ protein và yếu tố tăng trưởng đã được định danh. Đây là kết quả của hơn 30 năm nghiên cứu và 290+ bài báo SCI. Con số "290+" phản ánh tổng số công bố khoa học của nhóm nghiên cứu trong lĩnh vực tế bào gốc nói chung, không chỉ riêng về USC1994®.',
+        ],
+      },
+    ],
+    luuY:
+      'Bài viết này chỉ nhằm mục đích cung cấp kiến thức nền tảng, khách quan về cơ chế sinh học của tế bào gốc máu cuống rốn dựa trên các nghiên cứu đã công bố - không phải là công bố công dụng, không phải tư vấn điều trị. Mọi thông tin về công dụng sản phẩm cụ thể chỉ được ghi theo đúng hồ sơ công bố tại Việt Nam trên trang chi tiết từng sản phẩm.',
+  taiLieuThamKhao: [
+    'Zhang X, Hirai M, Cantero S, et al. Isolation and characterization of mesenchymal stem cells from human umbilical cord blood. J Cell Biochem. 2011;112(4):1206-1218. PMID: 21312238.',
+    'Kim YJ, Yoo SM, Park HH, et al. Exosomes derived from human umbilical cord blood mesenchymal stem cells stimulates rejuvenation of human skin. Biochem Biophys Res Commun. 2017;493(2):1102-1108. PMID: 28919421.',
+    'Kim YJ, et al. Conditioned media from human umbilical cord blood-derived mesenchymal stem cells stimulate rejuvenation function in human skin. Biochem Biophys Rep. 2018;16:96-101. PMID: 29387642.',
+  ],
   },
 ];
 

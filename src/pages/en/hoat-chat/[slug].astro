@@ -22,7 +22,7 @@ const { bai } = Astro.props;
   lang={lang}
   path={`/hoat-chat/${bai.id}`}
 >
-  <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+  <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6">
     <BannerChuyenMon lang={lang} />
 
     <nav class="mt-6 font-mono text-xs text-muc/50" aria-label="Breadcrumb">
@@ -35,7 +35,7 @@ const { bai } = Astro.props;
 
     <article class="mt-6">
       <h1 class="text-3xl font-bold tracking-tight text-muc">{bai.tieuDe}</h1>
-      <div class="mt-5 space-y-4 text-sm leading-relaxed text-muc/80">
+      <div class="mt-5 space-y-4 text-sm leading-relaxed text-muc/80 text-justify">
         {bai.doanMoDau.map((doan) => (
           <p>{doan}</p>
         ))}
@@ -44,7 +44,7 @@ const { bai } = Astro.props;
         {bai.muc.map((m) => (
           <div>
             <h2 class="text-sm font-bold uppercase tracking-wider text-duoc-dam">{m.tieuDe}</h2>
-            <div class="mt-3 space-y-3 text-sm leading-relaxed text-muc/80">
+            <div class="mt-3 space-y-3 text-sm leading-relaxed text-muc/80 text-justify">
               {m.doanVan.map((doan) => (
                 <p>{doan}</p>
               ))}
@@ -57,6 +57,22 @@ const { bai } = Astro.props;
         <p class="mt-1.5 text-[13px] leading-relaxed text-[#6d4a12]">{bai.luuY}</p>
       </div>
     </article>
+
+    {
+      bai.taiLieuThamKhao && (
+        <div class="mt-6">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-muc/50">References</h2>
+          <ul class="mt-2 space-y-1">
+            {bai.taiLieuThamKhao.map((tl, i) => (
+              <li class="flex gap-2 text-[11px] leading-relaxed text-muc/45">
+                <span class="shrink-0 text-muc/30">[{i + 1}]</span>
+                <span>{tl}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
 
     <a
       href={localePath(lang, '/hoat-chat')}
