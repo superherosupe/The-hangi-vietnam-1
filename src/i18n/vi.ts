@@ -105,6 +105,12 @@ export default {
   'nhom.skinbooster-khac': 'Skinbooster khác',
   'nhom.my-pham-chuyen-khoa': 'Mỹ phẩm chuyên khoa',
 
+  'tailieu.tieude': 'Thư viện tài liệu',
+  'tailieu.mota': 'Tài liệu tải về theo từng sản phẩm và tài liệu chung của nhà sản xuất LABINCUBE.',
+  'tailieu.theo_sp': 'Theo sản phẩm',
+  'tailieu.chung': 'Tài liệu chung',
+  'tailieu.xem_sp': 'Xem trang sản phẩm',
+
   'chung.trang_chu': 'Trang chủ',
   'chung.dang_hoan_thien': 'Trang này đang được hoàn thiện.',
   'chung.quay_lai': 'Quay lại trang chủ',

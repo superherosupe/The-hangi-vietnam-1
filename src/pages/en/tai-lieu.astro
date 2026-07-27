@@ -1,12 +1,108 @@
 ---
-import TrangDangHoanThien from '../../layouts/TrangDangHoanThien.astro';
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import BannerChuyenMon from '../../components/BannerChuyenMon.astro';
+import { useT, localePath, BASE } from '../../i18n';
+
+const lang = 'en' as const;
+const t = useT(lang);
+
+const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('en/')))
+  .filter((sp) => sp.data.tai_lieu.length > 0)
+  .sort((a, b) => a.data.thu_tu - b.data.thu_tu);
+
+// General manufacturer documents, not tied to a specific product
+const taiLieuChung = [{ ten: 'ISO 22716 Certificate - LABINCUBE', file: '/docs/labincube-iso-22716.pdf' }];
 ---
 
-<TrangDangHoanThien
+<Base
   title="Document library | The Hangi Vietnam"
   description="Downloadable documents: declarations, ISO certificates and instructions for products distributed by The Hangi."
-  heading="Document library"
-  lang="en"
+  lang={lang}
   path="/tai-lieu"
-  noIndex
-/>
+>
+  <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <BannerChuyenMon lang={lang} />
+    <h1 class="mt-8 text-3xl font-bold tracking-tight text-muc">{t('tailieu.tieude')}</h1>
+    <p class="mt-2 max-w-xl text-sm leading-relaxed text-muc/70">{t('tailieu.mota')}</p>
+
+    <div class="mt-10 space-y-10">
+      {
+        sanPham.length > 0 && (
+          <section>
+            <h2 class="text-sm font-bold uppercase tracking-wider text-duoc-dam">{t('tailieu.theo_sp')}</h2>
+            <div class="mt-4 space-y-6">
+              {sanPham.map((sp) => (
+                <div class="rounded-2xl border border-bacha p-5">
+                  <div class="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 class="text-base font-bold text-muc">{sp.data.ten}</h3>
+                    <a
+                      href={localePath(lang, `/san-pham/${sp.id.split('/').pop()}`)}
+                      class="text-xs font-semibold text-duoc hover:text-duoc-dam hover:underline"
+                    >
+                      {t('tailieu.xem_sp')} &rarr;
+                    </a>
+                  </div>
+                  <ul class="mt-3 space-y-2">
+                    {sp.data.tai_lieu.map((tl) => (
+                      <li>
+                        <a
+                          href={`${BASE}${tl.file}`}
+                          target="_blank"
+                          rel="noopener"
+                          class="inline-flex items-center gap-2 rounded-xl border border-bacha px-3.5 py-2.5 text-sm font-medium text-duoc transition-colors hover:border-duoc/40 hover:bg-bacha"
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path
+                              d="M12 3v12m0 0 4-4m-4 4-4-4m-4 8h16"
+                              stroke="currentColor"
+                              stroke-width="1.6"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                          {tl.ten} (PDF)
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )
+      }
+
+      {
+        taiLieuChung.length > 0 && (
+          <section>
+            <h2 class="text-sm font-bold uppercase tracking-wider text-duoc-dam">{t('tailieu.chung')}</h2>
+            <ul class="mt-4 space-y-2">
+              {taiLieuChung.map((tl) => (
+                <li>
+                  <a
+                    href={`${BASE}${tl.file}`}
+                    target="_blank"
+                    rel="noopener"
+                    class="inline-flex items-center gap-2 rounded-xl border border-bacha px-3.5 py-2.5 text-sm font-medium text-duoc transition-colors hover:border-duoc/40 hover:bg-bacha"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M12 3v12m0 0 4-4m-4 4-4-4m-4 8h16"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    {tl.ten} (PDF)
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+    </div>
+  </div>
+</Base>

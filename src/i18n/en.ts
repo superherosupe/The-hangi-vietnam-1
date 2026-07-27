@@ -106,6 +106,12 @@ const en: Record<keyof typeof vi, string> = {
   'nhom.skinbooster-khac': 'Other skinboosters',
   'nhom.my-pham-chuyen-khoa': 'Professional cosmetics',
 
+  'tailieu.tieude': 'Document library',
+  'tailieu.mota': 'Downloadable documents by product, plus general documentation from manufacturer LABINCUBE.',
+  'tailieu.theo_sp': 'By product',
+  'tailieu.chung': 'General documents',
+  'tailieu.xem_sp': 'View product page',
+
   'chung.trang_chu': 'Home',
   'chung.dang_hoan_thien': 'This page is under construction.',
   'chung.quay_lai': 'Back to home',
