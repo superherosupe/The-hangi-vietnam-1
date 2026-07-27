@@ -112,6 +112,10 @@ export default {
   'tailieu.chung': 'Tài liệu chung',
   'tailieu.xem_sp': 'Xem trang sản phẩm',
 
+  'hoatchatpage.tieude': 'Nền tảng khoa học',
+  'hoatchatpage.mota': 'Kiến thức chung, dễ hiểu về các hoạt chất và công nghệ xuất hiện trong sản phẩm thẩm mỹ - da liễu. Nội dung mang tính tham khảo, không phải công bố công dụng của bất kỳ sản phẩm cụ thể nào.',
+  'hoatchatpage.luu_y': 'Lưu ý',
+
   'lienhe.tieu_de_email': 'Yêu cầu liên hệ mới từ website The Hangi',
   'lienhe.san_pham_quan_tam': 'Sản phẩm quan tâm',
   'lienhe.ten': 'Họ tên',

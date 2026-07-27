@@ -20,16 +20,19 @@ const hoatChatNoiBat = [...new Set(sanPham.flatMap((sp) => sp.data.hoat_chat))];
 
 const chuyenDe = [
   {
+    id: 'plla-la-gi',
     ten: 'PLLA là gì?',
     tomTat:
       'PLLA (Poly-L-lactic acid) là một polymer phân hủy sinh học đã được sử dụng trong y khoa từ nhiều thập kỷ, ví dụ trong chỉ khâu tự tiêu.',
   },
   {
+    id: 'pdrn-va-pn',
     ten: 'PDRN và PN khác nhau thế nào?',
     tomTat:
       'Cả hai đều là các polynucleotide có nguồn gốc DNA, khác nhau về kích thước phân tử và cách được nghiên cứu, ứng dụng.',
   },
   {
+    id: 'cong-nghe-incube',
     ten: 'Công nghệ đóng gói hoạt chất INCUBE',
     tomTat:
       'Cách LABINCUBE ứng dụng khoa học vật liệu xốp (MOF) để bảo vệ các hoạt chất dễ mất hoạt tính như Vitamin C và Glutathione.',
@@ -117,7 +120,7 @@ const chuyenDe = [
             <p class="inline-flex w-fit items-center rounded-full bg-duoc/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-duoc">{t('hoatchat.hieu_nhanh')}</p>
             <h3 class="mt-2 text-lg font-bold text-muc">{cd.ten}</h3>
             <p class="mt-2 flex-1 text-sm leading-relaxed text-muc/70">{cd.tomTat}</p>
-            <a href={p('/hoat-chat')} class="mt-4 text-sm font-semibold text-duoc hover:text-duoc-dam hover:underline">
+            <a href={`${p('/hoat-chat')}#${cd.id}`} class="mt-4 text-sm font-semibold text-duoc hover:text-duoc-dam hover:underline">
               {t('hoatchat.goc_chuyen_mon')} &rarr;
             </a>
           </article>

@@ -113,6 +113,10 @@ const en: Record<keyof typeof vi, string> = {
   'tailieu.chung': 'General documents',
   'tailieu.xem_sp': 'View product page',
 
+  'hoatchatpage.tieude': 'Science',
+  'hoatchatpage.mota': 'General, accessible knowledge about the ingredients and technologies found in aesthetic-dermatology products. Reference content only, not a declaration of efficacy for any specific product.',
+  'hoatchatpage.luu_y': 'Note',
+
   'lienhe.tieu_de_email': 'New contact request from The Hangi website',
   'lienhe.san_pham_quan_tam': 'Product of interest',
   'lienhe.ten': 'Full name',

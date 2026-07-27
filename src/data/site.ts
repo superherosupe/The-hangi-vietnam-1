@@ -13,7 +13,7 @@ export const BASE_PATH = '';
  * (vd thehangivietnam@gmail.com), khong can dang ky tai khoan, key nay an toan de nhung
  * vao HTML (khong phai bi mat, no chi gan voi hom thu nhan).
  */
-export const WEB3FORMS_ACCESS_KEY = 'PASTE_YOUR_WEB3FORMS_ACCESS_KEY_HERE';
+export const WEB3FORMS_ACCESS_KEY = 'd2c8b10c-38ce-4799-ad53-6a9a3c4f3c87';
 
 /**
  * Thong tin doanh nghiep - nguon: ho so dang ky kinh doanh.

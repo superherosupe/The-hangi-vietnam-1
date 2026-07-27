@@ -26,9 +26,9 @@ export default defineConfig({
   integrations: [
     sitemap({
       // Phai khop voi cac trang dang truyen prop noIndex trong src/pages/**.astro
-      // (chinh-sach-bao-mat, dieu-khoan, doi-tac, hoat-chat, tin-tuc, ca VI/EN).
+      // (chinh-sach-bao-mat, dieu-khoan, doi-tac, tin-tuc, ca VI/EN).
       // Khi mot trang bo noIndex, go duong dan tuong ung khoi day.
-      filter: (page) => !/\/(chinh-sach-bao-mat|dieu-khoan|doi-tac|hoat-chat|tin-tuc)\/?$/.test(page),
+      filter: (page) => !/\/(chinh-sach-bao-mat|dieu-khoan|doi-tac|tin-tuc)\/?$/.test(page),
     }),
   ],
   vite: {
