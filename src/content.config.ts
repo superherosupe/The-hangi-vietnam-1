@@ -76,6 +76,9 @@ const products = defineCollection({
         thu_tu: z.number().default(99),
         meta_title: z.string().nullable(),
         meta_description: batBuoc('meta_description (viet tay, khong cat tu bai)'),
+        lastUpdated: z
+          .string()
+          .regex(/^\d{4}-\d{2}-\d{2}$/, { message: 'lastUpdated phai dang YYYY-MM-DD, vd "2026-07-27"' }),
       })
       .superRefine((data, ctx) => {
         const laTBYT = data.phan_loai_phap_ly.startsWith('thiet-bi-y-te');

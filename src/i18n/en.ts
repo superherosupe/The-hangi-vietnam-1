@@ -86,6 +86,7 @@ const en: Record<keyof typeof vi, string> = {
   'sp.tai_lieu': 'Downloads',
   'sp.yeu_cau_bao_gia': 'Request a quotation',
   'sp.hoat_chat': 'Key ingredients',
+  'sp.cap_nhat': 'Last updated:',
 
   'sp.thong_tin_san_pham': 'Product information',
   'sp.thanh_phan_chinh': 'Key ingredients',

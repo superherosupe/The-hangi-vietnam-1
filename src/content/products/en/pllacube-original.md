@@ -60,6 +60,7 @@ tai_lieu:
 thu_tu: 1
 meta_title: "PLLACUBE Original - Class B medical device | The Hangi Vietnam"
 meta_description: "PLLACUBE Original (LABINCUBE, Korea) - class B medical device, declaration no. 250001723/PCBB-HCM. Full regulatory information, exclusively distributed by The Hangi Vietnam."
+lastUpdated: "2026-07-27"
 ---
 
 PLLACUBE Original is a skinbooster-line product using LABINCUBE's INCUBE technology (Korea), declared as a class B medical device with the Ho Chi Minh City Department of Health.

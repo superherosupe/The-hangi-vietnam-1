@@ -60,6 +60,7 @@ tai_lieu:
 thu_tu: 1
 meta_title: "PLLACUBE Original - Thiết bị y tế loại B | The Hangi Việt Nam"
 meta_description: "PLLACUBE Original (LABINCUBE, Hàn Quốc) - thiết bị y tế loại B, số công bố 250001723/PCBB-HCM. Thông tin pháp lý đầy đủ, phân phối độc quyền bởi The Hangi Việt Nam."
+lastUpdated: "2026-07-27"
 ---
 
 PLLACUBE Original là sản phẩm thuộc dòng skinbooster ứng dụng công nghệ INCUBE của LABINCUBE (Hàn Quốc), được công bố tiêu chuẩn áp dụng dưới dạng thiết bị y tế loại B tại Sở Y tế TP. Hồ Chí Minh.

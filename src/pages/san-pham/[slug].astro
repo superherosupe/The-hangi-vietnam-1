@@ -26,6 +26,7 @@ const laTBYT = d.phan_loai_phap_ly.startsWith('thiet-bi-y-te');
 const slug = sp.id.split('/').pop()!;
 const nhanPhanLoai = t(`badge.${d.phan_loai_phap_ly}` as Parameters<typeof t>[0]);
 const site = Astro.site ?? new URL(SITE_URL);
+const ngayCapNhat = d.lastUpdated.split('-').reverse().join('/');
 
 // Thu tu khoi co dinh theo Muc 6.3 - bang phap ly dat cao, khong giau duoi day
 const jsonLdProduct = {
@@ -230,5 +231,7 @@ const jsonLdBreadcrumb = {
     <div class="mt-10 max-w-none text-[12.5px] leading-relaxed text-muc/55 [&_p]:mt-2 [&_p:first-child]:mt-0">
       <Content />
     </div>
+
+    <p class="mt-6 text-[11px] text-muc/40">{t('sp.cap_nhat')} {ngayCapNhat}</p>
   </div>
 </Base>

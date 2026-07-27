@@ -85,6 +85,7 @@ export default {
   'sp.tai_lieu': 'Tài liệu tải về',
   'sp.yeu_cau_bao_gia': 'Yêu cầu báo giá',
   'sp.hoat_chat': 'Hoạt chất chính',
+  'sp.cap_nhat': 'Cập nhật ngày',
 
   'sp.thong_tin_san_pham': 'Thông tin sản phẩm',
   'sp.thanh_phan_chinh': 'Thành phần chính',
