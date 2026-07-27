@@ -53,7 +53,7 @@ const chuyenDe = [
         <p class="len-nhe len-nhe-3 mt-5 max-w-lg text-base leading-relaxed text-muc/60">{t('hero.sub')}</p>
         <ul class="len-nhe len-nhe-3 mt-6 flex flex-wrap gap-2" aria-label={t('sp.hoat_chat')}>
           {hoatChatNoiBat.map((hc) => (
-            <li><ChipHoatChat ten={hc} lang={lang} /></li>
+            <li><ChipHoatChat ten={hc} /></li>
           ))}
         </ul>
         <div class="len-nhe len-nhe-4 mt-8 flex flex-wrap gap-3">
@@ -142,13 +142,15 @@ const chuyenDe = [
             { tieude: t('visao.3.tieude'), mota: t('visao.3.mota'), icon: 'M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25' },
           ].map((mucItem) => (
             <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-bacha/70 transition-all hover:shadow-md hover:ring-duoc/20">
-              <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-duoc/10 text-duoc" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                  <path d={mucItem.icon} stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </span>
-              <h3 class="mt-5 text-base font-bold text-muc">{mucItem.tieude}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-muc/60">{mucItem.mota}</p>
+              <div class="flex justify-center">
+                <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-duoc/10 text-duoc" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d={mucItem.icon} stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </div>
+              <h3 class="mt-5 text-center text-base font-bold text-muc">{mucItem.tieude}</h3>
+              <p class="mt-2 text-justify text-sm leading-relaxed text-muc/60">{mucItem.mota}</p>
             </div>
           ))
         }

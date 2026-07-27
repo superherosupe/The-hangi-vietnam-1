@@ -35,7 +35,7 @@ const hoatChatNoiBat = [...new Set(sanPham.flatMap((sp) => sp.data.hoat_chat))];
         <p class="len-nhe len-nhe-3 mt-5 max-w-lg text-base leading-relaxed text-muc/70">{t('hero.sub')}</p>
         <ul class="len-nhe len-nhe-3 mt-6 flex flex-wrap gap-2" aria-label={t('sp.hoat_chat')}>
           {hoatChatNoiBat.map((hc) => (
-            <li><ChipHoatChat ten={hc} lang={lang} /></li>
+            <li><ChipHoatChat ten={hc} /></li>
           ))}
         </ul>
         <div class="len-nhe len-nhe-4 mt-8 flex flex-wrap gap-3">
