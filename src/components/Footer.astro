@@ -38,10 +38,6 @@ const namHienTai = new Date().getFullYear();
           <dt class="shrink-0 font-medium text-white/60">{t('footer.vp')}:</dt>
           <dd>{lang === 'vi' ? SITE.van_phong : SITE.van_phong_en}</dd>
         </div>
-        <div class="flex gap-2">
-          <dt class="shrink-0 font-medium text-white/60">{t('footer.nguoi_chiu_trach_nhiem')}:</dt>
-          <dd>{SITE.nguoi_chiu_trach_nhiem_noi_dung}</dd>
-        </div>
       </dl>
     </div>
 
@@ -110,8 +106,11 @@ const namHienTai = new Date().getFullYear();
     </div>
   </div>
   <div class="border-t border-white/10">
-    <p class="mx-auto max-w-6xl px-4 py-4 text-xs text-white/50 sm:px-6">
-      {namHienTai} - {t('footer.ban_quyen')}
-    </p>
+    <div
+      class="mx-auto flex max-w-6xl flex-col items-center gap-1 px-4 py-4 text-xs text-white/50 sm:flex-row sm:justify-between sm:gap-4 sm:px-6"
+    >
+      <p>{namHienTai} - {t('footer.ban_quyen')}</p>
+      <p>{t('footer.thiet_ke_boi')}</p>
+    </div>
   </div>
 </footer>

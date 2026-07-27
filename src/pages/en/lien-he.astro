@@ -1,13 +1,16 @@
 ---
 import TrangDangHoanThien from '../../layouts/TrangDangHoanThien.astro';
+import FormLienHe from '../../components/FormLienHe.astro';
 import { SITE, telHref } from '../../data/site';
+
+const lang = 'en' as const;
 ---
 
 <TrangDangHoanThien
   title="Contact | The Hangi Vietnam"
   description="Contact The Hangi Vietnam for quotations, professional documentation or distribution partnership."
   heading="Contact"
-  lang="en"
+  lang={lang}
   path="/lien-he"
 >
   <div class="mt-4 max-w-2xl space-y-3 text-sm leading-relaxed text-muc/80">
@@ -26,6 +29,6 @@ import { SITE, telHref } from '../../data/site';
       ))}
     </p>
     <p>Email: <a href={`mailto:${SITE.email}`} class="text-duoc hover:underline">{SITE.email}</a></p>
-    <p class="text-muc/50">An online contact form will be available here soon.</p>
   </div>
+  <FormLienHe lang={lang} />
 </TrangDangHoanThien>

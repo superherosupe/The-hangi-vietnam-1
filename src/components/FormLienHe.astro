@@ -1,0 +1,178 @@
+---
+import { getCollection } from 'astro:content';
+import { useT, localePath, type Lang } from '../i18n';
+import { WEB3FORMS_ACCESS_KEY } from '../data/site';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useT(lang);
+
+const sanPham = await getCollection('products', (sp) => sp.id.startsWith(`${lang}/`));
+const banDoMaSp = Object.fromEntries(sanPham.map((sp) => [sp.data.ma_san_pham, sp.data.ten]));
+---
+
+<form id="form-lien-he" novalidate class="mt-4 max-w-xl space-y-4 text-sm" data-ma-san-pham={JSON.stringify(banDoMaSp)}>
+  <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+  <input type="hidden" name="subject" value={t('lienhe.tieu_de_email')} />
+  <input type="hidden" name="from_name" value="The Hangi Việt Nam - Website" />
+  <!-- Honeypot chong spam (quy uoc Web3Forms) - bot thuong tu dien vao truong nay -->
+  <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+
+  <p id="san-pham-quan-tam" class="hidden rounded-xl bg-bacha px-4 py-2.5 text-[13px] text-muc/80">
+    {t('lienhe.san_pham_quan_tam')}: <strong id="san-pham-quan-tam-ten"></strong>
+  </p>
+  <input type="hidden" name="san_pham_quan_tam" id="input-san-pham" />
+
+  <div>
+    <label for="ten" class="block font-medium text-muc">{t('lienhe.ten')} <span aria-hidden="true">*</span></label>
+    <input
+      type="text"
+      id="ten"
+      name="ten"
+      required
+      class="mt-1.5 w-full rounded-xl border border-bacha px-3.5 py-2.5 text-muc focus:border-duoc focus:outline-none"
+    />
+  </div>
+
+  <div>
+    <label for="don-vi" class="block font-medium text-muc">{t('lienhe.don_vi')} <span aria-hidden="true">*</span></label>
+    <input
+      type="text"
+      id="don-vi"
+      name="don_vi"
+      required
+      class="mt-1.5 w-full rounded-xl border border-bacha px-3.5 py-2.5 text-muc focus:border-duoc focus:outline-none"
+    />
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div>
+      <label for="sdt" class="block font-medium text-muc">{t('lienhe.sdt')} <span aria-hidden="true">*</span></label>
+      <input
+        type="tel"
+        id="sdt"
+        name="so_dien_thoai"
+        required
+        class="mt-1.5 w-full rounded-xl border border-bacha px-3.5 py-2.5 text-muc focus:border-duoc focus:outline-none"
+      />
+    </div>
+    <div>
+      <label for="email" class="block font-medium text-muc">{t('lienhe.email')} <span aria-hidden="true">*</span></label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="mt-1.5 w-full rounded-xl border border-bacha px-3.5 py-2.5 text-muc focus:border-duoc focus:outline-none"
+      />
+    </div>
+  </div>
+
+  <div>
+    <label for="nhu-cau" class="block font-medium text-muc">{t('lienhe.nhu_cau')} <span aria-hidden="true">*</span></label>
+    <select
+      id="nhu-cau"
+      name="nhu_cau"
+      required
+      class="mt-1.5 w-full rounded-xl border border-bacha bg-white px-3.5 py-2.5 text-muc focus:border-duoc focus:outline-none"
+    >
+      <option value="" selected disabled>{t('lienhe.nhu_cau_chon')}</option>
+      <option value={t('lienhe.nhu_cau_bao_gia')}>{t('lienhe.nhu_cau_bao_gia')}</option>
+      <option value={t('lienhe.nhu_cau_tai_lieu')}>{t('lienhe.nhu_cau_tai_lieu')}</option>
+      <option value={t('lienhe.nhu_cau_hop_tac')}>{t('lienhe.nhu_cau_hop_tac')}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="noi-dung" class="block font-medium text-muc">{t('lienhe.noi_dung')}</label>
+    <textarea
+      id="noi-dung"
+      name="noi_dung"
+      rows="4"
+      class="mt-1.5 w-full rounded-xl border border-bacha px-3.5 py-2.5 text-muc focus:border-duoc focus:outline-none"
+    ></textarea>
+  </div>
+
+  <p class="text-[12px] leading-relaxed text-muc/50">
+    {t('lienhe.dong_y_truoc')}{' '}
+    <a href={localePath(lang, '/chinh-sach-bao-mat')} class="text-duoc hover:underline">{t('footer.chinh_sach')}</a>.
+  </p>
+
+  <button
+    type="submit"
+    id="nut-gui"
+    data-dang-gui={t('lienhe.dang_gui')}
+    class="rounded-full bg-duoc px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-duoc-dam disabled:cursor-not-allowed disabled:opacity-60"
+  >
+    {t('lienhe.gui')}
+  </button>
+
+  <p
+    id="ket-qua"
+    class="hidden text-sm"
+    role="status"
+    aria-live="polite"
+    data-thanh-cong={t('lienhe.thanh_cong')}
+    data-that-bai={t('lienhe.that_bai')}
+  ></p>
+</form>
+
+<script>
+  const form = document.getElementById('form-lien-he') as HTMLFormElement | null;
+  const nutGui = document.getElementById('nut-gui') as HTMLButtonElement | null;
+  const oKetQua = document.getElementById('ket-qua');
+  const oSanPhamBox = document.getElementById('san-pham-quan-tam');
+  const oSanPhamTen = document.getElementById('san-pham-quan-tam-ten');
+  const oInputSanPham = document.getElementById('input-san-pham') as HTMLInputElement | null;
+
+  // Tu dien san pham theo query param ?san-pham=MA_SP (vd tu nut "Yeu cau bao gia" o trang chi tiet)
+  if (form) {
+    const banDo = JSON.parse(form.dataset.maSanPham || '{}') as Record<string, string>;
+    const ma = new URLSearchParams(location.search).get('san-pham');
+    const ten = ma ? banDo[ma] : null;
+    if (ten) {
+      oSanPhamBox?.classList.remove('hidden');
+      if (oSanPhamTen) oSanPhamTen.textContent = ten;
+      if (oInputSanPham) oInputSanPham.value = ten;
+    }
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!nutGui || !oKetQua) return;
+
+    const trangThaiBanDau = nutGui.textContent;
+    nutGui.disabled = true;
+    nutGui.textContent = nutGui.dataset.dangGui || nutGui.textContent;
+    oKetQua.classList.add('hidden');
+
+    try {
+      const duLieu = new FormData(form);
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: duLieu,
+      });
+      const ketQua = await res.json();
+
+      if (ketQua.success) {
+        oKetQua.textContent = oKetQua.dataset.thanhCong || '';
+        oKetQua.className = 'text-sm text-green-700';
+        form.reset();
+        oSanPhamBox?.classList.add('hidden');
+      } else {
+        oKetQua.textContent = oKetQua.dataset.thatBai || '';
+        oKetQua.className = 'text-sm text-red-700';
+      }
+    } catch {
+      oKetQua.textContent = oKetQua.dataset.thatBai || '';
+      oKetQua.className = 'text-sm text-red-700';
+    } finally {
+      oKetQua.classList.remove('hidden');
+      nutGui.disabled = false;
+      nutGui.textContent = trangThaiBanDau;
+    }
+  });
+</script>
