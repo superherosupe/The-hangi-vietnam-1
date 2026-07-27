@@ -1,5 +1,6 @@
 ---
 import TrangDangHoanThien from '../../layouts/TrangDangHoanThien.astro';
+import { SITE } from '../../data/site';
 ---
 
 <TrangDangHoanThien
@@ -8,4 +9,13 @@ import TrangDangHoanThien from '../../layouts/TrangDangHoanThien.astro';
   heading="Contact"
   lang="en"
   path="/lien-he"
-/>
+>
+  <div class="mt-4 max-w-2xl space-y-3 text-sm leading-relaxed text-muc/80">
+    <p><strong>{SITE.ten_day_du_en}</strong></p>
+    <p>Head office: {SITE.tru_so_en}</p>
+    <p>Office: {SITE.van_phong_en}</p>
+    <p>Hotline: {SITE.hotline}</p>
+    <p>Email: <a href={`mailto:${SITE.email}`} class="text-duoc hover:underline">{SITE.email}</a></p>
+    <p class="text-muc/50">An online contact form will be available here soon.</p>
+  </div>
+</TrangDangHoanThien>
