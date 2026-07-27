@@ -7,6 +7,7 @@ import TheBaiHoatChat from '../components/TheBaiHoatChat.astro';
 import { useT, localePath } from '../i18n';
 import { baiVietVi } from '../data/hoat-chat';
 import anhHero from '../assets/products/pllacube-duo-boxes.jpg';
+import anhHero2 from '../assets/products/skinphilia-hero.jpg';
 
 const lang = 'vi' as const;
 const t = useT(lang);
@@ -46,16 +47,154 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
           </a>
         </div>
       </div>
-      <div class="relative">
+      <div class="hero-carousel-wrap">
         <div class="overflow-hidden rounded-3xl shadow-[0_20px_60px_rgba(14,116,144,0.18)]">
-          <Image src={anhHero} alt={t('hero.anh_alt')} width={880} loading="eager" fetchpriority="high" class="h-full w-full object-cover" />
+          <div class="hero-carousel" id="heroCarousel">
+            <Image src={anhHero} alt={t('hero.anh_alt')} width={880} loading="eager" fetchpriority="high" class="carousel-img active" data-index="0" />
+            <Image src={anhHero2} alt="Bộ sản phẩm SKINPHILIA EXOMUNE BOOSTER &amp; MASK — Exosome tế bào gốc máu cuống rốn từ Hàn Quốc" width={880} loading="lazy" class="carousel-img" data-index="1" />
+          </div>
         </div>
-        <p class="absolute bottom-3 right-3 rounded-full bg-white/90 px-3 py-1 font-mono text-[10px] font-medium text-muc/70 backdrop-blur">
+        <!-- Mũi tên chuyển ảnh -->
+        <button class="carousel-arrow carousel-prev" aria-label="Ảnh trước" id="carouselPrev">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="carousel-arrow carousel-next" aria-label="Ảnh tiếp" id="carouselNext">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="carousel-caption caption-0 active">
           PLLACUBE - 250001723/PCBB-HCM
+        </p>
+        <p class="carousel-caption caption-1">
+          SKINPHILIA - 273613/25/CBMP-QLD
         </p>
       </div>
     </div>
   </section>
+
+  <style is:global>
+    .hero-carousel-wrap {
+      position: relative;
+    }
+    .hero-carousel {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+    }
+    .carousel-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+      pointer-events: none;
+    }
+    .carousel-img.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(14,116,144,0.15);
+      color: #0E7490;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .carousel-arrow:hover {
+      background: #0E7490;
+      color: #fff;
+      border-color: #0E7490;
+      box-shadow: 0 4px 16px rgba(14,116,144,0.3);
+    }
+    .carousel-prev { left: 12px; }
+    .carousel-next { right: 12px; }
+    .carousel-caption {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.9);
+      padding: 4px 12px;
+      font-family: monospace;
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(43,43,43,0.7);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+    .carousel-caption.active {
+      opacity: 1;
+    }
+  </style>
+
+  <script>
+    (function() {
+      const carousel = document.getElementById('heroCarousel');
+      if (!carousel) return;
+      const imgs = carousel.querySelectorAll('.carousel-img');
+      const captions = document.querySelectorAll('.carousel-caption');
+      const prevBtn = document.getElementById('carouselPrev');
+      const nextBtn = document.getElementById('carouselNext');
+      let current = 0;
+      const total = imgs.length;
+      const interval = 5000;
+      let timer;
+
+      function show(idx) {
+        imgs.forEach((img, i) => {
+          img.classList.toggle('active', i === idx);
+        });
+        captions.forEach((cap, i) => {
+          cap.classList.toggle('active', i === idx);
+        });
+        current = idx;
+      }
+
+      function next() {
+        show((current + 1) % total);
+      }
+
+      function prev() {
+        show((current - 1 + total) % total);
+      }
+
+      function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(next, interval);
+      }
+
+      nextBtn?.addEventListener('click', () => { next(); startTimer(); });
+      prevBtn?.addEventListener('click', () => { prev(); startTimer(); });
+
+      // Touch swipe
+      let touchStartX = 0;
+      carousel.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+      carousel.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+          diff > 0 ? next() : prev();
+          startTimer();
+        }
+      });
+
+      startTimer();
+    })();
+  </script>
 
   <!-- DANH MUC SAN PHAM -->
   <section class="bg-bacha/60 py-16">

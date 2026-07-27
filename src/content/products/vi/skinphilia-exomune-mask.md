@@ -50,7 +50,7 @@ hoat_chat:
   - "Centella Asiatica"
 quy_cach: "30ml × 4 sheets"
 xuat_xu: "Hàn Quốc"
-anh: "../../../assets/products/skinphilia-mask-main.jpg"
+anh: "../../../assets/products/skinphilia-mask-pouch.jpg"
 anh_alt: "Hộp mặt nạ SKINPHILIA EXOMUNE MASK 4 sheets, thương hiệu SKINPHILIA từ Hàn Quốc, dành cho chăm sóc da chuyên nghiệp"
 gallery: []
 tai_lieu:

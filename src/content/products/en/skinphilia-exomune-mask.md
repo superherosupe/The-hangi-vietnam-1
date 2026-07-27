@@ -50,7 +50,7 @@ hoat_chat:
   - "Centella Asiatica"
 quy_cach: "30ml × 4 sheets"
 xuat_xu: "South Korea"
-anh: "../../../assets/products/skinphilia-mask-main.jpg"
+anh: "../../../assets/products/skinphilia-mask-pouch.jpg"
 anh_alt: "SKINPHILIA EXOMUNE MASK box with 4 sheets for professional post-treatment care"
 gallery: []
 tai_lieu:

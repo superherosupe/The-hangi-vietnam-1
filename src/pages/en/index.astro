@@ -5,6 +5,7 @@ import Base from '../../layouts/Base.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import { useT, localePath } from '../../i18n';
 import anhHero from '../../assets/products/pllacube-duo-boxes.jpg';
+import anhHero2 from '../../assets/products/skinphilia-hero.jpg';
 
 const lang = 'en' as const;
 const t = useT(lang);
@@ -41,13 +42,66 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('en/')
           </a>
         </div>
       </div>
-      <div class="relative">
+      <div class="hero-carousel-wrap">
         <div class="overflow-hidden rounded-3xl shadow-[0_20px_60px_rgba(14,116,144,0.18)]">
-          <Image src={anhHero} alt={t('hero.anh_alt')} width={880} loading="eager" fetchpriority="high" class="h-full w-full object-cover" />
+          <div class="hero-carousel" id="heroCarousel">
+            <Image src={anhHero} alt={t('hero.anh_alt')} width={880} loading="eager" fetchpriority="high" class="carousel-img active" data-index="0" />
+            <Image src={anhHero2} alt="SKINPHILIA EXOMUNE BOOSTER &amp; MASK — Umbilical cord blood stem cell exosome from South Korea" width={880} loading="lazy" class="carousel-img" data-index="1" />
+          </div>
         </div>
+        <button class="carousel-arrow carousel-prev" aria-label="Previous" id="carouselPrev">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="carousel-arrow carousel-next" aria-label="Next" id="carouselNext">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
     </div>
   </section>
+
+  <style is:global>
+    .hero-carousel-wrap { position: relative; }
+    .hero-carousel { position: relative; width: 100%; aspect-ratio: 1 / 1; }
+    .carousel-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.6s ease-in-out; pointer-events: none; }
+    .carousel-img.active { opacity: 1; pointer-events: auto; }
+    .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.85); backdrop-filter: blur(4px); border: 1px solid rgba(14,116,144,0.15); color: #0E7490; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; z-index: 10; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .carousel-arrow:hover { background: #0E7490; color: #fff; border-color: #0E7490; box-shadow: 0 4px 16px rgba(14,116,144,0.3); }
+    .carousel-prev { left: 12px; }
+    .carousel-next { right: 12px; }
+  </style>
+
+  <script>
+    (function() {
+      const carousel = document.getElementById('heroCarousel');
+      if (!carousel) return;
+      const imgs = carousel.querySelectorAll('.carousel-img');
+      const prevBtn = document.getElementById('carouselPrev');
+      const nextBtn = document.getElementById('carouselNext');
+      let current = 0;
+      const total = imgs.length;
+      let timer;
+
+      function show(idx) {
+        imgs.forEach((img, i) => img.classList.toggle('active', i === idx));
+        current = idx;
+      }
+      function next() { show((current + 1) % total); }
+      function prev() { show((current - 1 + total) % total); }
+      function startTimer() { clearInterval(timer); timer = setInterval(next, 5000); }
+
+      nextBtn?.addEventListener('click', () => { next(); startTimer(); });
+      prevBtn?.addEventListener('click', () => { prev(); startTimer(); });
+
+      let touchStartX = 0;
+      carousel.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+      carousel.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); startTimer(); }
+      });
+
+      startTimer();
+    })();
+  </script>
 
   <section class="bg-bacha/60 py-16">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
