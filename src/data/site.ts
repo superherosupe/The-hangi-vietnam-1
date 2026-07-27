@@ -30,6 +30,8 @@ export const SITE = {
   hotline: ['0815 186 268', '0369 838 931'],
   email: 'thehangivietnam@gmail.com',
   facebook: 'https://www.facebook.com/profile.php?id=61591032317104',
+  tiktok: 'https://www.tiktok.com/@hangi.vietnam',
+  instagram: 'https://www.instagram.com/thehangivietnam',
   nguoi_dai_dien: 'HE, XIAOCHEN',
   nam_thanh_lap: '2023',
   pham_vi: 'Seoul (HQ) - TP. Hồ Chí Minh - Hà Nội',

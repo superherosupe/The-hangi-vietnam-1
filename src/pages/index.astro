@@ -4,7 +4,9 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ProductCard from '../components/ProductCard.astro';
 import ChipHoatChat from '../components/ChipHoatChat.astro';
+import TheBaiHoatChat from '../components/TheBaiHoatChat.astro';
 import { useT, localePath } from '../i18n';
+import { baiVietVi } from '../data/hoat-chat';
 import anhHero from '../assets/products/pllacube-duo-boxes.jpg';
 
 const lang = 'vi' as const;
@@ -17,27 +19,6 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
 
 // Sinh dong tu du lieu san pham thuc te - khong hardcode, tranh link ve trang rong
 const hoatChatNoiBat = [...new Set(sanPham.flatMap((sp) => sp.data.hoat_chat))];
-
-const chuyenDe = [
-  {
-    id: 'plla-la-gi',
-    ten: 'PLLA là gì?',
-    tomTat:
-      'PLLA (Poly-L-lactic acid) là một polymer phân hủy sinh học đã được sử dụng trong y khoa từ nhiều thập kỷ, ví dụ trong chỉ khâu tự tiêu.',
-  },
-  {
-    id: 'pdrn-va-pn',
-    ten: 'PDRN và PN khác nhau thế nào?',
-    tomTat:
-      'Cả hai đều là các polynucleotide có nguồn gốc DNA, khác nhau về kích thước phân tử và cách được nghiên cứu, ứng dụng.',
-  },
-  {
-    id: 'cong-nghe-incube',
-    ten: 'Công nghệ đóng gói hoạt chất INCUBE',
-    tomTat:
-      'Cách LABINCUBE ứng dụng khoa học vật liệu xốp (MOF) để bảo vệ các hoạt chất dễ mất hoạt tính như Vitamin C và Glutathione.',
-  },
-];
 ---
 
 <Base title="The Hangi Việt Nam - Phân phối sản phẩm thẩm mỹ, da liễu chính hãng" description={t('site.mota')} lang={lang} path="/">
@@ -114,17 +95,17 @@ const chuyenDe = [
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <h2 class="text-2xl font-bold tracking-tight text-muc sm:text-3xl">{t('hoatchat.tieude')}</h2>
       <p class="mt-2 max-w-xl text-sm leading-relaxed text-muc/70">{t('hoatchat.mota')}</p>
-      <div class="mt-8 grid gap-5 md:grid-cols-3">
-        {chuyenDe.map((cd) => (
-          <article class="flex flex-col rounded-2xl border border-bacha/70 bg-white p-6 transition-all hover:-translate-y-1 hover:border-duoc/20 hover:shadow-[0_12px_40px_rgba(14,116,144,0.1)]">
-            <p class="inline-flex w-fit items-center rounded-full bg-duoc/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-duoc">{t('hoatchat.hieu_nhanh')}</p>
-            <h3 class="mt-2 text-lg font-bold text-muc">{cd.ten}</h3>
-            <p class="mt-2 flex-1 text-sm leading-relaxed text-muc/70">{cd.tomTat}</p>
-            <a href={`${p('/hoat-chat')}#${cd.id}`} class="mt-4 text-sm font-semibold text-duoc hover:text-duoc-dam hover:underline">
-              {t('hoatchat.goc_chuyen_mon')} &rarr;
-            </a>
-          </article>
-        ))}
+      <div class="mt-8 divide-y divide-bacha/60 overflow-hidden rounded-2xl border border-bacha/70 bg-white">
+        {
+          baiVietVi.map((bai, i) => (
+            <TheBaiHoatChat
+              href={`${p('/hoat-chat')}/${bai.id}`}
+              soThuTu={i + 1}
+              tieuDe={bai.tieuDe}
+              tomTat={bai.doanMoDau[0]}
+            />
+          ))
+        }
       </div>
       <p class="mt-6 text-xs leading-relaxed text-muc/50">
         Nội dung mang tính giải thích kiến thức chung về hoạt chất, không phải công bố công dụng của bất kỳ sản phẩm cụ thể nào.

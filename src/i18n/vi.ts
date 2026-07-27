@@ -37,8 +37,6 @@ export default {
 
   'hoatchat.tieude': 'Hiểu về hoạt chất',
   'hoatchat.mota': 'Giải thích ngắn gọn, dễ hiểu. Nội dung chuyên sâu dành cho cán bộ y tế ở mục riêng.',
-  'hoatchat.hieu_nhanh': 'Hiểu nhanh',
-  'hoatchat.goc_chuyen_mon': 'Góc chuyên môn',
 
   'visao.tieude': 'Vì sao chọn The Hangi',
   'visao.1.tieude': 'Công bố rõ ràng',

@@ -39,8 +39,6 @@ const en: Record<keyof typeof vi, string> = {
 
   'hoatchat.tieude': 'Understanding the ingredients',
   'hoatchat.mota': 'Short, accessible explanations. In-depth content for healthcare professionals in a dedicated section.',
-  'hoatchat.hieu_nhanh': 'Quick read',
-  'hoatchat.goc_chuyen_mon': 'For professionals',
 
   'visao.tieude': 'Why The Hangi',
   'visao.1.tieude': 'Transparent registration',

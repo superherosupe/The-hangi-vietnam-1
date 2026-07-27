@@ -1,0 +1,25 @@
+---
+interface Props {
+  href: string;
+  soThuTu: number;
+  tieuDe: string;
+  tomTat: string;
+}
+const { href, soThuTu, tieuDe, tomTat } = Astro.props;
+---
+
+<a href={href} class="group flex items-center gap-4 p-5 transition-colors hover:bg-bacha/40">
+  <span
+    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-duoc/10 font-mono text-sm font-semibold text-duoc"
+    aria-hidden="true"
+  >
+    0{soThuTu}
+  </span>
+  <div class="min-w-0 flex-1">
+    <h3 class="text-base font-bold text-muc group-hover:text-duoc">{tieuDe}</h3>
+    <p class="mt-1 truncate text-sm text-muc/60">{tomTat}</p>
+  </div>
+  <svg class="shrink-0 text-muc/30 group-hover:text-duoc" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</a>

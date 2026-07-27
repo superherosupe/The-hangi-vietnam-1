@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import BannerChuyenMon from '../../components/BannerChuyenMon.astro';
+import { useT, localePath } from '../../i18n';
+import { baiVietVi } from '../../data/hoat-chat';
+
+export async function getStaticPaths() {
+  return baiVietVi.map((bai) => ({
+    params: { slug: bai.id },
+    props: { bai },
+  }));
+}
+
+const lang = 'vi' as const;
+const t = useT(lang);
+const { bai } = Astro.props;
+---
+
+<Base
+  title={`${bai.tieuDe} | The Hangi Việt Nam`}
+  description={bai.doanMoDau[0]}
+  lang={lang}
+  path={`/hoat-chat/${bai.id}`}
+>
+  <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <BannerChuyenMon lang={lang} />
+
+    <nav class="mt-6 font-mono text-xs text-muc/50" aria-label="Breadcrumb">
+      <a href={localePath(lang, '/')} class="hover:text-duoc hover:underline">{t('chung.trang_chu')}</a>
+      <span aria-hidden="true"> / </span>
+      <a href={localePath(lang, '/hoat-chat')} class="hover:text-duoc hover:underline">{t('hoatchatpage.tieude')}</a>
+      <span aria-hidden="true"> / </span>
+      <span class="text-muc/80">{bai.tieuDe}</span>
+    </nav>
+
+    <article class="mt-6">
+      <h1 class="text-3xl font-bold tracking-tight text-muc">{bai.tieuDe}</h1>
+      <div class="mt-5 space-y-4 text-sm leading-relaxed text-muc/80">
+        {bai.doanMoDau.map((doan) => (
+          <p>{doan}</p>
+        ))}
+      </div>
+      <div class="mt-8 space-y-8">
+        {bai.muc.map((m) => (
+          <div>
+            <h2 class="text-sm font-bold uppercase tracking-wider text-duoc-dam">{m.tieuDe}</h2>
+            <div class="mt-3 space-y-3 text-sm leading-relaxed text-muc/80">
+              {m.doanVan.map((doan) => (
+                <p>{doan}</p>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="mt-8 rounded-2xl border border-hophach/30 bg-hophach-nhat p-4">
+        <p class="text-xs font-bold uppercase tracking-wider text-[#8a5a10]">{t('hoatchatpage.luu_y')}</p>
+        <p class="mt-1.5 text-[13px] leading-relaxed text-[#6d4a12]">{bai.luuY}</p>
+      </div>
+    </article>
+
+    <a
+      href={localePath(lang, '/hoat-chat')}
+      class="mt-8 inline-flex text-sm font-semibold text-duoc hover:text-duoc-dam hover:underline"
+    >
+      &larr; {t('hoatchatpage.tieude')}
+    </a>
+  </div>
+</Base>

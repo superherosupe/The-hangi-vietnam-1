@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import BannerChuyenMon from '../../components/BannerChuyenMon.astro';
+import TheBaiHoatChat from '../../components/TheBaiHoatChat.astro';
+import { useT, localePath } from '../../i18n';
+import { baiVietVi } from '../../data/hoat-chat';
+
+const lang = 'vi' as const;
+const t = useT(lang);
+---
+
+<Base
+  title="Nền tảng khoa học | The Hangi Việt Nam"
+  description="Các bài chuyên đề về hoạt chất và công nghệ trong sản phẩm thẩm mỹ - da liễu do The Hangi phân phối."
+  lang={lang}
+  path="/hoat-chat"
+>
+  <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+    <BannerChuyenMon lang={lang} />
+    <h1 class="mt-8 text-3xl font-bold tracking-tight text-muc">{t('hoatchatpage.tieude')}</h1>
+    <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muc/70">{t('hoatchatpage.mota')}</p>
+
+    <div class="mt-8 divide-y divide-bacha/60 overflow-hidden rounded-2xl border border-bacha/70 bg-white">
+      {
+        baiVietVi.map((bai, i) => (
+          <TheBaiHoatChat
+            href={localePath(lang, `/hoat-chat/${bai.id}`)}
+            soThuTu={i + 1}
+            tieuDe={bai.tieuDe}
+            tomTat={bai.doanMoDau[0]}
+          />
+        ))
+      }
+    </div>
+  </div>
+</Base>
