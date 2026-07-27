@@ -20,6 +20,10 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  redirects: {
+    '/cong-nghe': `${BASE_PATH}/hoat-chat`,
+    '/en/cong-nghe': `${BASE_PATH}/en/hoat-chat`,
+  },
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
