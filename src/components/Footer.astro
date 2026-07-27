@@ -63,7 +63,7 @@ const namHienTai = new Date().getFullYear();
 
     <div>
       <p class="text-sm font-semibold uppercase tracking-wider text-white/60">
-        {lang === 'vi' ? 'Liên kết' : 'https://www.facebook.com/profile.php?id=61591032317104'}
+        {lang === 'vi' ? 'Liên kết' : 'Links'}
       </p>
       <ul class="mt-4 space-y-2 text-sm">
         <li><a class="text-white/80 hover:text-white hover:underline" href={p('/san-pham')}>{t('nav.san_pham')}</a></li>
@@ -73,6 +73,25 @@ const namHienTai = new Date().getFullYear();
           <a class="text-white/80 hover:text-white hover:underline" href={p('/chinh-sach-bao-mat')}>{t('footer.chinh_sach')}</a>
         </li>
         <li><a class="text-white/80 hover:text-white hover:underline" href={p('/dieu-khoan')}>{t('footer.dieu_khoan')}</a></li>
+        <li>
+          <a
+            class="inline-flex items-center gap-1.5 text-white/80 hover:text-white hover:underline"
+            href="https://www.facebook.com/profile.php?id=61591032317104"
+            target="_blank"
+            rel="noopener"
+          >
+            Facebook
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M14 5h5v5M19 5l-8 8M17 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h4"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
