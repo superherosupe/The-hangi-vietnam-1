@@ -6,7 +6,7 @@ import BadgePhapLy from '../../../components/BadgePhapLy.astro';
 import BannerChuyenMon from '../../../components/BannerChuyenMon.astro';
 import ChipHoatChat from '../../../components/ChipHoatChat.astro';
 import ThongTinSanPham from '../../../components/ThongTinSanPham.astro';
-import { SITE } from '../../../data/site';
+import { SITE, SITE_URL } from '../../../data/site';
 import { useT, localePath, BASE } from '../../../i18n';
 
 export async function getStaticPaths() {
@@ -25,15 +25,29 @@ const d = sp.data;
 const laTBYT = d.phan_loai_phap_ly.startsWith('thiet-bi-y-te');
 const slug = sp.id.split('/').pop()!;
 const nhanPhanLoai = t(`badge.${d.phan_loai_phap_ly}` as Parameters<typeof t>[0]);
+const site = Astro.site ?? new URL(SITE_URL);
 
 const jsonLdProduct = {
   '@context': 'https://schema.org',
-  '@type': 'Product',
+  '@type': laTBYT ? 'MedicalDevice' : 'Product',
   name: d.ten,
   brand: { '@type': 'Brand', name: d.thuong_hieu },
+  manufacturer: { '@type': 'Organization', name: d.chu_so_huu_ten },
   sku: d.ma_san_pham,
+  identifier: d.so_luu_hanh_hoac_cong_bo,
+  category: nhanPhanLoai,
   countryOfOrigin: d.xuat_xu,
   description: d.meta_description,
+};
+
+const jsonLdBreadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t('chung.trang_chu'), item: new URL(localePath(lang, '/'), site).href },
+    { '@type': 'ListItem', position: 2, name: t('nav.san_pham'), item: new URL(localePath(lang, '/san-pham'), site).href },
+    { '@type': 'ListItem', position: 3, name: d.ten, item: new URL(localePath(lang, `/san-pham/${slug}`), site).href },
+  ],
 };
 ---
 
@@ -46,6 +60,7 @@ const jsonLdProduct = {
   ogImageAlt={d.anh_alt}
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLdProduct)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLdBreadcrumb)} />
 
   <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
     <BannerChuyenMon lang={lang} />

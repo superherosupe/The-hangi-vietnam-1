@@ -17,6 +17,7 @@ import Footer from '../components/Footer.astro';
 import { SITE, SITE_URL } from '../data/site';
 import { localePath, BASE, type Lang } from '../i18n';
 import anhOgMacDinh from '../assets/products/pllacube-duo-boxes.jpg';
+import logoFull from '../assets/logo-full.png';
 
 interface Props {
   title: string;
@@ -41,20 +42,21 @@ const ogImageUrl = new URL(ogImgDaXuLy.src, site).href;
 const ogImageAltText =
   ogImageAlt ?? (lang === 'vi' ? 'Sản phẩm The Hangi Việt Nam - phân phối độc quyền LABINCUBE' : 'The Hangi Vietnam products - exclusive LABINCUBE distribution');
 
+const logoDaXuLy = await getImage({ src: logoFull, width: 512, format: 'png' });
+const logoUrl = new URL(logoDaXuLy.src, site).href;
+const trangChuUrl = new URL(localePath(lang, '/'), site).href;
+
 const jsonLdOrganization = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: SITE.ten_day_du,
+  name: lang === 'vi' ? SITE.ten_day_du : SITE.ten_day_du_en,
   alternateName: SITE.ten_thuong_hieu,
   taxID: SITE.ma_so_thue,
   foundingDate: SITE.nam_thanh_lap,
-  url: site.href,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '195/10/2 Đường Điện Biên Phủ, Phường 15',
-    addressLocality: 'Quận Bình Thạnh, TP. Hồ Chí Minh',
-    addressCountry: 'VN',
-  },
+  url: trangChuUrl,
+  logo: logoUrl,
+  // Dia chi ghi dang chuoi don, tranh tach streetAddress/addressLocality thu cong gay sai lech voi SITE.tru_so
+  address: lang === 'vi' ? SITE.tru_so : SITE.tru_so_en,
 };
 ---
 
