@@ -36,7 +36,7 @@ export default {
   'danhmuc.so_cong_bo': 'Số công bố',
 
   'hoatchat.tieude': 'Tài liệu tham khảo',
-  'hoatchat.mota': 'Kiến thức hoạt chất và cơ sở khoa học — dành cho cán bộ y tế và đối tác chuyên môn.',
+  'hoatchat.mota': 'Kiến thức chuyên môn và cơ sở khoa học — dành cho cán bộ y tế và đối tác chuyên môn.',
 
   'visao.tieude': 'Vì sao chọn The Hangi',
   'visao.1.tieude': 'Công bố rõ ràng',
