@@ -23,7 +23,14 @@ export default defineConfig({
     '/cong-nghe': `${BASE_PATH}/hoat-chat`,
     '/en/cong-nghe': `${BASE_PATH}/en/hoat-chat`,
   },
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // Phai khop voi cac trang dang truyen prop noIndex trong src/pages/**.astro
+      // (chinh-sach-bao-mat, dieu-khoan, doi-tac, hoat-chat, tin-tuc, ca VI/EN).
+      // Khi mot trang bo noIndex, go duong dan tuong ung khoi day.
+      filter: (page) => !/\/(chinh-sach-bao-mat|dieu-khoan|doi-tac|hoat-chat|tin-tuc)\/?$/.test(page),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

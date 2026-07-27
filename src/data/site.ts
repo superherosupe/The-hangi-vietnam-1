@@ -19,10 +19,17 @@ export const SITE = {
   tru_so_en: '195/10/2 Dien Bien Phu St., Ward 15, Binh Thanh District, Ho Chi Minh City',
   van_phong: 'Tầng 5, Tòa nhà TTM Building, 309 Bạch Đằng, Phường Gia Định, TP. Hồ Chí Minh',
   van_phong_en: '5th Floor, TTM Building, 309 Bach Dang, Gia Dinh Ward, Ho Chi Minh City',
-  hotline: '0815 186 268 / 0369 838 931',
+  hotline: ['0815 186 268', '0369 838 931'],
   email: 'kalinnguyenn@gmail.com',
+  facebook: 'https://www.facebook.com/profile.php?id=61591032317104',
   nguoi_dai_dien: 'HE, XIAOCHEN',
   nguoi_chiu_trach_nhiem_noi_dung: 'Deema - Trương Mậu Tuấn Hùng',
   nam_thanh_lap: '2023',
   pham_vi: 'Seoul (HQ) - TP. Hồ Chí Minh - Hà Nội',
 } as const;
+
+/** So dien thoai hien thi (vd "0815 186 268") -> href tel: chuan quoc te (+84...) */
+export function telHref(soHienThi: string): string {
+  const soChiSo = soHienThi.replace(/\D/g, '');
+  return `tel:+84${soChiSo.replace(/^0/, '')}`;
+}

@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import logoIcon from '../assets/logo-icon.png';
-import { SITE } from '../data/site';
+import { SITE, telHref } from '../data/site';
 import { useT, localePath, type Lang } from '../i18n';
 
 interface Props {
@@ -48,14 +48,28 @@ const namHienTai = new Date().getFullYear();
     <div>
       <p class="text-sm font-semibold uppercase tracking-wider text-white/60">{t('nav.lien_he')}</p>
       <ul class="mt-4 space-y-2 text-sm text-white/80">
-        <!-- CHUA CO hotline va email - dien vao src/data/site.ts khi co -->
         <li>
-          <span class="font-medium text-white/60">{t('footer.hotline')}:</span>
-          {SITE.hotline || t('footer.dang_cap_nhat')}
+          <span class="font-medium text-white/60">{t('footer.hotline')}:</span>{' '}
+          {SITE.hotline.length > 0
+            ? SITE.hotline.map((so, i) => (
+                <>
+                  {i > 0 && ' / '}
+                  <a href={telHref(so)} class="hover:underline">
+                    {so}
+                  </a>
+                </>
+              ))
+            : t('footer.dang_cap_nhat')}
         </li>
         <li>
-          <span class="font-medium text-white/60">{t('footer.email')}:</span>
-          {SITE.email || t('footer.dang_cap_nhat')}
+          <span class="font-medium text-white/60">{t('footer.email')}:</span>{' '}
+          {SITE.email ? (
+            <a href={`mailto:${SITE.email}`} class="hover:underline">
+              {SITE.email}
+            </a>
+          ) : (
+            t('footer.dang_cap_nhat')
+          )}
         </li>
         <li class="pt-2 text-white/60">{SITE.pham_vi}</li>
       </ul>
@@ -76,7 +90,7 @@ const namHienTai = new Date().getFullYear();
         <li>
           <a
             class="inline-flex items-center gap-1.5 text-white/80 hover:text-white hover:underline"
-            href="https://www.facebook.com/profile.php?id=61591032317104"
+            href={SITE.facebook}
             target="_blank"
             rel="noopener"
           >
