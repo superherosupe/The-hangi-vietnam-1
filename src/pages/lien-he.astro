@@ -13,7 +13,9 @@ import { SITE } from '../data/site';
     <p><strong>{SITE.ten_day_du}</strong></p>
     <p>Trụ sở: {SITE.tru_so}</p>
     <p>Văn phòng: {SITE.van_phong}</p>
-    <!-- CHUA CO hotline/email - form lien he se duoc dung o buoc 6 -->
-    <p class="text-muc/50">Hotline và email đang được cập nhật. Form liên hệ sẽ sớm có mặt tại đây.</p>
+    <p>Hotline: {SITE.hotline}</p>
+    <p>Email: <a href={`mailto:${SITE.email}`} class="text-duoc hover:underline">{SITE.email}</a></p>
+    <!-- Form lien he se duoc dung o buoc 6 -->
+    <p class="text-muc/50">Form liên hệ trực tuyến sẽ sớm có mặt tại đây.</p>
   </div>
 </TrangDangHoanThien>

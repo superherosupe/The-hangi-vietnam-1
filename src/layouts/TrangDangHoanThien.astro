@@ -8,12 +8,13 @@ interface Props {
   heading: string;
   lang?: Lang;
   path: string;
+  noIndex?: boolean;
 }
-const { title, description, heading, lang = 'vi', path } = Astro.props;
+const { title, description, heading, lang = 'vi', path, noIndex = false } = Astro.props;
 const t = useT(lang);
 ---
 
-<Base title={title} description={description} lang={lang} path={path}>
+<Base title={title} description={description} lang={lang} path={path} noIndex={noIndex}>
   <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
     <h1 class="text-3xl font-bold tracking-tight text-muc">{heading}</h1>
     <slot>
