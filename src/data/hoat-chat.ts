@@ -247,4 +247,66 @@ export const baiVietEn: BaiViet[] = [
     luuY:
       "This article is intended only to provide general, objective background knowledge about the principle behind ingredient-encapsulation technology - it is not a declaration of efficacy, not medical advice, and does not replace the judgment of a licensed medical practitioner. For specific products distributed by The Hangi Vietnam, accurate technology and composition information is listed on each product's detail page, per the documentation provided by manufacturer LABINCUBE.",
   },
+  {
+    id: 'exosome-usc1994',
+    tieuDe: 'What is USC1994® exosome technology?',
+    doanMoDau: [
+      'Exosomes are ultra-small nano-vesicles (50-150nm) secreted by cells to communicate with one another. USC1994® is a proprietary exosome technology derived from umbilical cord blood stem cell conditioned media - the youngest stem cell source with the strongest proliferative capacity in the human body, according to research published in the Journal of Cellular Biochemistry (2011).',
+    ],
+    muc: [
+      {
+        tieuDe: 'How do exosomes act on the skin?',
+        doanVan: [
+          'In 2017, the research group of Kim YJ et al. published in Biochemical and Biophysical Research Communications the first study in the world demonstrating that exosomes from umbilical cord blood stem cell conditioned media (USC-CM Exos) are able to penetrate directly into human skin. Upon reaching the dermis, the exosomes stimulate fibroblasts to produce Collagen Type I, III, IV, Fibronectin and Elastin - the structural proteins that determine skin firmness and elasticity.',
+        ],
+      },
+      {
+        tieuDe: 'Why are umbilical cord blood exosomes superior?',
+        doanVan: [
+          'According to comparative research, umbilical cord blood stem cells produce roughly 14 times more exosomes than stem cells from adult adipose tissue or bone marrow. USC1994® exosomes (50-150nm) are also considerably smaller - only about 1/1700 of the diameter of a pore - allowing fast, deep penetration without the need for aggressive invasive procedures.',
+        ],
+      },
+      {
+        tieuDe: 'Demonstrated anti-inflammatory action',
+        doanVan: [
+          'In 2020, a study in Biomedicine & Pharmacotherapy confirmed that USC-CM is able to suppress the main inflammatory mediators in skin: TARC, IL-1β, IL-6 and TNF-α. This explains why products containing USC1994® are often applied in recovery protocols after laser or microneedling - where the inflammatory response is the primary driver of redness, swelling and extended downtime.',
+        ],
+      },
+    ],
+    luuY:
+      "This article is intended only to provide general, objective background knowledge about exosome technology based on published research - it is not a declaration of efficacy for any specific product, and not medical advice. For specific products distributed by The Hangi Vietnam, accurate efficacy information (per the official Vietnamese regulatory filing) is listed on each product's detail page.",
+    taiLieuThamKhao: [
+      'Kim YJ, Yoo SM, Park HH, et al. Exosomes derived from human umbilical cord blood mesenchymal stem cells stimulates rejuvenation of human skin. Biochem Biophys Res Commun. 2017;493(2):1102-1108. PMID: 28919421.',
+      'Kim YJ, et al. Conditioned media from human umbilical cord blood-derived mesenchymal stem cells stimulate rejuvenation function in human skin. Biochem Biophys Rep. 2018;16:96-101. PMID: 29387642.',
+      'Effects of conditioned media from human umbilical cord blood-derived mesenchymal stem cells in the skin immune response. Biomed Pharmacother. 2020;131:110789. PMID: 33152947.',
+    ],
+  },
+  {
+    id: 'co-che-tai-tao-da',
+    tieuDe: 'How umbilical cord blood stem cells regenerate skin',
+    doanMoDau: [
+      'Mesenchymal stem cells (MSCs) from umbilical cord blood are regarded as the "youngest" stem cell source that can be safely collected after birth. Unlike stem cells from adult adipose tissue or bone marrow (which have already been affected by ageing), umbilical cord blood stem cells retain a sustained proliferative capacity and secrete large amounts of growth factors.',
+    ],
+    muc: [
+      {
+        tieuDe: 'Three main mechanisms on the skin',
+        doanVan: [
+          'Research has identified three main mechanisms when umbilical cord blood stem cell conditioned media is applied to skin: (1) Skin cell proliferation - stimulating fibroblasts and keratinocytes to divide faster than with stem cells from adipose tissue or bone marrow; (2) Structural protein synthesis - promoting the production of Collagen I/III/IV, Fibronectin and Elastin, observable within 24 hours in laboratory testing; (3) Inflammation suppression - reducing secretion of the inflammatory cytokines TARC, IL-1β, IL-6 and TNF-α via the PGE2 pathway.',
+        ],
+      },
+      {
+        tieuDe: 'What makes the difference?',
+        doanVan: [
+          'USC1994® is the trade name of a standardised umbilical cord blood stem cell conditioned media containing 1,470+ identified proteins and growth factors. It is the result of more than 30 years of research and 290+ SCI papers. The "290+" figure reflects the total scientific output of the research group in the stem cell field in general, not solely on USC1994®.',
+        ],
+      },
+    ],
+    luuY:
+      'This article is intended only to provide general, objective background knowledge about the biological mechanisms of umbilical cord blood stem cells based on published research - it is not a declaration of efficacy, and not medical advice. All information on the efficacy of specific products is stated strictly according to the official Vietnamese regulatory filing on each product detail page.',
+    taiLieuThamKhao: [
+      'Zhang X, Hirai M, Cantero S, et al. Isolation and characterization of mesenchymal stem cells from human umbilical cord blood. J Cell Biochem. 2011;112(4):1206-1218. PMID: 21312238.',
+      'Kim YJ, Yoo SM, Park HH, et al. Exosomes derived from human umbilical cord blood mesenchymal stem cells stimulates rejuvenation of human skin. Biochem Biophys Res Commun. 2017;493(2):1102-1108. PMID: 28919421.',
+      'Kim YJ, et al. Conditioned media from human umbilical cord blood-derived mesenchymal stem cells stimulate rejuvenation function in human skin. Biochem Biophys Rep. 2018;16:96-101. PMID: 29387642.',
+    ],
+  },
 ];
