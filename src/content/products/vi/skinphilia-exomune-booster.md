@@ -29,7 +29,7 @@ thanh_phan_chinh:
     mo_ta: "Dưỡng ẩm chuyên sâu đa tầng"
 cong_nghe:
   - ten: "USC1994® — Exosome độc quyền"
-    mo_ta: "Công nghệ Exosome từ dịch nuôi cấy tế bào gốc máu cuống rốn duy nhất trên thế giới, được chứng minh bởi 290+ bài báo SCI."
+    mo_ta: "Exosome từ dịch nuôi cấy tế bào gốc máu cuống rốn, kích thước 50-150nm. Mỗi lọ bột đông khô 2ml chứa 24,6 tỷ hạt exosome (theo tài liệu nhà sản xuất)."
   - ten: "Đông khô -45°C"
     mo_ta: "Bảo quản hoạt tính sinh học của 1.470+ yếu tố tăng trưởng và protein. Kích hoạt nhanh chóng khi pha với dung dịch."
   - ten: "Công thức 10% × 10%"

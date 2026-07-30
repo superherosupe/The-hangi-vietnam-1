@@ -29,7 +29,7 @@ thanh_phan_chinh:
     mo_ta: "Multi-layer deep hydration"
 cong_nghe:
   - ten: "USC1994® — Proprietary Exosome"
-    mo_ta: "World's only umbilical cord blood stem cell exosome technology, validated by 290+ SCI papers over 30 years of research."
+    mo_ta: "Exosomes from umbilical cord blood stem cell conditioned media, 50-150nm in size. Each 2ml freeze-dried vial contains 24.6 billion exosome particles (per manufacturer documentation)."
   - ten: "-45°C Freeze-Drying"
     mo_ta: "Preserves bioactivity of 1,470+ growth factors and proteins. Rapid activation upon mixing with the solution."
   - ten: "10% × 10% Synergy Formula"
