@@ -23,10 +23,12 @@ export const SITE = {
   ten_day_du_en: 'THE HANGI VIET NAM COMPANY LIMITED',
   ten_thuong_hieu: 'THE HANGI',
   ma_so_thue: '0318010232',
-  tru_so: '195/10/2 Đường Điện Biên Phủ, Phường 15, Quận Bình Thạnh, TP. Hồ Chí Minh',
-  tru_so_en: '195/10/2 Dien Bien Phu St., Ward 15, Binh Thanh District, Ho Chi Minh City',
-  van_phong: '62 Trần Quang Khải, Phường Tân Định, Quận 1, TP. Hồ Chí Minh',
-  van_phong_en: '62 Tran Quang Khai St., Tan Dinh Ward, District 1, Ho Chi Minh City',
+  // Tru so = noi lam viec chinh thuc (xac nhan 27/07/2026).
+  tru_so: '62 Trần Quang Khải, Phường Tân Định, Quận 1, TP. Hồ Chí Minh',
+  tru_so_en: '62 Tran Quang Khai St., Tan Dinh Ward, District 1, Ho Chi Minh City',
+  // Dia chi tren ho so dang ky kinh doanh / khai thue (khong phai noi lam viec).
+  dia_chi_dkkd: '195/10/2 Đường Điện Biên Phủ, Phường 15, Quận Bình Thạnh, TP. Hồ Chí Minh',
+  dia_chi_dkkd_en: '195/10/2 Dien Bien Phu St., Ward 15, Binh Thanh District, Ho Chi Minh City',
   hotline: ['0815 186 268', '0369 838 931'],
   email: 'thehangivietnam@gmail.com',
   facebook: 'https://www.facebook.com/profile.php?id=61591032317104',

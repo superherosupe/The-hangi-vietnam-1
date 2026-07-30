@@ -57,7 +57,7 @@ export default {
   'footer.cong_ty': 'CÔNG TY TNHH THE HANGI VIỆT NAM',
   'footer.mst': 'Mã số thuế',
   'footer.tru_so': 'Trụ sở',
-  'footer.vp': 'Văn phòng',
+  'footer.dkkd': 'Địa chỉ đăng ký kinh doanh',
   'footer.hotline': 'Hotline',
   'footer.email': 'Email',
   'footer.dang_cap_nhat': 'Đang cập nhật',

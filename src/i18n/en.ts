@@ -58,7 +58,7 @@ const en: Record<keyof typeof vi, string> = {
   'footer.cong_ty': 'THE HANGI VIET NAM COMPANY LIMITED',
   'footer.mst': 'Tax code',
   'footer.tru_so': 'Head office',
-  'footer.vp': 'Office',
+  'footer.dkkd': 'Business registration address',
   'footer.hotline': 'Hotline',
   'footer.email': 'Email',
   'footer.dang_cap_nhat': 'Being updated',
