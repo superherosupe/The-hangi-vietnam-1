@@ -150,14 +150,14 @@ const jsonLdBreadcrumb = {
               <h2 id="thanh-phan" class="text-sm font-bold uppercase tracking-wider text-duoc-dam">
                 {t('sp.thanh_phan')}
               </h2>
-              <p class="mt-2 text-sm leading-relaxed text-muc/80">{d.thanh_phan}</p>
+              <p class="mt-2 text-justify text-sm leading-relaxed text-muc/80">{d.thanh_phan}</p>
             </section>
           )
         }
 
         <section class="mt-6" aria-labelledby="quy-cach">
           <h2 id="quy-cach" class="text-sm font-bold uppercase tracking-wider text-duoc-dam">{t('sp.quy_cach')}</h2>
-          <p class="mt-2 text-sm leading-relaxed text-muc/80">{d.quy_cach}</p>
+          <p class="mt-2 text-justify text-sm leading-relaxed text-muc/80">{d.quy_cach}</p>
         </section>
 
         {
@@ -197,7 +197,7 @@ const jsonLdBreadcrumb = {
               <h2 id="canh-bao" class="text-sm font-bold uppercase tracking-wider text-[#8a5a10]">
                 {t('sp.canh_bao')}
               </h2>
-              <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-[#6d4a12]">
+              <ul class="mt-2 list-disc space-y-1 pl-5 text-justify text-sm leading-relaxed text-[#6d4a12]">
                 {d.canh_bao.map((cb) => (
                   <li>{cb}</li>
                 ))}
@@ -217,7 +217,7 @@ const jsonLdBreadcrumb = {
 
     <ThongTinSanPham sp={sp} lang={lang} />
 
-    <div class="mt-10 max-w-none text-[12.5px] leading-relaxed text-muc/55 [&_p]:mt-2 [&_p:first-child]:mt-0">
+    <div class="mt-10 max-w-none text-justify text-[12.5px] leading-relaxed text-muc/55 [&_p]:mt-2 [&_p:first-child]:mt-0">
       <Content />
     </div>
 

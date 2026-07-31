@@ -209,7 +209,7 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
         ))}
         <div class="flex flex-col items-start justify-center rounded-2xl border border-dashed border-duoc/25 bg-white/60 p-6">
           <span class="rounded-full bg-bacha px-2.5 py-1 text-[11px] font-semibold text-duoc-dam">{t('danhmuc.sap_ra_mat')}</span>
-          <p class="mt-3 text-sm leading-relaxed text-muc/60">{t('danhmuc.sap_ra_mat_mota')}</p>
+          <p class="mt-3 text-justify text-sm leading-relaxed text-muc/60">{t('danhmuc.sap_ra_mat_mota')}</p>
         </div>
       </div>
     </div>

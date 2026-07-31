@@ -206,7 +206,7 @@ const jsonLdBreadcrumb = {
               <h2 id="canh-bao" class="text-sm font-bold uppercase tracking-wider text-[#8a5a10]">
                 {t('sp.canh_bao')}
               </h2>
-              <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-[#6d4a12]">
+              <ul class="mt-2 list-disc space-y-1 pl-5 text-justify text-sm leading-relaxed text-[#6d4a12]">
                 {d.canh_bao.map((cb) => (
                   <li>{cb}</li>
                 ))}
@@ -228,7 +228,7 @@ const jsonLdBreadcrumb = {
     <ThongTinSanPham sp={sp} lang={lang} />
 
     <!-- Ghi chu mo ta: full dong, chu nho -->
-    <div class="mt-10 max-w-none text-[12.5px] leading-relaxed text-muc/55 [&_p]:mt-2 [&_p:first-child]:mt-0">
+    <div class="mt-10 max-w-none text-justify text-[12.5px] leading-relaxed text-muc/55 [&_p]:mt-2 [&_p:first-child]:mt-0">
       <Content />
     </div>
 
