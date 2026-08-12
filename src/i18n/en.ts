@@ -134,6 +134,13 @@ const en: Record<keyof typeof vi, string> = {
   'lienhe.thanh_cong': 'Thank you for contacting us. The Hangi Vietnam will respond as soon as possible.',
   'lienhe.that_bai': 'Something went wrong, please try again or contact us directly via the hotline/email above.',
 
+  'doitac.hang_tieude': 'Manufacturers we represent',
+  'doitac.hang_mota':
+    'The Hangi Vietnam distributes products from the manufacturers below in Vietnam. All distributed products hold a Vietnamese product declaration or registration.',
+  'doitac.labincube_mota': 'Korean manufacturer, CUBRIX™ / INCUBE™ technology - PLLACUBE line',
+  'doitac.skinphilia_mota': 'Korean brand under Primoris International - EXOMUNE line',
+  'doitac.allgens_mota': 'Bone graft material manufacturer - BORN GRAFTS line',
+
   'chung.trang_chu': 'Home',
   'chung.dang_hoan_thien': 'This page is under construction.',
   'chung.quay_lai': 'Back to home',

@@ -29,7 +29,7 @@ export const SITE = {
   // Dia chi tren ho so dang ky kinh doanh / khai thue (khong phai noi lam viec).
   dia_chi_dkkd: '195/10/2 Đường Điện Biên Phủ, Phường 15, Quận Bình Thạnh, TP. Hồ Chí Minh',
   dia_chi_dkkd_en: '195/10/2 Dien Bien Phu St., Ward 15, Binh Thanh District, Ho Chi Minh City',
-  hotline: ['0815 186 268', '0369 838 931'],
+  hotline: ['0815 186 268', '0868 596 660'],
   email: 'thehangivietnam@gmail.com',
   facebook: 'https://www.facebook.com/profile.php?id=61591032317104',
   tiktok: 'https://www.tiktok.com/@hangi.vietnam',

@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import logoLabincube from '../assets/partners/labincube.png';
+import logoSkinphilia from '../assets/partners/skinphilia.png';
+import logoAllgens from '../assets/partners/allgens-medical.png';
+import { useT, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useT(lang);
+
+// Logo hang san xuat - chi dat len web khi da co xac nhan quyen su dung logo.
+// Nguon: LABINCUBE (SVG vector, pllacube.kr), SKINPHILIA (brand info PDF),
+// ALLGENS MEDICAL (ban tieng Anh, en.allgensmed.cn).
+const hang = [
+  { ten: 'LABINCUBE', anh: logoLabincube },
+  { ten: 'SKINPHILIA', anh: logoSkinphilia },
+  { ten: 'ALLGENS MEDICAL', anh: logoAllgens },
+];
+---
+
+<section class="mt-14" aria-labelledby="hang-dai-dien">
+  <p class="font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-ngoclam">
+    {lang === 'vi' ? 'Đối tác sản xuất' : 'Manufacturing partners'}
+  </p>
+  <h2 id="hang-dai-dien" class="mt-2 text-2xl font-bold tracking-tight text-muc sm:text-3xl">
+    {t('doitac.hang_tieude')}
+  </h2>
+  <p class="mt-3 max-w-2xl text-justify text-sm leading-relaxed text-muc/60">{t('doitac.hang_mota')}</p>
+
+  <ul
+    class="mt-9 grid divide-y divide-bacha overflow-hidden rounded-3xl border border-bacha bg-white sm:grid-cols-3 sm:divide-x sm:divide-y-0"
+  >
+    {
+      hang.map((h) => (
+        <li class="flex items-center justify-center px-8 py-12">
+          <Image
+            src={h.anh}
+            alt={`Logo ${h.ten}`}
+            height={80}
+            densities={[1, 2]}
+            class="max-h-9 w-auto max-w-[190px] object-contain"
+          />
+        </li>
+      ))
+    }
+  </ul>
+</section>

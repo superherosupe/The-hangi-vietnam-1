@@ -133,6 +133,13 @@ export default {
   'lienhe.thanh_cong': 'Cảm ơn bạn đã liên hệ. The Hangi Việt Nam sẽ phản hồi sớm nhất có thể.',
   'lienhe.that_bai': 'Gửi không thành công, vui lòng thử lại hoặc liên hệ trực tiếp qua hotline/email bên trên.',
 
+  'doitac.hang_tieude': 'Hãng chúng tôi đại diện',
+  'doitac.hang_mota':
+    'The Hangi Việt Nam là nhà phân phối tại Việt Nam cho các hãng sản xuất dưới đây. Sản phẩm phân phối đều có hồ sơ công bố hoặc đăng ký lưu hành tại Việt Nam.',
+  'doitac.labincube_mota': 'Nhà sản xuất Hàn Quốc, công nghệ CUBRIX™ / INCUBE™ - dòng PLLACUBE',
+  'doitac.skinphilia_mota': 'Thương hiệu Hàn Quốc thuộc Primoris International - dòng EXOMUNE',
+  'doitac.allgens_mota': 'Nhà sản xuất vật liệu ghép xương - dòng BORN GRAFTS',
+
   'chung.trang_chu': 'Trang chủ',
   'chung.dang_hoan_thien': 'Trang này đang được hoàn thiện.',
   'chung.quay_lai': 'Quay lại trang chủ',
