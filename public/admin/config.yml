@@ -3,14 +3,15 @@
 # Cong cu quan tri noi dung (Sveltia CMS), chay hoan toan tinh, khong doi gi ve cach
 # build/deploy hien tai. Chi tiet xem ke hoach da duyet trong phien lam viec voi Claude.
 #
-# QUAN TRONG: base_url ben duoi la placeholder. Phai thay bang URL that cua Cloudflare
-# Worker (sveltia/sveltia-cms-auth) sau khi deploy xong thi dang nhap GitHub moi hoat dong.
+# base_url tro toi Cloudflare Worker sveltia-cms-auth da deploy, dung de xu ly dang nhap
+# GitHub. Van con thieu GitHub OAuth App (Client ID/Secret dien vao worker) thi moi dang
+# nhap that duoc.
 
 backend:
   name: github
   repo: superherosupe/The-hangi-vietnam-1
   branch: main
-  base_url: https://DIEN-URL-WORKER-VAO-DAY.workers.dev
+  base_url: https://the-hangi-vietnam-1.truongmautuanhung-213.workers.dev
 
 site_url: https://thehangivietnam.xyz
 
