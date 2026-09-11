@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { useT, localePath, BASE } from '../../i18n';
+
+const lang = 'vi' as const;
+const t = useT(lang);
+
+const baiViet = (await getCollection('tinTuc', (e) => e.id.startsWith('vi/') && !e.data.noindex)).sort(
+  (a, b) => b.data.ngay_dang.localeCompare(a.data.ngay_dang)
+);
+
+const ngayHienThi = (iso: string) => iso.split('-').reverse().join('/');
+---
+
+<Base
+  title="Tin tức và hội thảo | The Hangi Việt Nam"
+  description="Cập nhật hoạt động hội thảo, đào tạo chuyên môn và sự kiện của The Hangi Việt Nam."
+  lang={lang}
+  path="/tin-tuc"
+>
+  <div class="mx-auto max-w-[1520px] px-4 py-10 sm:px-6">
+    <h1 class="text-3xl font-bold tracking-tight text-muc">Tin tức và hội thảo</h1>
+    <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muc/70">
+      Cập nhật hoạt động hội thảo, đào tạo chuyên môn và sự kiện của The Hangi Việt Nam.
+    </p>
+
+    {
+      baiViet.length === 0 ? (
+        <p class="mt-10 text-sm text-muc/50">Chưa có bài viết nào.</p>
+      ) : (
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {baiViet.map((bai) => {
+            const slug = bai.id.split('/').pop()!;
+            return (
+              <a
+                href={localePath(lang, `/tin-tuc/${slug}`)}
+                class="group flex flex-col overflow-hidden rounded-2xl border border-bacha/70 bg-white transition-all hover:-translate-y-1 hover:border-duoc/20 hover:shadow-[0_12px_40px_rgba(14,116,144,0.13)]"
+              >
+                {bai.data.anh && (
+                  <div class="aspect-[16/10] overflow-hidden bg-bacha">
+                    <img src={`${BASE}${bai.data.anh}`} alt={bai.data.anh_alt || bai.data.tieu_de} class="h-full w-full object-cover" loading="lazy" />
+                  </div>
+                )}
+                <div class="flex flex-1 flex-col p-6">
+                  <p class="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ngoclam">
+                    {ngayHienThi(bai.data.ngay_dang)}
+                  </p>
+                  <h3 class="mt-2 text-base font-bold leading-snug text-muc group-hover:text-duoc">{bai.data.tieu_de}</h3>
+                  <p class="mt-2 flex-1 text-[12.5px] leading-relaxed text-muc/55 line-clamp-3">{bai.data.mo_ta_ngan}</p>
+                  <span class="mt-4 text-xs font-semibold text-duoc group-hover:underline">Đọc tiếp &rarr;</span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      )
+    }
+  </div>
+</Base>

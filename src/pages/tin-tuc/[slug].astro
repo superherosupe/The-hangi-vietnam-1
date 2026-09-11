@@ -1,0 +1,62 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { useT, localePath, BASE } from '../../i18n';
+
+export async function getStaticPaths() {
+  const baiViet = await getCollection('tinTuc', (e) => e.id.startsWith('vi/'));
+  return baiViet.map((bai) => ({
+    params: { slug: bai.id.split('/').pop()! },
+    props: { bai },
+  }));
+}
+
+const lang = 'vi' as const;
+const t = useT(lang);
+const { bai } = Astro.props;
+const { Content } = await render(bai);
+const slug = bai.id.split('/').pop()!;
+const ngayHienThi = bai.data.ngay_dang.split('-').reverse().join('/');
+---
+
+<Base
+  title={`${bai.data.tieu_de} | The Hangi Việt Nam`}
+  description={bai.data.mo_ta_ngan}
+  lang={lang}
+  path={`/tin-tuc/${slug}`}
+  noIndex={bai.data.noindex}
+>
+  <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+    <nav class="font-mono text-xs text-muc/50" aria-label="Breadcrumb">
+      <a href={localePath(lang, '/')} class="hover:text-duoc hover:underline">{t('chung.trang_chu')}</a>
+      <span aria-hidden="true"> / </span>
+      <a href={localePath(lang, '/tin-tuc')} class="hover:text-duoc hover:underline">Tin tức và hội thảo</a>
+      <span aria-hidden="true"> / </span>
+      <span class="text-muc/80">{bai.data.tieu_de}</span>
+    </nav>
+
+    <article class="mt-6">
+      <p class="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ngoclam">{ngayHienThi}</p>
+      <h1 class="mt-1.5 text-3xl font-bold tracking-tight text-muc">{bai.data.tieu_de}</h1>
+
+      {
+        bai.data.anh && (
+          <div class="mt-6 overflow-hidden rounded-3xl bg-bacha">
+            <img src={`${BASE}${bai.data.anh}`} alt={bai.data.anh_alt || bai.data.tieu_de} class="h-full w-full object-cover" />
+          </div>
+        )
+      }
+
+      <div class="mt-6 max-w-none text-sm text-justify leading-relaxed text-muc/80 [&_p]:mt-3 [&_p:first-child]:mt-0">
+        <Content />
+      </div>
+    </article>
+
+    <a
+      href={localePath(lang, '/tin-tuc')}
+      class="mt-8 inline-flex text-sm font-semibold text-duoc hover:text-duoc-dam hover:underline"
+    >
+      &larr; Tin tức và hội thảo
+    </a>
+  </div>
+</Base>

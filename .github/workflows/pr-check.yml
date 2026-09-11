@@ -1,0 +1,18 @@
+# Kiem tra build (bao gom validate schema phap ly) tren moi Pull Request nham vao main.
+# Khong deploy - chi cho biet PR (vi du CMS tao ra) co an toan de merge hay khong.
+name: Kiem tra build cho Pull Request
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build Astro
+        uses: withastro/action@v3
+        with:
+          node-version: 22

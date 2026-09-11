@@ -9,6 +9,7 @@ const en: Record<keyof typeof vi, string> = {
   'nav.hoat_chat': 'References',
   'nav.gioi_thieu': 'About us',
   'nav.doi_tac': 'Partners',
+  'nav.tin_tuc': 'News',
   'nav.tai_lieu': 'Documents',
   'nav.lien_he': 'Contact',
   'nav.mo_menu': 'Open menu',

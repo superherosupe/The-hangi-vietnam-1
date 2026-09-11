@@ -1,0 +1,69 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+#
+# Cong cu quan tri noi dung (Sveltia CMS), chay hoan toan tinh, khong doi gi ve cach
+# build/deploy hien tai. Chi tiet xem ke hoach da duyet trong phien lam viec voi Claude.
+#
+# QUAN TRONG: base_url ben duoi la placeholder. Phai thay bang URL that cua Cloudflare
+# Worker (sveltia/sveltia-cms-auth) sau khi deploy xong thi dang nhap GitHub moi hoat dong.
+
+backend:
+  name: github
+  repo: superherosupe/The-hangi-vietnam-1
+  branch: main
+  base_url: https://DIEN-URL-WORKER-VAO-DAY.workers.dev
+
+site_url: https://thehangivietnam.xyz
+
+# CMS tao Pull Request thay vi push thang vao main - giu dung thoi quen "xem truoc roi
+# moi cho len that" cua du an. PR se co check build tu dong (.github/workflows/pr-check.yml).
+publish_mode: editorial_workflow
+
+media_folder: public/uploads/tin-tuc
+public_folder: /uploads/tin-tuc
+
+i18n:
+  structure: multiple_folders
+  locales: [vi, en]
+  default_locale: vi
+
+collections:
+  - name: tin_tuc
+    label: Tin tức
+    label_singular: Bài viết
+    folder: src/content/tin-tuc
+    create: true
+    i18n: true
+    fields:
+      - { label: Tiêu đề, name: tieu_de, widget: string, i18n: true }
+      - {
+          label: Mô tả ngắn,
+          name: mo_ta_ngan,
+          widget: text,
+          i18n: true,
+          hint: 'Hiện ở trang danh sách và khi chia sẻ link, nên viết 1-2 câu.',
+        }
+      - {
+          label: Ngày đăng,
+          name: ngay_dang,
+          widget: datetime,
+          format: 'YYYY-MM-DD',
+          date_format: 'YYYY-MM-DD',
+          time_format: false,
+          picker_utc: true,
+        }
+      - { label: Ảnh bìa, name: anh, widget: image, required: false, hint: 'Không bắt buộc, có thể đăng bài chỉ có chữ.' }
+      - {
+          label: Mô tả ảnh (alt text),
+          name: anh_alt,
+          widget: string,
+          required: false,
+          hint: 'Mô tả ngắn nội dung ảnh bằng tiếng Việt, chỉ cần khi có ảnh bìa.',
+        }
+      - {
+          label: Ẩn bài này khỏi kết quả tìm kiếm,
+          name: noindex,
+          widget: boolean,
+          default: false,
+          required: false,
+        }
+      - { label: Nội dung, name: body, widget: markdown, i18n: true }

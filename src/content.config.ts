@@ -105,4 +105,23 @@ const products = defineCollection({
       }),
 });
 
-export const collections = { products };
+/**
+ * Schema tin tuc - noi dung chung, khong co rang buoc phap ly nhu products.
+ * Day la collection dau tien duoc quan tri qua Sveltia CMS (xem public/admin/config.yml).
+ */
+const tinTuc = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/tin-tuc' }),
+  schema: z.object({
+    tieu_de: z.string({ required_error: 'Thieu tieu de bai viet' }).min(1),
+    mo_ta_ngan: z.string({ required_error: 'Thieu mo ta ngan' }).min(1),
+    ngay_dang: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/, { message: 'ngay_dang phai dang YYYY-MM-DD, vd "2026-09-11"' }),
+    // Anh la duong dan tinh trong public/ (khong dung image() de tuong thich voi media widget cua CMS), tuy chon.
+    anh: z.string().optional(),
+    anh_alt: z.string().default(''),
+    noindex: z.boolean().default(false),
+  }),
+});
+
+export const collections = { products, tinTuc };

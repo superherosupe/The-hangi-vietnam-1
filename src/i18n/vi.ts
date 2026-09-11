@@ -7,6 +7,7 @@ export default {
   'nav.hoat_chat': 'Tài liệu tham khảo',
   'nav.gioi_thieu': 'Về chúng tôi',
   'nav.doi_tac': 'Đối tác',
+  'nav.tin_tuc': 'Tin tức',
   'nav.tai_lieu': 'Tài liệu',
   'nav.lien_he': 'Liên hệ',
   'nav.mo_menu': 'Mở menu',
