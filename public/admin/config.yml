@@ -11,7 +11,7 @@ backend:
   name: github
   repo: superherosupe/The-hangi-vietnam-1
   branch: main
-  base_url: https://the-hangi-vietnam-1.truongmautuanhung-213.workers.dev
+  base_url: https://sveltia-cms-auth.truongmautuanhung-213.workers.dev
 
 site_url: https://thehangivietnam.xyz
 
