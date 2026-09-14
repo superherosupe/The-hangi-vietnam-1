@@ -8,6 +8,8 @@ import { baiVietVi } from '../data/hoat-chat';
 import anhHero0 from '../assets/products/pllacube-hero-1.jpg';
 import anhHero1 from '../assets/products/pllacube-hero-2.jpg';
 import anhHero2 from '../assets/products/skinphilia-hero.jpg';
+import anhHero3 from '../assets/products/hayyan-vial-v2.jpg';
+import anhHero4 from '../assets/products/all-in-derm-vial.jpg';
 
 const lang = 'vi' as const;
 const t = useT(lang);
@@ -50,9 +52,23 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
       <div class="hero-carousel-wrap">
         <div class="overflow-hidden rounded-3xl shadow-[0_20px_60px_rgba(14,116,144,0.18)]">
           <div class="hero-carousel" id="heroCarousel">
-            <Image src={anhHero0} alt="PLLACUBE Original — Skinbooster PLLA công nghệ INCUBE™ với PDRN, Vitamin C và Glutathione" width={880} loading="eager" fetchpriority="high" class="carousel-img active" data-index="0" />
-            <Image src={anhHero1} alt="PLLACUBE PiNk VOL. — Skinbooster PLLA với HA và Peptide cho làn da căng mịn" width={880} loading="lazy" class="carousel-img" data-index="1" />
-            <Image src={anhHero2} alt="Bộ sản phẩm SKINPHILIA EXOMUNE BOOSTER &amp; MASK — Exosome tế bào gốc máu cuống rốn từ Hàn Quốc" width={880} loading="lazy" class="carousel-img" data-index="2" />
+            <div class="carousel-img active" data-index="0">
+              <Image src={anhHero0} alt="PLLACUBE Original — Skinbooster PLLA công nghệ INCUBE™ với PDRN, Vitamin C và Glutathione" width={880} loading="eager" fetchpriority="high" />
+            </div>
+            <div class="carousel-img" data-index="1">
+              <Image src={anhHero1} alt="PLLACUBE PiNk VOL. — Skinbooster PLLA với HA và Peptide cho làn da căng mịn" width={880} loading="lazy" />
+            </div>
+            <div class="carousel-img" data-index="2">
+              <Image src={anhHero2} alt="Bộ sản phẩm SKINPHILIA EXOMUNE BOOSTER &amp; MASK — Exosome tế bào gốc máu cuống rốn từ Hàn Quốc" width={880} loading="lazy" />
+            </div>
+            <div class="carousel-img" data-index="3">
+              <Image src={anhHero3} alt="HAYYAN Solution Essence — tinh chất dưỡng da Hàn Quốc" width={880} loading="lazy" />
+              <span class="carousel-badge-new">MỚI</span>
+            </div>
+            <div class="carousel-img" data-index="4">
+              <Image src={anhHero4} alt="ALL IN DERM Solution Essence — tinh chất dưỡng da Hàn Quốc" width={880} loading="lazy" />
+              <span class="carousel-badge-new">MỚI</span>
+            </div>
           </div>
         </div>
         <!-- Mũi tên chuyển ảnh -->
@@ -80,14 +96,34 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
       opacity: 0;
       transition: opacity 0.6s ease-in-out;
       pointer-events: none;
     }
+    .carousel-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
     .carousel-img.active {
       opacity: 1;
       pointer-events: auto;
+    }
+    .carousel-badge-new {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 5;
+      border-radius: 9999px;
+      background: #D98E2B;
+      color: #fff;
+      font-family: monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 3px 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
     }
     .carousel-arrow {
       position: absolute;

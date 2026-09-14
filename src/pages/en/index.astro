@@ -8,6 +8,8 @@ import { baiVietEn } from '../../data/hoat-chat';
 import anhHero0 from '../../assets/products/pllacube-hero-1.jpg';
 import anhHero1 from '../../assets/products/pllacube-hero-2.jpg';
 import anhHero2 from '../../assets/products/skinphilia-hero.jpg';
+import anhHero3 from '../../assets/products/hayyan-vial-v2.jpg';
+import anhHero4 from '../../assets/products/all-in-derm-vial.jpg';
 
 const lang = 'en' as const;
 const t = useT(lang);
@@ -47,9 +49,23 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('en/')
       <div class="hero-carousel-wrap">
         <div class="overflow-hidden rounded-3xl shadow-[0_20px_60px_rgba(14,116,144,0.18)]">
           <div class="hero-carousel" id="heroCarousel">
-            <Image src={anhHero0} alt={t('hero.anh_alt')} width={880} loading="eager" fetchpriority="high" class="carousel-img active" data-index="0" />
-            <Image src={anhHero1} alt="PLLACUBE PiNk VOL. — PLLA+PN skinbooster with HA and Peptide" width={880} loading="lazy" class="carousel-img" data-index="1" />
-            <Image src={anhHero2} alt="SKINPHILIA EXOMUNE BOOSTER &amp; MASK — Umbilical cord blood stem cell exosome from South Korea" width={880} loading="lazy" class="carousel-img" data-index="2" />
+            <div class="carousel-img active" data-index="0">
+              <Image src={anhHero0} alt={t('hero.anh_alt')} width={880} loading="eager" fetchpriority="high" />
+            </div>
+            <div class="carousel-img" data-index="1">
+              <Image src={anhHero1} alt="PLLACUBE PiNk VOL. — PLLA+PN skinbooster with HA and Peptide" width={880} loading="lazy" />
+            </div>
+            <div class="carousel-img" data-index="2">
+              <Image src={anhHero2} alt="SKINPHILIA EXOMUNE BOOSTER &amp; MASK — Umbilical cord blood stem cell exosome from South Korea" width={880} loading="lazy" />
+            </div>
+            <div class="carousel-img" data-index="3">
+              <Image src={anhHero3} alt="HAYYAN Solution Essence — Korean skincare essence" width={880} loading="lazy" />
+              <span class="carousel-badge-new">NEW</span>
+            </div>
+            <div class="carousel-img" data-index="4">
+              <Image src={anhHero4} alt="ALL IN DERM Solution Essence — Korean skincare essence" width={880} loading="lazy" />
+              <span class="carousel-badge-new">NEW</span>
+            </div>
           </div>
         </div>
         <button class="carousel-arrow carousel-prev" aria-label="Previous" id="carouselPrev">
@@ -65,7 +81,9 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('en/')
   <style is:global>
     .hero-carousel-wrap { position: relative; }
     .hero-carousel { position: relative; width: 100%; aspect-ratio: 1 / 1; }
-    .carousel-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.6s ease-in-out; pointer-events: none; }
+    .carousel-img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.6s ease-in-out; pointer-events: none; }
+    .carousel-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .carousel-badge-new { position: absolute; top: 12px; right: 12px; z-index: 5; border-radius: 9999px; background: #D98E2B; color: #fff; font-family: monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; padding: 3px 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
     .carousel-img.active { opacity: 1; pointer-events: auto; }
     .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.85); backdrop-filter: blur(4px); border: 1px solid rgba(14,116,144,0.15); color: #0E7490; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; z-index: 10; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
     .carousel-arrow:hover { background: #0E7490; color: #fff; border-color: #0E7490; box-shadow: 0 4px 16px rgba(14,116,144,0.3); }
