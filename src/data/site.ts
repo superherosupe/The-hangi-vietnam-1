@@ -8,12 +8,10 @@ export const SITE_URL = 'https://thehangivietnam.xyz';
 export const BASE_PATH = '';
 
 /**
- * Access key cua Web3Forms (form lien he o /lien-he). CHUA CO - form se KHONG gui duoc
- * cho toi khi dien key that vao day. Lay tai https://web3forms.com bang email cong ty
- * (vd thehangivietnam@gmail.com), khong can dang ky tai khoan, key nay an toan de nhung
- * vao HTML (khong phai bi mat, no chi gan voi hom thu nhan).
+ * Access key cua Web3Forms (form lien he o /lien-he) - thu ve hom thu thehangivietnam@gmail.com.
+ * Lam moi lai 14/09/2026. Key nay an toan de nhung vao HTML, khong phai bi mat.
  */
-export const WEB3FORMS_ACCESS_KEY = 'd2c8b10c-38ce-4799-ad53-6a9a3c4f3c87';
+export const WEB3FORMS_ACCESS_KEY = '8c7b1b5a-0095-4302-b88f-f9969cf3508f';
 
 /**
  * Thong tin doanh nghiep - nguon: ho so dang ky kinh doanh.
