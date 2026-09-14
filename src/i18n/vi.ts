@@ -58,7 +58,6 @@ export default {
   'footer.cong_ty': 'CÔNG TY TNHH THE HANGI VIỆT NAM',
   'footer.mst': 'Mã số thuế',
   'footer.tru_so': 'Trụ sở',
-  'footer.dkkd': 'Địa chỉ đăng ký kinh doanh',
   'footer.hotline': 'Hotline',
   'footer.email': 'Email',
   'footer.dang_cap_nhat': 'Đang cập nhật',
@@ -89,8 +88,9 @@ export default {
   'sp.thong_tin_san_pham': 'Thông tin sản phẩm',
   'sp.thanh_phan_chinh': 'Thành phần chính',
   'sp.cong_nghe_loi': 'Công nghệ lõi',
-  'sp.theo_nsx':
-    'Thông tin do nhà sản xuất LABINCUBE cung cấp, mô tả đặc tính nguyên liệu và công nghệ. Đây không phải công bố về công dụng điều trị của sản phẩm.',
+  'sp.theo_nsx_truoc': 'Thông tin do nhà sản xuất',
+  'sp.theo_nsx_sau':
+    'cung cấp, mô tả đặc tính nguyên liệu và công nghệ. Đây không phải công bố về công dụng điều trị của sản phẩm.',
 
   'loc.tim': 'Tìm theo tên hoặc mã sản phẩm...',
   'loc.tim_nhan': 'Tìm kiếm sản phẩm',

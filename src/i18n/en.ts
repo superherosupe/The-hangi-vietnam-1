@@ -59,7 +59,6 @@ const en: Record<keyof typeof vi, string> = {
   'footer.cong_ty': 'THE HANGI VIET NAM COMPANY LIMITED',
   'footer.mst': 'Tax code',
   'footer.tru_so': 'Head office',
-  'footer.dkkd': 'Business registration address',
   'footer.hotline': 'Hotline',
   'footer.email': 'Email',
   'footer.dang_cap_nhat': 'Being updated',
@@ -90,8 +89,9 @@ const en: Record<keyof typeof vi, string> = {
   'sp.thong_tin_san_pham': 'Product information',
   'sp.thanh_phan_chinh': 'Key ingredients',
   'sp.cong_nghe_loi': 'Core technology',
-  'sp.theo_nsx':
-    'Information provided by the manufacturer LABINCUBE, describing raw material and technology characteristics. This is not a declaration of therapeutic effects.',
+  'sp.theo_nsx_truoc': 'Information provided by the manufacturer',
+  'sp.theo_nsx_sau':
+    'describing raw material and technology characteristics. This is not a declaration of therapeutic effects.',
 
   'loc.tim': 'Search by name or product code...',
   'loc.tim_nhan': 'Search products',

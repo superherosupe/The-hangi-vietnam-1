@@ -111,38 +111,7 @@ const jsonLdBreadcrumb = {
           )
         }
 
-        <section class="mt-6 overflow-hidden rounded-2xl border border-bacha" aria-labelledby="phap-ly">
-          <h2 id="phap-ly" class="bg-bacha px-4 py-2.5 text-sm font-bold text-duoc-dam">
-            {t('sp.thong_tin_phap_ly')}
-          </h2>
-          <dl class="divide-y divide-bacha text-sm">
-            {
-              [
-                laTBYT && d.ten_thiet_bi ? [t('sp.ten_thiet_bi'), d.ten_thiet_bi] : null,
-                [t('sp.phan_loai'), nhanPhanLoai],
-                [t('sp.ma_sp'), d.ma_san_pham],
-                [t('sp.so_cong_bo'), d.so_luu_hanh_hoac_cong_bo],
-                d.ngay_cong_bo ? [t('sp.ngay_cong_bo'), d.ngay_cong_bo] : null,
-                d.co_so_cong_bo_ten ? [t('sp.co_so_cong_bo'), `${d.co_so_cong_bo_ten} - ${d.co_so_cong_bo_dia_chi}`] : null,
-                [t('sp.chu_so_huu'), `${d.chu_so_huu_ten} - ${d.chu_so_huu_dia_chi}`],
-                [t('sp.nha_phan_phoi'), `${SITE.ten_day_du_en} - ${SITE.tru_so_en}`],
-                [t('sp.xuat_xu'), d.xuat_xu],
-              ]
-                .filter((r): r is [string, string] => !!r)
-                .map(([nhan, giaTri]) => (
-                  <div class="grid gap-1 px-4 py-2.5 sm:grid-cols-[200px_1fr] sm:gap-3">
-                    <dt class="font-medium text-muc/60">{nhan}</dt>
-                    <dd class="text-muc">{giaTri}</dd>
-                  </div>
-                ))
-            }
-          </dl>
-        </section>
-
-        <section class="mt-6" aria-labelledby="muc-dich">
-          <h2 id="muc-dich" class="text-sm font-bold uppercase tracking-wider text-duoc-dam">{t('sp.muc_dich')}</h2>
-          <p class="mt-2 text-sm leading-relaxed text-muc/80 text-justify">{d.muc_dich_su_dung}</p>
-        </section>
+        <ThongTinSanPham sp={sp} lang={lang} />
 
         {
           d.thanh_phan && (
@@ -158,6 +127,11 @@ const jsonLdBreadcrumb = {
         <section class="mt-6" aria-labelledby="quy-cach">
           <h2 id="quy-cach" class="text-sm font-bold uppercase tracking-wider text-duoc-dam">{t('sp.quy_cach')}</h2>
           <p class="mt-2 text-justify text-sm leading-relaxed text-muc/80">{d.quy_cach}</p>
+        </section>
+
+        <section class="mt-6" aria-labelledby="muc-dich">
+          <h2 id="muc-dich" class="text-sm font-bold uppercase tracking-wider text-duoc-dam">{t('sp.muc_dich')}</h2>
+          <p class="mt-2 text-sm leading-relaxed text-muc/80 text-justify">{d.muc_dich_su_dung}</p>
         </section>
 
         {
@@ -206,6 +180,34 @@ const jsonLdBreadcrumb = {
           )
         }
 
+        <section class="mt-6 overflow-hidden rounded-2xl border border-bacha" aria-labelledby="phap-ly">
+          <h2 id="phap-ly" class="bg-bacha px-4 py-2.5 text-sm font-bold text-duoc-dam">
+            {t('sp.thong_tin_phap_ly')}
+          </h2>
+          <dl class="divide-y divide-bacha text-sm">
+            {
+              [
+                laTBYT && d.ten_thiet_bi ? [t('sp.ten_thiet_bi'), d.ten_thiet_bi] : null,
+                [t('sp.phan_loai'), nhanPhanLoai],
+                [t('sp.ma_sp'), d.ma_san_pham],
+                [t('sp.so_cong_bo'), d.so_luu_hanh_hoac_cong_bo],
+                d.ngay_cong_bo ? [t('sp.ngay_cong_bo'), d.ngay_cong_bo] : null,
+                d.co_so_cong_bo_ten ? [t('sp.co_so_cong_bo'), `${d.co_so_cong_bo_ten} - ${d.co_so_cong_bo_dia_chi}`] : null,
+                [t('sp.chu_so_huu'), `${d.chu_so_huu_ten} - ${d.chu_so_huu_dia_chi}`],
+                [t('sp.nha_phan_phoi'), `${SITE.ten_day_du_en} - ${SITE.tru_so_en}`],
+                [t('sp.xuat_xu'), d.xuat_xu],
+              ]
+                .filter((r): r is [string, string] => !!r)
+                .map(([nhan, giaTri]) => (
+                  <div class="grid gap-1 px-4 py-2.5 sm:grid-cols-[200px_1fr] sm:gap-3">
+                    <dt class="font-medium text-muc/60">{nhan}</dt>
+                    <dd class="text-muc">{giaTri}</dd>
+                  </div>
+                ))
+            }
+          </dl>
+        </section>
+
         <a
           href={`${localePath(lang, '/lien-he')}?san-pham=${encodeURIComponent(d.ma_san_pham)}`}
           class="mt-8 inline-flex rounded-full bg-duoc px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-duoc-dam"
@@ -214,8 +216,6 @@ const jsonLdBreadcrumb = {
         </a>
       </div>
     </div>
-
-    <ThongTinSanPham sp={sp} lang={lang} />
 
     <div class="mt-10 max-w-none text-justify text-[12.5px] leading-relaxed text-muc/55 [&_p]:mt-2 [&_p:first-child]:mt-0">
       <Content />

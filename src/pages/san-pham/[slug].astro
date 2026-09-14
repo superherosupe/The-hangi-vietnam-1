@@ -28,7 +28,6 @@ const nhanPhanLoai = t(`badge.${d.phan_loai_phap_ly}` as Parameters<typeof t>[0]
 const site = Astro.site ?? new URL(SITE_URL);
 const ngayCapNhat = d.lastUpdated.split('-').reverse().join('/');
 
-// Thu tu khoi co dinh theo Muc 6.3 - bang phap ly dat cao, khong giau duoi day
 const jsonLdProduct = {
   '@context': 'https://schema.org',
   '@type': laTBYT ? 'MedicalDevice' : 'Product',
@@ -76,7 +75,6 @@ const jsonLdBreadcrumb = {
     </nav>
 
     <div class="mt-6 grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-      <!-- 2. Gallery anh -->
       <div class="space-y-4">
         <div class="overflow-hidden rounded-3xl bg-bacha">
           <Image src={d.anh} alt={d.anh_alt} width={880} loading="eager" fetchpriority="high" class="h-full w-full object-cover" />
@@ -95,7 +93,6 @@ const jsonLdBreadcrumb = {
       </div>
 
       <div>
-        <!-- 1. Ten + thuong hieu + badge -->
         <p class="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ngoclam">{d.thuong_hieu}</p>
         <h1 class="mt-1.5 text-3xl font-bold tracking-tight text-muc sm:text-4xl">{d.ten}</h1>
         <div class="mt-4">
@@ -114,42 +111,8 @@ const jsonLdBreadcrumb = {
           )
         }
 
-        <!-- 3. Bang thong tin phap ly - dat cao theo Muc 6.3 -->
-        <section class="mt-6 overflow-hidden rounded-2xl border border-bacha" aria-labelledby="phap-ly">
-          <h2 id="phap-ly" class="bg-bacha px-4 py-2.5 text-sm font-bold text-duoc-dam">
-            {t('sp.thong_tin_phap_ly')}
-          </h2>
-          <dl class="divide-y divide-bacha text-sm">
-            {
-              [
-                laTBYT && d.ten_thiet_bi ? [t('sp.ten_thiet_bi'), d.ten_thiet_bi] : null,
-                [t('sp.phan_loai'), nhanPhanLoai],
-                [t('sp.ma_sp'), d.ma_san_pham],
-                [t('sp.so_cong_bo'), d.so_luu_hanh_hoac_cong_bo],
-                d.ngay_cong_bo ? [t('sp.ngay_cong_bo'), d.ngay_cong_bo] : null,
-                d.co_so_cong_bo_ten ? [t('sp.co_so_cong_bo'), `${d.co_so_cong_bo_ten} - ${d.co_so_cong_bo_dia_chi}`] : null,
-                [t('sp.chu_so_huu'), `${d.chu_so_huu_ten} - ${d.chu_so_huu_dia_chi}`],
-                [t('sp.nha_phan_phoi'), `${SITE.ten_day_du} - ${SITE.tru_so}`],
-                [t('sp.xuat_xu'), d.xuat_xu],
-              ]
-                .filter((r): r is [string, string] => !!r)
-                .map(([nhan, giaTri]) => (
-                  <div class="grid gap-1 px-4 py-2.5 sm:grid-cols-[200px_1fr] sm:gap-3">
-                    <dt class="font-medium text-muc/60">{nhan}</dt>
-                    <dd class="text-muc">{giaTri}</dd>
-                  </div>
-                ))
-            }
-          </dl>
-        </section>
+        <ThongTinSanPham sp={sp} lang={lang} />
 
-        <!-- 4. Muc dich su dung theo cong bo -->
-        <section class="mt-6" aria-labelledby="muc-dich">
-          <h2 id="muc-dich" class="text-sm font-bold uppercase tracking-wider text-duoc-dam">{t('sp.muc_dich')}</h2>
-          <p class="mt-2 text-sm leading-relaxed text-muc/80 text-justify">{d.muc_dich_su_dung}</p>
-        </section>
-
-        <!-- 5. Thanh phan -->
         {
           d.thanh_phan && (
             <section class="mt-6" aria-labelledby="thanh-phan">
@@ -161,13 +124,16 @@ const jsonLdBreadcrumb = {
           )
         }
 
-        <!-- 6. Quy cach -->
         <section class="mt-6" aria-labelledby="quy-cach">
           <h2 id="quy-cach" class="text-sm font-bold uppercase tracking-wider text-duoc-dam">{t('sp.quy_cach')}</h2>
           <p class="mt-2 text-sm leading-relaxed text-muc/80 text-justify">{d.quy_cach}</p>
         </section>
 
-        <!-- 7. Tai lieu tai ve -->
+        <section class="mt-6" aria-labelledby="muc-dich">
+          <h2 id="muc-dich" class="text-sm font-bold uppercase tracking-wider text-duoc-dam">{t('sp.muc_dich')}</h2>
+          <p class="mt-2 text-sm leading-relaxed text-muc/80 text-justify">{d.muc_dich_su_dung}</p>
+        </section>
+
         {
           d.tai_lieu.length > 0 && (
             <section class="mt-6" aria-labelledby="tai-lieu">
@@ -199,7 +165,6 @@ const jsonLdBreadcrumb = {
           )
         }
 
-        <!-- 8. Canh bao -->
         {
           d.canh_bao.length > 0 && (
             <section class="mt-6 rounded-2xl border border-hophach/30 bg-hophach-nhat p-4" aria-labelledby="canh-bao">
@@ -215,7 +180,34 @@ const jsonLdBreadcrumb = {
           )
         }
 
-        <!-- 9. Yeu cau bao gia - khong dang gia cong khai voi TBYT -->
+        <section class="mt-6 overflow-hidden rounded-2xl border border-bacha" aria-labelledby="phap-ly">
+          <h2 id="phap-ly" class="bg-bacha px-4 py-2.5 text-sm font-bold text-duoc-dam">
+            {t('sp.thong_tin_phap_ly')}
+          </h2>
+          <dl class="divide-y divide-bacha text-sm">
+            {
+              [
+                laTBYT && d.ten_thiet_bi ? [t('sp.ten_thiet_bi'), d.ten_thiet_bi] : null,
+                [t('sp.phan_loai'), nhanPhanLoai],
+                [t('sp.ma_sp'), d.ma_san_pham],
+                [t('sp.so_cong_bo'), d.so_luu_hanh_hoac_cong_bo],
+                d.ngay_cong_bo ? [t('sp.ngay_cong_bo'), d.ngay_cong_bo] : null,
+                d.co_so_cong_bo_ten ? [t('sp.co_so_cong_bo'), `${d.co_so_cong_bo_ten} - ${d.co_so_cong_bo_dia_chi}`] : null,
+                [t('sp.chu_so_huu'), `${d.chu_so_huu_ten} - ${d.chu_so_huu_dia_chi}`],
+                [t('sp.nha_phan_phoi'), `${SITE.ten_day_du} - ${SITE.tru_so}`],
+                [t('sp.xuat_xu'), d.xuat_xu],
+              ]
+                .filter((r): r is [string, string] => !!r)
+                .map(([nhan, giaTri]) => (
+                  <div class="grid gap-1 px-4 py-2.5 sm:grid-cols-[200px_1fr] sm:gap-3">
+                    <dt class="font-medium text-muc/60">{nhan}</dt>
+                    <dd class="text-muc">{giaTri}</dd>
+                  </div>
+                ))
+            }
+          </dl>
+        </section>
+
         <a
           href={`${localePath(lang, '/lien-he')}?san-pham=${encodeURIComponent(d.ma_san_pham)}`}
           class="mt-8 inline-flex rounded-full bg-duoc px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-duoc-dam"
@@ -225,9 +217,6 @@ const jsonLdBreadcrumb = {
       </div>
     </div>
 
-    <ThongTinSanPham sp={sp} lang={lang} />
-
-    <!-- Ghi chu mo ta: full dong, chu nho -->
     <div class="mt-10 max-w-none text-justify text-[12.5px] leading-relaxed text-muc/55 [&_p]:mt-2 [&_p:first-child]:mt-0">
       <Content />
     </div>
