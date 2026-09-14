@@ -152,25 +152,6 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
     }
     .carousel-prev { left: 12px; }
     .carousel-next { right: 12px; }
-    .carousel-caption {
-      position: absolute;
-      bottom: 12px;
-      right: 12px;
-      border-radius: 9999px;
-      background: rgba(255,255,255,0.9);
-      padding: 4px 12px;
-      font-family: monospace;
-      font-size: 10px;
-      font-weight: 500;
-      color: rgba(43,43,43,0.7);
-      backdrop-filter: blur(8px);
-      opacity: 0;
-      transition: opacity 0.4s;
-      pointer-events: none;
-    }
-    .carousel-caption.active {
-      opacity: 1;
-    }
   </style>
 
   <script>
@@ -178,7 +159,6 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
       const carousel = document.getElementById('heroCarousel');
       if (!carousel) return;
       const imgs = carousel.querySelectorAll('.carousel-img');
-      const captions = document.querySelectorAll('.carousel-caption');
       const prevBtn = document.getElementById('carouselPrev');
       const nextBtn = document.getElementById('carouselNext');
       let current = 0;
@@ -189,9 +169,6 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
       function show(idx) {
         imgs.forEach((img, i) => {
           img.classList.toggle('active', i === idx);
-        });
-        captions.forEach((cap, i) => {
-          cap.classList.toggle('active', i === idx);
         });
         current = idx;
       }

@@ -16,7 +16,7 @@ const PHAN_LOAI = [
   'my-pham',
 ] as const;
 
-const NHOM = ['skinbooster-plla', 'skinbooster-khac', 'my-pham-chuyen-khoa'] as const;
+const NHOM = ['skinbooster-plla', 'skinbooster-khac', 'my-pham-chuyen-khoa', 'chan-thuong-chinh-hinh'] as const;
 
 const batBuoc = (ten: string) =>
   z.string({ required_error: `Thieu truong phap ly bat buoc: "${ten}"` }).min(1, {

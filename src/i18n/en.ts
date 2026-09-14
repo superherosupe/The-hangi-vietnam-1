@@ -15,7 +15,6 @@ const en: Record<keyof typeof vi, string> = {
   'nav.mo_menu': 'Open menu',
 
   'hero.tagline': 'Authorized distribution - Transparent registration',
-  'hero.headline': 'Science-based skincare, starting from a transparent origin.',
   'hero.sub':
     'The Hangi Vietnam is the exclusive distributor of Korean aesthetic-dermatology products with complete regulatory filings in Vietnam.',
   'hero.cta_sanpham': 'Explore products',
@@ -38,9 +37,6 @@ const en: Record<keyof typeof vi, string> = {
   'danhmuc.sap_ra_mat_mota': 'Upcoming product lines are undergoing registration in Vietnam.',
   'danhmuc.so_cong_bo': 'Registration no.',
 
-  'hoatchat.tieude': 'Understanding the ingredients',
-  'hoatchat.mota': 'Short, accessible explanations. In-depth content for healthcare professionals in a dedicated section.',
-
   'visao.tieude': 'Why The Hangi',
   'visao.1.tieude': 'Transparent registration',
   'visao.1.mota':
@@ -56,7 +52,6 @@ const en: Record<keyof typeof vi, string> = {
   'cta.lien_he': 'Contact us',
   'cta.doi_tac': 'Become a distributor',
 
-  'footer.cong_ty': 'THE HANGI VIET NAM COMPANY LIMITED',
   'footer.mst': 'Tax code',
   'footer.tru_so': 'Head office',
   'footer.hotline': 'Hotline',
@@ -105,6 +100,7 @@ const en: Record<keyof typeof vi, string> = {
   'nhom.skinbooster-plla': 'PLLA Skinbooster',
   'nhom.skinbooster-khac': 'Other skinboosters',
   'nhom.my-pham-chuyen-khoa': 'Professional cosmetics',
+  'nhom.chan-thuong-chinh-hinh': 'Orthopedics & trauma',
 
   'tailieu.tieude': 'Document library',
   'tailieu.mota': 'Downloadable documents by product, plus general documentation from manufacturer LABINCUBE.',
@@ -113,7 +109,6 @@ const en: Record<keyof typeof vi, string> = {
   'tailieu.xem_sp': 'View product page',
 
   'hoatchatpage.tieude': 'Science',
-  'hoatchatpage.mota': 'General, accessible knowledge about the ingredients and technologies found in aesthetic-dermatology products. Reference content only, not a declaration of efficacy for any specific product.',
   'hoatchatpage.luu_y': 'Note',
 
   'lienhe.tieu_de_email': 'New contact request from The Hangi website',
@@ -138,10 +133,6 @@ const en: Record<keyof typeof vi, string> = {
   'doitac.hang_tieude': 'Manufacturers we represent',
   'doitac.hang_mota':
     'The Hangi Vietnam distributes products from the manufacturers below in Vietnam. All distributed products hold a Vietnamese product declaration or registration.',
-  'doitac.labincube_mota': 'Korean manufacturer, CUBRIX™ / INCUBE™ technology - PLLACUBE line',
-  'doitac.skinphilia_mota': 'Korean brand under Primoris International - EXOMUNE line',
-  'doitac.allgens_mota': 'Bone graft material manufacturer - BORN GRAFTS line',
-
   'chung.trang_chu': 'Home',
   'chung.dang_hoan_thien': 'This page is under construction.',
   'chung.quay_lai': 'Back to home',

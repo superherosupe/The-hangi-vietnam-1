@@ -13,7 +13,6 @@ export default {
   'nav.mo_menu': 'Mở menu',
 
   'hero.tagline': 'Phân phối chính hãng - Công bố rõ ràng',
-  'hero.headline': 'Chăm sóc da khoa học, bắt đầu từ nguồn gốc rõ ràng.',
   'hero.sub':
     'The Hangi Việt Nam phân phối độc quyền các sản phẩm thẩm mỹ - da liễu công nghệ Hàn Quốc, đầy đủ hồ sơ công bố tại Việt Nam.',
   'hero.cta_sanpham': 'Khám phá sản phẩm',
@@ -36,9 +35,6 @@ export default {
   'danhmuc.sap_ra_mat_mota': 'Các dòng sản phẩm tiếp theo đang trong quá trình đăng ký lưu hành tại Việt Nam.',
   'danhmuc.so_cong_bo': 'Số công bố',
 
-  'hoatchat.tieude': 'Tài liệu tham khảo',
-  'hoatchat.mota': 'Kiến thức chuyên môn và cơ sở khoa học — dành cho cán bộ y tế và đối tác chuyên môn.',
-
   'visao.tieude': 'Vì sao chọn The Hangi',
   'visao.1.tieude': 'Công bố rõ ràng',
   'visao.1.mota':
@@ -55,7 +51,6 @@ export default {
   'cta.lien_he': 'Liên hệ tư vấn',
   'cta.doi_tac': 'Hợp tác phân phối',
 
-  'footer.cong_ty': 'CÔNG TY TNHH THE HANGI VIỆT NAM',
   'footer.mst': 'Mã số thuế',
   'footer.tru_so': 'Trụ sở',
   'footer.hotline': 'Hotline',
@@ -104,6 +99,7 @@ export default {
   'nhom.skinbooster-plla': 'PLLA Skinbooster',
   'nhom.skinbooster-khac': 'Skinbooster khác',
   'nhom.my-pham-chuyen-khoa': 'Mỹ phẩm chuyên khoa',
+  'nhom.chan-thuong-chinh-hinh': 'Chấn thương chỉnh hình',
 
   'tailieu.tieude': 'Thư viện tài liệu',
   'tailieu.mota': 'Tài liệu tải về theo từng sản phẩm và tài liệu chung của nhà sản xuất LABINCUBE.',
@@ -112,7 +108,6 @@ export default {
   'tailieu.xem_sp': 'Xem trang sản phẩm',
 
   'hoatchatpage.tieude': 'Tài liệu tham khảo',
-  'hoatchatpage.mota': 'Kiến thức chung, dễ hiểu về các hoạt chất và công nghệ xuất hiện trong sản phẩm thẩm mỹ - da liễu. Nội dung mang tính tham khảo, không phải công bố công dụng của bất kỳ sản phẩm cụ thể nào.',
   'hoatchatpage.luu_y': 'Lưu ý',
 
   'lienhe.tieu_de_email': 'Yêu cầu liên hệ mới từ website The Hangi',
@@ -137,10 +132,6 @@ export default {
   'doitac.hang_tieude': 'Hãng chúng tôi đại diện',
   'doitac.hang_mota':
     'The Hangi Việt Nam là nhà phân phối tại Việt Nam cho các hãng sản xuất dưới đây. Sản phẩm phân phối đều có hồ sơ công bố hoặc đăng ký lưu hành tại Việt Nam.',
-  'doitac.labincube_mota': 'Nhà sản xuất Hàn Quốc, công nghệ CUBRIX™ / INCUBE™ - dòng PLLACUBE',
-  'doitac.skinphilia_mota': 'Thương hiệu Hàn Quốc thuộc Primoris International - dòng EXOMUNE',
-  'doitac.allgens_mota': 'Nhà sản xuất vật liệu ghép xương - dòng BORN GRAFTS',
-
   'chung.trang_chu': 'Trang chủ',
   'chung.dang_hoan_thien': 'Trang này đang được hoàn thiện.',
   'chung.quay_lai': 'Quay lại trang chủ',
