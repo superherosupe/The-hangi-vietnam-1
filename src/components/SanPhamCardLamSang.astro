@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  sp: {
+    id: string;
+    slugs: { slug: string; ma: string }[];
+    ten: string;
+    anh: ImageMetadata;
+    ungDung: string;
+    dienGiai: string;
+    anhLamSang?: ImageMetadata;
+    chuThichAnh?: string;
+    ghiChuKhongCoAnh?: string;
+  };
+  p: (href: string) => string;
+}
+const { sp, p } = Astro.props;
+---
+
+<article id={sp.id} class="scroll-mt-28 border-t border-bacha pt-8 first:border-t-0 first:pt-0">
+  <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+    <h4 class="text-lg font-bold text-muc">{sp.ten}</h4>
+    <span class="font-mono text-[13px] font-semibold text-duoc-dam">{sp.slugs.map((s) => s.ma).join(' · ')}</span>
+  </div>
+
+  <p class="mt-3 text-sm leading-relaxed text-muc/75 text-justify">{sp.ungDung}</p>
+  <p class="mt-3 text-sm leading-relaxed text-muc/75 text-justify">{sp.dienGiai}</p>
+
+  {
+    sp.anhLamSang && (
+      <figure class="mt-4">
+        <div class="overflow-hidden rounded-xl bg-black/5">
+          <Image src={sp.anhLamSang} alt="" width={900} class="w-full object-contain" />
+        </div>
+        {sp.chuThichAnh && <figcaption class="mt-2 text-[12px] leading-relaxed text-muc/50">{sp.chuThichAnh}</figcaption>}
+      </figure>
+    )
+  }
+  {!sp.anhLamSang && sp.ghiChuKhongCoAnh && <p class="mt-3 text-[12px] italic leading-relaxed text-muc/45">{sp.ghiChuKhongCoAnh}</p>}
+
+  <p class="mt-3 text-sm leading-relaxed text-muc/60">
+    {
+      sp.slugs.map((s, i) => (
+        <>
+          {i > 0 && ' · '}
+          <a href={`${p('/san-pham')}/${s.slug}`} class="font-semibold text-duoc hover:text-duoc-dam hover:underline">
+            Xem trang sản phẩm {s.ma} &rarr;
+          </a>
+        </>
+      ))
+    }
+    {' '}
+    để biết đầy đủ quy cách và thông tin pháp lý.
+  </p>
+</article>

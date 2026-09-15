@@ -28,6 +28,23 @@ const nhanPhanLoai = t(`badge.${d.phan_loai_phap_ly}` as Parameters<typeof t>[0]
 const site = Astro.site ?? new URL(SITE_URL);
 const ngayCapNhat = d.lastUpdated.split('-').reverse().join('/');
 
+// Neo tuong ung trong bai "Xuong nhan tao collagen khoang hoa", chi ap dung cho nhom CTCH Allgens.
+const NEO_BANG_CHUNG_LAM_SANG: Record<string, string> = {
+  'bongold-gr-1': 'gr-1',
+  'bongold-gr-8': 'gr-8',
+  'bongold-gr-3': 'gr-3',
+  'bongold-re-1': 're-1-re-2',
+  'bongold-re-2': 're-1-re-2',
+  'bongold-re-9': 're-9',
+  'bongold-re-10': 're-10',
+  'bongold-co-8': 'co-8',
+  'bongold-co-10': 'co-10',
+  'bongold-co-11': 'co-11-co-12',
+  'bongold-co-12': 'co-11-co-12',
+  skuheal: 'skuheal',
+};
+const neoBangChung = NEO_BANG_CHUNG_LAM_SANG[slug];
+
 const jsonLdProduct = {
   '@context': 'https://schema.org',
   '@type': laTBYT ? 'MedicalDevice' : 'Product',
@@ -112,6 +129,17 @@ const jsonLdBreadcrumb = {
         }
 
         <ThongTinSanPham sp={sp} lang={lang} />
+
+        {
+          neoBangChung && (
+            <a
+              href={`${localePath(lang, '/tin-tuc/xuong-nhan-tao-collagen-khoang-hoa')}#${neoBangChung}`}
+              class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-duoc hover:text-duoc-dam hover:underline"
+            >
+              Đọc thêm bằng chứng lâm sàng &rarr;
+            </a>
+          )
+        }
 
         {
           d.thanh_phan && (

@@ -1,0 +1,491 @@
+---
+import type { ImageMetadata } from 'astro';
+import Base from '../../layouts/Base.astro';
+import BannerChuyenMon from '../../components/BannerChuyenMon.astro';
+import SanPhamCard from '../../components/SanPhamCardLamSang.astro';
+import { useT, localePath } from '../../i18n';
+import bongoldGr1 from '../../assets/products/bongold-gr1-hat-khoi.png';
+import bongoldHatLo from '../../assets/products/bongold-hat-lo-thuytinh.jpg';
+import bongoldGr3 from '../../assets/products/bongold-gr3-bot-pmma.png';
+import bongoldRe9 from '../../assets/products/bongold-re9-mieng-han-xuong.png';
+import bongoldRe10 from '../../assets/products/bongold-re10-mang-gbr.png';
+import bongoldCo8 from '../../assets/products/bongold-co8-nut-bit-ong-tuy.png';
+import bongoldCo10 from '../../assets/products/bongold-co10-thanh-tai-tao.png';
+import bongoldCo1112 from '../../assets/products/bongold-co1112-thanh.png';
+import skuhealImg from '../../assets/products/skuheal-nut-phuc-hoi.jpg';
+import caGr1 from '../../assets/lam-sang/gr1-han-cot-song-co.jpg';
+import caGr8 from '../../assets/lam-sang/gr8-gay-lun-dot-song.jpg';
+import caRe1Re2 from '../../assets/lam-sang/re1re2-gay-mam-chay.jpg';
+import caRe10 from '../../assets/lam-sang/re10-gay-mat-ca.jpg';
+import caRe9 from '../../assets/lam-sang/re9-han-khop-ban-chan.jpg';
+import caCo10 from '../../assets/lam-sang/co10-hoai-tu-chom-xuong-dui.jpg';
+
+const lang = 'vi' as const;
+const t = useT(lang);
+const p = (href: string) => localePath(lang, href);
+
+const mucLuc = [
+  { href: '#mo-dau', nhan: 'Mở đầu' },
+  { href: '#cong-nghe', nhan: 'Công nghệ' },
+  { href: '#bang-chung', nhan: 'Bằng chứng lâm sàng' },
+  { href: '#san-pham', nhan: 'Sản phẩm' },
+];
+
+const tieuChiVatLieu = [
+  { ten: 'Tương thích sinh học', mota: 'Tích hợp với mô xương xung quanh mà không gây phản ứng viêm hay đào thải.' },
+  { ten: 'Dẫn xương', mota: 'Làm giàn giáo để mạch máu và tế bào tạo xương mọc vào, nhờ cấu trúc lỗ liên thông đúng kích thước.' },
+  { ten: 'Cảm ứng tạo xương', mota: 'Bản thân vật liệu kích thích tế bào gốc trung mô biệt hóa thành tế bào tạo xương.' },
+  { ten: 'Phân hủy đúng nhịp', mota: 'Tốc độ tiêu của vật liệu khớp với tốc độ tạo xương mới, không quá nhanh cũng không quá chậm.' },
+];
+
+const quyTrinh = [
+  'Dung dịch collagen type I tinh khiết, kiểm soát nghiêm nguyên liệu đầu vào',
+  'Thêm ion canxi (Ca²⁺), gắn vào các vị trí liên kết đặc hiệu trên sợi collagen',
+  'Thêm phosphat (PO₄³⁻), kết hợp với canxi tạo thành nano hydroxyapatite ngay tại chỗ',
+  'Điều chỉnh pH và nhiệt độ để kiểm soát quá trình khoáng hóa',
+  'Rửa, đông lạnh, sấy khô thăng hoa rồi tạo hình thành phẩm',
+];
+
+const soSanhVatLieu = [
+  {
+    ten: 'Xương tự thân',
+    dacDiem: 'Lấy từ chính bệnh nhân (mào chậu, xương mác...), là chuẩn đối chiếu lâu đời nhất.',
+    hanChe: 'Cần thêm một vị trí mổ để lấy xương, khối lượng có hạn, có thể đau kéo dài tại nơi lấy.',
+  },
+  {
+    ten: 'Xương đồng loại',
+    dacDiem: 'Từ người hiến đã qua xử lý, không cần lấy xương của bệnh nhân.',
+    hanChe: 'Nguồn cung hạn chế tại Việt Nam, hoạt tính tạo xương giảm sau quá trình xử lý.',
+  },
+  {
+    ten: 'Gốm sinh học (HA, β-TCP...)',
+    dacDiem: 'Vô trùng tuyệt đối, sẵn có, giá thành thấp, dẫn xương tốt.',
+    hanChe: 'Không có hoạt tính cảm ứng tạo xương, một số loại tiêu rất chậm hoặc gần như không tiêu.',
+  },
+  {
+    ten: 'Collagen khoáng hóa',
+    dacDiem: 'Cấu trúc mô phỏng xương thật, vừa dẫn xương vừa cảm ứng tạo xương, tiêu theo đúng nhịp xương mới hình thành.',
+    hanChe: 'Không chịu lực ngay ở dòng độ bền thường, luôn cần cố định trong vững đi kèm.',
+    noiBat: true,
+  },
+];
+
+const ngeincuu = [
+  {
+    ten: 'Phân tích gộp: xi măng cải tiến trong tạo hình đốt sống',
+    nguon: 'PLOS ONE · 03/2024',
+    thietKe: 'Gộp 12 nghiên cứu (5 thử nghiệm ngẫu nhiên có đối chứng) từ 884 nghiên cứu sàng lọc, 154 đến 984 bệnh nhân theo từng chỉ tiêu.',
+    ketQua:
+      'Gãy đốt sống liền kề: OR 0,25 (KTC 95% 0,15 đến 0,41; p<0,00001), giảm khoảng 75% nguy cơ. Rò xi măng: OR 0,45 (p=0,0001). Chức năng ODI ở mốc 6 đến 12 tháng cải thiện có ý nghĩa. Thời gian mổ, lượng máu mất, thời gian nằm viện không khác biệt so với xi măng thường.',
+    noiBat: true,
+  },
+  {
+    ten: 'Theo dõi 10 năm: hoại tử vô mạch chỏm xương đùi',
+    nguon: 'The Journal of Arthroplasty · 05/2025',
+    thietKe: '103 bệnh nhân Steinberg I đến IIIA, so khoan giảm áp kèm thanh ren collagen khoáng hóa với khoan giảm áp kèm lồng ren xương đồng loại.',
+    ketQua:
+      'Sống còn mảnh ghép sau 10 năm: 77,6% so với 75,6%, không khác biệt có ý nghĩa. Tích hợp xương: 93,9% sau trung bình 7,6 tháng, so với 92,7% sau 13,2 tháng ở nhóm xương đồng loại. Tỷ lệ thất bại dưới 30% ở giai đoạn Steinberg I đến II, nhưng vượt 50% ở giai đoạn IIIA.',
+  },
+  {
+    ten: 'Thử nghiệm ngẫu nhiên có đối chứng: xi măng cải tiến trong thay khớp gối',
+    nguon: 'J Mater Sci Mater Med · 05/2025',
+    thietKe: '34 bệnh nhân (68 khớp gối) thoái hóa hai bên, thiết kế tự đối chứng: mỗi bệnh nhân một bên dùng xi măng cải tiến, bên kia dùng xi măng thường.',
+    ketQua:
+      'Điểm chức năng Knee Society ở 1 năm cao hơn có ý nghĩa (p=0,0425). Không ca nào nhiễm trùng, lỏng vô khuẩn hay phải mổ lại ở cả hai bên trong thời gian theo dõi trung bình 45,8 tháng.',
+  },
+  {
+    ten: 'So sánh trực tiếp với xương tự thân: nạo u xương lành tính',
+    nguon: 'Regenerative Biomaterials · 12/2020',
+    thietKe: 'Hồi cứu so sánh 18 ca xương tự thân với 13 ca collagen khoáng hóa, theo dõi 9 đến 24 tháng.',
+    ketQua:
+      'Liền xương trên phim (thang Lane-Sandhu) không khác biệt có ý nghĩa ở mốc 6 và 12 tháng. Điểm chức năng MSTS ở nhóm collagen khoáng hóa tốt hơn ở tháng thứ 1 và thứ 6 (p<0,001), không khác biệt ở tháng 12.',
+  },
+];
+
+const mucDichBongold =
+  'BonGold là một loại implant được thiết kế để lấp đầy các khoảng trống hoặc khe hở trong hệ thống xương trong các phẫu thuật điều trị gãy xương kín, sửa chữa thứ cấp các khuyết tật do gãy xương hở, hợp nhất cột sống, sửa chữa các khuyết tật xương sau khi cắt bỏ u xương lành tính hoặc tổn thương giống u, và các phẫu thuật sửa chữa khuyết tật xương khác mà không có chống chỉ định đối với việc ghép xương. Có thể kết hợp với tủy xương tự thân, đóng gói nhẹ nhàng vào khoảng trống hoặc khe hở trong xương; cũng có thể dùng với ghép tự thân như một chất mở rộng ghép xương. BonGold được hấp thụ và thay thế bằng xương trong quá trình lành thương.';
+
+const mucDichSkuheal =
+  'SkuHeal là một loại implant được thiết kế để lấp đầy các khuyết tật ở hộp sọ do phẫu thuật khoan hộp sọ, các khuyết tật ở hộp sọ do phẫu thuật giải áp, các khoảng trống xương do máy phay tạo ra, các khuyết tật ở hộp sọ do việc cắt bỏ một phần hộp sọ trong phẫu thuật khoan hộp sọ, và các khuyết tật khác ở hộp sọ trong các ca phẫu thuật thần kinh không có chống chỉ định đối với việc ghép xương.';
+
+interface SanPham {
+  id: string;
+  slugs: { slug: string; ma: string }[];
+  ten: string;
+  anh: ImageMetadata;
+  ungDung: string;
+  dienGiai: string;
+  anhLamSang?: ImageMetadata;
+  chuThichAnh?: string;
+  ghiChuKhongCoAnh?: string;
+}
+
+const nhomA: SanPham[] = [
+  {
+    id: 'gr-1',
+    slugs: [{ slug: 'bongold-gr-1', ma: 'Gr-1' }],
+    ten: 'Hạt xương nhân tạo, độ bền thường',
+    anh: bongoldGr1,
+    ungDung:
+      'Lấp ổ khuyết không đều, hình dạng phức tạp, ở vùng không hoặc ít chịu lực. Có thể trộn cùng xương tự thân hoặc tủy xương tự thân để tăng khối lượng ghép.',
+    dienGiai:
+      'Bệnh nhân nữ, 42 tuổi, đau và yếu nửa người không hoàn toàn do bệnh cột sống cổ kéo dài hơn 4 năm. Đốt sống cổ là các xương nhỏ xếp chồng lên nhau ở cổ, giữa mỗi hai đốt có một đĩa đệm. Khi đĩa đệm hoặc đốt sống thoái hóa chèn ép tủy sống lâu ngày, người bệnh có thể yếu dần tay chân. Bác sĩ mổ lấy bỏ phần đĩa đệm hỏng để giải phóng áp lực đè lên tủy sống, gọi là giải nén, sau đó lấp khoảng trống vừa tạo ra bằng vật liệu ghép để hai đốt sống dính liền thành một khối vững chắc, gọi là hàn xương liên thân đốt. Trên phim chụp sau mổ, khối ghép vẫn nằm đúng vị trí, không lún, không xô lệch, dấu hiệu quá trình liền xương đang diễn ra thuận lợi.',
+    anhLamSang: caGr1,
+    chuThichAnh:
+      'Trái: X-quang nghiêng cổ trước mổ. Phải: cùng bệnh nhân, 14 tuần sau mổ, khoảng trống giữa hai đốt sống đã được lấp bởi khối ghép và giữ cố định bằng nẹp titan. Nguồn: Wang Y, Yu X và cộng sự, J. Biomater. Tissue Eng. 2012;2:170 đến 176.',
+  },
+  {
+    id: 'gr-8',
+    slugs: [{ slug: 'bongold-gr-8', ma: 'Gr-8' }],
+    ten: 'Hạt xương nhân tạo, độ bền trung bình',
+    anh: bongoldHatLo,
+    ungDung: 'Cho ổ khuyết cần khả năng nâng đỡ nhất định trong lúc chờ xương liền, như gãy lún mâm chày, gãy gót, hoặc ổ cối khi thay lại khớp háng.',
+    dienGiai:
+      'Bệnh nhân nam, 29 tuổi, gãy nén đốt sống thắt lưng L1. Gãy nén đốt sống xảy ra khi có một lực mạnh ép dẹt đốt sống xuống, hình dung như một lon nước ngọt bị bóp bẹp một phía. Bác sĩ mổ giải áp, lấy bớt các mảnh xương chèn vào tủy sống hoặc dây thần kinh nếu có, rồi bắt vít titan xuyên qua cuống sống của các đốt liền kề để giữ cột sống thẳng trong lúc xương lành. Hạt xương nhân tạo độ bền trung bình được nhồi vào chính khoảng trống nơi đốt sống bị lún, vừa nâng đỡ ngay lập tức vừa làm giàn giáo cho xương thật mọc vào dần, giúp đốt sống không lún tiếp về sau.',
+    anhLamSang: caGr8,
+    chuThichAnh:
+      'Trái: CT cắt dọc cột sống trước mổ, thân đốt sống L1 bị ép lún hình chêm. Phải: X-quang trong lúc mổ, sau khi bắt vít qua cuống sống ba đốt liên tiếp để nắn thẳng cột sống. Nguồn: Khoa Cột sống, Bệnh viện Nanfang, Đại học Y Nam Phương.',
+  },
+  {
+    id: 're-1-re-2',
+    slugs: [
+      { slug: 'bongold-re-1', ma: 'Re-1' },
+      { slug: 'bongold-re-2', ma: 'Re-2' },
+    ],
+    ten: 'Khối xương nhân tạo',
+    anh: bongoldGr1,
+    ungDung:
+      'Cho ổ khuyết có thành rõ, cần nâng đỡ cấu trúc. Có thể cắt gọt bằng dao mổ để vừa khít hình dạng ổ khuyết.',
+    dienGiai:
+      'Bệnh nhân nữ, 26 tuổi, gãy vụn mâm chày phải. Mâm chày là phần đầu trên của xương ống chân, ngay dưới khớp gối, đỡ toàn bộ trọng lượng cơ thể truyền qua khớp gối. Khi va đập mạnh, mặt xương có thể vỡ vụn và lún xuống như vỏ trứng bị ấn lõm, để lại một khoảng rỗng bên trong xương. Bác sĩ nâng mặt khớp về đúng vị trí rồi lấp khoảng trống đó bằng khối xương nhân tạo, có thể cắt gọt vừa khít và giữ hình dạng tốt hơn hạt, không trôi khi rửa vết mổ. Trên phim 10 tháng sau mổ, đường gãy đã mờ đi, nghĩa là xương đã liền; rìa khối ghép trở nên rõ hơn vì cơ thể đang thay dần khối ghép bằng xương thật.',
+    anhLamSang: caRe1Re2,
+    chuThichAnh:
+      'Trái: X-quang gối trước mổ, mặt khớp mâm chày vỡ vụn, mất đường viền phẳng bình thường. Phải: cùng bệnh nhân, 10 tháng sau mổ, mặt khớp phẳng trở lại. Nguồn: Khoa Chấn thương chỉnh hình, Bệnh viện Jishuitan Bắc Kinh.',
+  },
+];
+
+const nhomB: SanPham[] = [
+  {
+    id: 'co-11-co-12',
+    slugs: [
+      { slug: 'bongold-co-11', ma: 'Co-11' },
+      { slug: 'bongold-co-12', ma: 'Co-12' },
+    ],
+    ten: 'Thanh lấp đường vít, đường đinh',
+    anh: bongoldCo1112,
+    ungDung: 'Lấp đường hầm đinh, vít còn lại trong xương sau khi tháo dụng cụ cố định, có bốn cỡ đường kính để phù hợp các loại vít thông dụng.',
+    dienGiai:
+      'Khi bác sĩ tháo bỏ nẹp vít cũ ra khỏi xương, thường 1 đến 2 năm sau khi xương đã liền hẳn, trên xương sẽ còn lại các lỗ nhỏ hình trụ, nơi từng có vít cắm vào, giống như các lỗ khoan còn sót lại trên tường sau khi tháo đinh vít. Những lỗ này là điểm yếu: xương dễ gãy lại ngay tại đó nếu vận động mạnh sớm, nhất là ở người trẻ. Thanh lấp lỗ vít được nhét trực tiếp vào các lỗ đó để xương liền lại nhanh hơn, thay vì chờ cơ thể tự lấp đầy trong nhiều tháng.',
+    ghiChuKhongCoAnh: 'Hồ sơ hãng chưa có ảnh case cụ thể cho mã này.',
+  },
+  {
+    id: 'gr-3',
+    slugs: [{ slug: 'bongold-gr-3', ma: 'Gr-3' }],
+    ten: 'Bột xương cải tiến xi măng PMMA',
+    anh: bongoldGr3,
+    ungDung: 'Trộn cùng xi măng xương PMMA trong tạo hình đốt sống (PVP/PKP), cho gãy xẹp đốt sống do loãng xương, do u hoặc do chấn thương.',
+    dienGiai:
+      'Khi đốt sống bị xẹp do loãng xương, bác sĩ có thể bơm xi măng lỏng (PMMA) vào để vá cứng lại, kỹ thuật gọi là tạo hình đốt sống. Nhưng xi măng thường cứng hơn xương xốp xung quanh rất nhiều lần, giống như trám một miếng bê tông vào giữa miếng bọt biển, chỗ tiếp giáp giữa cứng và mềm dễ gãy tiếp ở đốt sống bên cạnh. Bột xương nhân tạo trộn thêm vào xi măng để làm nó mềm đi một chút, gần với độ cứng của xương thật hơn, mà không làm giảm độ chắc, đồng thời giúp xương thật bám dính lên bề mặt xi măng. Đây là mã có bằng chứng bình duyệt mạnh nhất trong toàn danh mục, xem phân tích gộp 12 nghiên cứu ở phần Bằng chứng lâm sàng bên dưới.',
+    ghiChuKhongCoAnh:
+      'Hai ảnh case duy nhất trong hồ sơ hãng cho mã này thực ra chụp lại vấn đề của xi măng PMMA thường, không phải ảnh minh họa cho sản phẩm cải tiến đang bán, nên không dùng ở đây để tránh gây hiểu nhầm.',
+  },
+  {
+    id: 're-10',
+    slugs: [{ slug: 'bongold-re-10', ma: 'Re-10' }],
+    ten: 'Màng tái tạo xương có hướng dẫn (GBR)',
+    anh: bongoldRe10,
+    ungDung: 'Dùng độc lập như màng che phủ đường gãy, hoặc bọc ngoài để giữ vật liệu sau khi ghép hạt hay khối.',
+    dienGiai:
+      'Bệnh nhân nữ, 62 tuổi, gãy mắt cá ngoài trái do ngã. Mắt cá ngoài là đầu dưới của xương mác, một trong hai xương cẳng chân, rất dễ gãy khi trẹo hoặc lật cổ chân. Bác sĩ nắn lại xương, cố định bằng nẹp vít kim loại, rồi bọc quanh vùng xương gãy một tấm màng mỏng tự tiêu làm từ collagen khoáng hóa. Vì mô sợi mọc rất nhanh và luôn cạnh tranh chỗ với mô xương mọc chậm hơn, nếu không ngăn lại mô sợi sẽ chiếm chỗ trước, ổ gãy chỉ dính bằng một lớp sẹo lỏng lẻo thay vì xương thật. Màng giữ vùng đó sạch sẽ để tế bào xương có đủ thời gian mọc vào lấp đầy. Trên phim ở tuần 8 và 10, vùng quanh nẹp vít mờ dần đều, dấu hiệu xương đang liền tốt.',
+    anhLamSang: caRe10,
+    chuThichAnh:
+      'Trái: trong lúc mổ, cuộn màng trắng phía trên là màng GBR đang được đặt vào. Giữa: X-quang 8 tuần sau mổ. Phải: 10 tuần sau mổ, vùng quanh nẹp vít đã mờ dần. Nguồn: Dr. Nihar Ghate, Indiana Regional Medical Center, Hoa Kỳ, 2016.',
+  },
+  {
+    id: 're-9',
+    slugs: [{ slug: 'bongold-re-9', ma: 'Re-9' }],
+    ten: 'Miếng hàn xương cột sống',
+    anh: bongoldRe9,
+    ungDung: 'Dùng trong hàn xương cột sống, cắt xương chỉnh hình, hoặc trám đường gãy khi cố định trong. Có thể cắt nhỏ theo nhu cầu.',
+    dienGiai:
+      'Bệnh nhân nữ, 59 tuổi, đau khớp bàn ngón chân cái và cột trong bàn chân suốt 2 đến 3 năm. Khi khớp giữa các xương nhỏ ở lòng bàn chân thoái hóa, mỗi bước đi đều đau. Cách điều trị dứt điểm là hàn khớp: cố ý làm hai đầu xương dính liền vĩnh viễn để chúng không còn cọ xát vào nhau nữa, đổi lại mất một phần cử động ở khớp đó nhưng hết đau. Miếng xốp có cấu trúc như bọt biển được bác sĩ ngâm trong máu hoặc tủy xương lấy từ chính bệnh nhân trước khi nhét vào khe khớp, để nó hút và giữ các tế bào cùng yếu tố tăng trưởng của người bệnh, giúp khớp dính nhanh và chắc hơn. Trên phim 13 tuần, không còn khe sáng tại vị trí ghép, nghĩa là đã hàn hoàn toàn.',
+    anhLamSang: caRe9,
+    chuThichAnh: 'Trái: X-quang bàn chân trước mổ. Phải: 13 tuần sau mổ, không còn khe sáng giữa hai xương tại vị trí ghép. Nguồn: Dr. Nihar Ghate, Indiana Regional Medical Center, Hoa Kỳ, 2016.',
+  },
+  {
+    id: 'co-10',
+    slugs: [{ slug: 'bongold-co-10', ma: 'Co-10' }],
+    ten: 'Thanh tái tạo cho hoại tử chỏm xương đùi',
+    anh: bongoldCo10,
+    ungDung: 'Dùng kèm bộ dụng cụ chuyên biệt, cấy vào đường hầm sau khi khoan giảm áp, cho hoại tử vô mạch chỏm xương đùi giai đoạn sớm.',
+    dienGiai:
+      'Bệnh nhân nam, 48 tuổi, hoại tử vô mạch chỏm xương đùi hai bên. Chỏm xương đùi là phần đầu tròn trên cùng của xương đùi, khớp với xương chậu tạo thành khớp háng. Hoại tử vô mạch xảy ra khi mạch máu nuôi phần xương này bị tắc, khiến một vùng xương bên trong dần chết đi; giai đoạn đầu gần như không đau, nhưng nếu để lâu vùng xương chết sẽ yếu, xẹp lún, làm hỏng cả mặt khớp và buộc phải thay khớp háng nhân tạo. Ở giai đoạn sớm, bác sĩ khoan một đường hầm nhỏ xuyên vào vùng xương chết để giảm áp lực bên trong, giống khoan một lỗ thoát khí, sau đó luồn một thanh tái tạo đủ cứng để chống đỡ tạm thời vào đường hầm đó, giữ vững vùng chỏm trong lúc xương mới dần mọc vào thay thế phần hoại tử. Mục tiêu không phải chữa khỏi vĩnh viễn mà là trì hoãn thời điểm phải thay khớp, có ý nghĩa nhất khi làm ở giai đoạn sớm, trước khi chỏm xương sụp hẳn.',
+    anhLamSang: caCo10,
+    chuThichAnh:
+      'Trái: X-quang khung chậu trước mổ, cả hai chỏm xương đùi có vùng thưa bất thường, dấu hiệu hoại tử. Phải: sau mổ, hai vệt thẳng ở giữa mỗi chỏm xương đùi là hai thanh tái tạo vừa được cấy vào qua đường khoan giảm áp. Nguồn: Giáo sư Yang Shuhua, Bệnh viện Liên hợp Vũ Hán.',
+  },
+  {
+    id: 'co-8',
+    slugs: [{ slug: 'bongold-co-8', ma: 'Co-8' }],
+    ten: 'Nút bịt ống tủy xương đùi',
+    anh: bongoldCo8,
+    ungDung: 'Bịt lỗ mở đầu xa ống tủy xương đùi trong thay khớp gối toàn phần và thay khớp gối một phần.',
+    dienGiai:
+      'Khi thay khớp gối, bác sĩ dùng một thanh định hướng luồn vào bên trong ống tủy xương đùi để căn chỉnh chính xác góc cắt xương. Sau khi rút thanh này ra, sẽ để lại một lỗ hở thông vào khoang tủy xương, là đường có thể rỉ máu sau mổ và cho mỡ tủy xương lọt vào máu. Nút bịt ống tủy được nhét vào lấp lỗ đó ngay khi thay khớp, chắc như xương thật và tự tiêu dần khi xương đã liền, thay vì dùng tạm mảnh xương vụn cắt ra khi cưa xương hoặc xi măng như cách làm phổ biến hiện nay.',
+    ghiChuKhongCoAnh: 'Hồ sơ hãng chưa có ảnh case cụ thể cho mã này.',
+  },
+];
+
+const nhomC: SanPham = {
+  id: 'skuheal',
+  slugs: [{ slug: 'skuheal', ma: 'SkuHeal' }],
+  ten: 'Nút phục hồi khuyết sọ',
+  anh: skuhealImg,
+  ungDung: 'Lấp khuyết xương do lỗ khoan trong mở sọ, khuyết cửa sổ xương nhỏ sau phẫu thuật giải ép vi mạch, và các khuyết sọ diện tích nhỏ khác.',
+  dienGiai:
+    'Khi mổ mở sọ, ví dụ để lấy máu tụ, cắt u não, hay chỉ để đưa dụng cụ vào, bác sĩ luôn phải khoan hoặc cắt một phần xương sọ, để lại một lỗ cần lấp lại. Nút phục hồi khuyết sọ dùng để lấp những lỗ khoan nhỏ đó, đường kính khoảng 13 đến 33 mm, thay vì dùng nút titan kim loại, vốn nằm vĩnh viễn trong đầu và gây nhiễu ảnh khi chụp CT hoặc MRI sau này, hoặc để trống hoàn toàn. Vật liệu này sẽ dần tiêu đi và được thay bằng xương sọ thật, ưu thế đặc biệt có ý nghĩa ở trẻ em và người trẻ.',
+  ghiChuKhongCoAnh:
+    'Tài liệu giới thiệu riêng của SkuHeal không có ca bệnh cụ thể kèm ảnh X-quang như bên BONGOLD, chỉ có sơ đồ ứng dụng chung, nên bài viết không tự thêm ảnh minh họa.',
+};
+---
+
+<Base
+  title="Xương nhân tạo collagen khoáng hóa: công nghệ và bằng chứng lâm sàng | The Hangi Việt Nam"
+  description="Cơ chế công nghệ collagen khoáng hóa mô phỏng sinh học của Allgens Medical (BONGOLD, SkuHeal), cùng bằng chứng lâm sàng quốc tế và các dòng sản phẩm xương nhân tạo phân phối tại Việt Nam."
+  lang={lang}
+  path="/tin-tuc/xuong-nhan-tao-collagen-khoang-hoa"
+  ogImage={bongoldGr1}
+  ogImageAlt="Hạt xương nhân tạo BONGOLD"
+>
+  <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+    <BannerChuyenMon lang={lang} />
+
+    <nav class="mt-6 font-mono text-xs text-muc/50" aria-label="Breadcrumb">
+      <a href={p('/')} class="hover:text-duoc hover:underline">{t('chung.trang_chu')}</a>
+      <span aria-hidden="true"> / </span>
+      <a href={p('/tin-tuc')} class="hover:text-duoc hover:underline">Tin tức</a>
+      <span aria-hidden="true"> / </span>
+      <span class="text-muc/80">Xương nhân tạo collagen khoáng hóa</span>
+    </nav>
+
+    <header class="mt-6 border-b border-bacha pb-8">
+      <p class="inline-flex items-center rounded-full bg-bacha px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-duoc-dam">
+        Công nghệ vật liệu · Allgens Medical
+      </p>
+      <h1 class="mt-4 text-3xl font-bold tracking-tight text-muc sm:text-4xl md:text-[2.6rem]">Xương nhân tạo collagen khoáng hóa</h1>
+      <p class="mt-3 max-w-2xl text-base leading-relaxed text-muc/70">
+        Allgens Medical là nhà sản xuất Trung Quốc chuyên về vật liệu tái tạo xương, được The Hangi Việt Nam phân phối độc quyền dưới hai nhãn hiệu BONGOLD và
+        SkuHeal. Bài viết giải thích công nghệ đứng sau toàn bộ dòng sản phẩm, cùng bằng chứng lâm sàng quốc tế cho từng nhóm.
+      </p>
+
+      <dl class="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-bacha bg-bacha sm:grid-cols-4">
+        <div class="bg-white p-4">
+          <dt class="text-[11px] font-semibold uppercase tracking-wide text-muc/50">Nhà sản xuất</dt>
+          <dd class="mt-1 text-sm font-bold text-muc">Allgens Medical</dd>
+        </div>
+        <div class="bg-white p-4">
+          <dt class="text-[11px] font-semibold uppercase tracking-wide text-muc/50">ĐKLH BONGOLD</dt>
+          <dd class="mt-1 font-mono text-sm font-bold text-muc">2500502/ĐKLH</dd>
+        </div>
+        <div class="bg-white p-4">
+          <dt class="text-[11px] font-semibold uppercase tracking-wide text-muc/50">ĐKLH SkuHeal</dt>
+          <dd class="mt-1 font-mono text-sm font-bold text-muc">2502087/ĐKLH</dd>
+        </div>
+        <div class="bg-white p-4">
+          <dt class="text-[11px] font-semibold uppercase tracking-wide text-muc/50">Nhãn hiệu</dt>
+          <dd class="mt-1 text-sm font-bold text-muc">BONGOLD · SkuHeal</dd>
+        </div>
+      </dl>
+    </header>
+
+    <nav class="sticky top-[60px] z-30 -mx-4 overflow-x-auto border-b border-bacha bg-white/95 px-4 backdrop-blur sm:mx-0 sm:px-0" aria-label="Mục lục bài viết">
+      <ol class="flex gap-1 whitespace-nowrap py-2.5 text-sm font-semibold">
+        {
+          mucLuc.map((m) => (
+            <li>
+              <a href={m.href} class="block rounded-full px-3 py-1.5 text-muc/60 transition-colors hover:bg-bacha hover:text-duoc-dam">
+                {m.nhan}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+
+    <section id="mo-dau" class="scroll-mt-28 border-b border-bacha py-10">
+      <div class="rounded-2xl border-l-4 border-duoc bg-bacha/50 p-5">
+        <p class="font-mono text-[11px] font-bold uppercase tracking-wide text-duoc-dam">Câu định vị một dòng</p>
+        <p class="mt-2 text-sm leading-relaxed text-muc/80 text-justify">
+          Đây không phải hydroxyapatite (HA) hay β-TCP trộn cơ học với collagen. Tinh thể nano-hydroxyapatite được cho mọc có định hướng ngay trên sợi
+          collagen type I trong quá trình sản xuất, tái lập cấu trúc chất nền xương tự nhiên. Nhờ vậy vật liệu vừa làm giàn giáo cho xương mọc vào, vừa có
+          hoạt tính kích thích tế bào tạo xương, và tiêu đi theo đúng nhịp xương mới hình thành.
+        </p>
+      </div>
+
+      <p class="mt-6 text-sm leading-relaxed text-muc/80 text-justify">
+        Xương tự nhiên là composite của khoảng 35% collagen type I và 65% hydroxyapatite, hai thành phần sắp xếp theo một trật tự nhất định chứ không phải
+        trộn lẫn ngẫu nhiên. Nhiều vật liệu ghép xương trên thị trường trộn cơ học hai thành phần này lại với nhau, cho ra một hỗn hợp đúng thành phần nhưng
+        không đúng cấu trúc. Allgens Medical dùng một quy trình khác: để ion canxi và phosphat tự kết tinh thành nano-hydroxyapatite ngay trên các vị trí
+        liên kết đặc hiệu của sợi collagen, mô phỏng đúng quá trình khoáng hóa xảy ra trong cơ thể.
+      </p>
+
+      <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-bacha bg-bacha sm:grid-cols-4">
+        <div class="bg-white p-4">
+          <p class="font-mono text-xl font-bold text-duoc-dam">2011</p>
+          <p class="mt-1 text-xs leading-snug text-muc/60">
+            Năm BONGOLD được NMPA (Trung Quốc) cấp chứng nhận thiết bị y tế loại III, vật liệu collagen khoáng hóa đầu tiên trên thế giới được thương mại
+            hóa
+          </p>
+        </div>
+        <div class="bg-white p-4">
+          <p class="font-mono text-xl font-bold text-duoc-dam">2015</p>
+          <p class="mt-1 text-xs leading-snug text-muc/60">FDA Hoa Kỳ cấp 510(k) số K141725, dùng lâm sàng lần đầu tại Mỹ đầu năm 2016</p>
+        </div>
+        <div class="bg-white p-4">
+          <p class="font-mono text-xl font-bold text-duoc-dam">ISO 13485</p>
+          <p class="mt-1 text-xs leading-snug text-muc/60">Hệ thống quản lý chất lượng thiết bị y tế, cùng chứng nhận GMP</p>
+        </div>
+        <div class="bg-white p-4">
+          <p class="font-mono text-xl font-bold text-duoc-dam">6 quốc gia</p>
+          <p class="mt-1 text-xs leading-snug text-muc/60">Trung Quốc, Hoa Kỳ, Malaysia, Indonesia, Thái Lan và Việt Nam đã cấp phép lưu hành</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="cong-nghe" class="scroll-mt-28 border-b border-bacha py-10">
+      <h2 class="text-2xl font-bold tracking-tight text-muc">Công nghệ: khoáng hóa mô phỏng sinh học</h2>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70">Y văn thống nhất bốn tiêu chí cho một vật liệu ghép xương lý tưởng.</p>
+
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        {
+          tieuChiVatLieu.map((tc) => (
+            <div class="rounded-2xl border border-bacha bg-white p-5">
+              <h3 class="text-sm font-bold text-duoc-dam">{tc.ten}</h3>
+              <p class="mt-1.5 text-sm leading-relaxed text-muc/70">{tc.mota}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <h3 class="mt-10 text-lg font-bold text-muc">Quy trình khoáng hóa</h3>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+        Thay vì trộn, Allgens Medical để tinh thể tự mọc lên trên sợi collagen trong dung dịch, qua năm bước:
+      </p>
+      <ol class="mt-5 grid gap-3 sm:grid-cols-5">
+        {
+          quyTrinh.map((buoc, i) => (
+            <li class="rounded-2xl border border-bacha bg-white p-4">
+              <span class="font-mono text-xs font-bold text-ngoclam">Bước {i + 1}</span>
+              <p class="mt-1.5 text-[13px] leading-snug text-muc/75">{buoc}</p>
+            </li>
+          ))
+        }
+      </ol>
+
+      <h3 class="mt-10 text-lg font-bold text-muc">So với các vật liệu ghép xương khác</h3>
+      <div class="mt-5 overflow-x-auto rounded-2xl border border-bacha">
+        <table class="w-full min-w-[640px] border-collapse text-sm">
+          <thead class="bg-bacha text-left text-[11px] font-bold uppercase tracking-wide text-muc/60">
+            <tr>
+              <th class="px-4 py-3">Vật liệu</th>
+              <th class="px-4 py-3">Đặc điểm</th>
+              <th class="px-4 py-3">Hạn chế thường gặp</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-bacha">
+            {
+              soSanhVatLieu.map((vl) => (
+                <tr class={vl.noiBat ? 'bg-bacha/40' : ''}>
+                  <td class="px-4 py-3 align-top font-semibold text-muc">{vl.ten}</td>
+                  <td class="px-4 py-3 align-top text-muc/75">{vl.dacDiem}</td>
+                  <td class="px-4 py-3 align-top text-muc/75">{vl.hanChe}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="bang-chung" class="scroll-mt-28 border-b border-bacha py-10">
+      <h2 class="text-2xl font-bold tracking-tight text-muc">Bằng chứng lâm sàng</h2>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+        Bốn nghiên cứu dưới đây đã công bố quốc tế, qua bình duyệt, độc lập với nhà sản xuất. Ngoài ra còn nhiều loạt ca lâm sàng từ hồ sơ hãng, hữu ích để
+        minh họa nhưng có cấp độ bằng chứng thấp hơn nghiên cứu có đối chứng.
+      </p>
+
+      <div class="mt-6 space-y-4">
+        {
+          ngeincuu.map((n) => (
+            <article class={`rounded-2xl border p-5 ${n.noiBat ? 'border-duoc/30 bg-bacha/40' : 'border-bacha bg-white'}`}>
+              <div class="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 class="text-base font-bold text-muc">{n.ten}</h3>
+                <span class="font-mono text-[11px] font-semibold text-duoc-dam">{n.nguon}</span>
+              </div>
+              <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+                <strong class="text-muc/85">Thiết kế: </strong>
+                {n.thietKe}
+              </p>
+              <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+                <strong class="text-muc/85">Kết quả: </strong>
+                {n.ketQua}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+
+      <p class="mt-6 text-sm leading-relaxed text-muc/70 text-justify">
+        Bên cạnh bốn nghiên cứu trên, hồ sơ hãng còn ghi nhận nhiều loạt ca có đối chứng, như 91 ca hàn liên thân đốt sống cổ so BONGOLD với xương tự thân
+        mào chậu (Wang Y, Yu X, <em>J. Biomater. Tissue Eng.</em> 2012;2:170 đến 176), hay 48 ca gãy xương gót so BONGOLD với xương tự thân (Guo XD, Lian K
+        và cộng sự, <em>Biomatter</em> 3:4, e27250). Đây là các báo cáo ca từ nhà sản xuất, hữu ích để hiểu cách sử dụng trong thực hành, nhưng không thay
+        thế cho các nghiên cứu có đối chứng ở trên.
+      </p>
+    </section>
+
+    <section id="san-pham" class="scroll-mt-28 py-10">
+      <h2 class="text-2xl font-bold tracking-tight text-muc">Sản phẩm</h2>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+        Toàn bộ dòng BONGOLD dùng chung một mục đích sử dụng đã đăng ký tại Việt Nam, trích nguyên văn theo phụ lục Giấy chứng nhận đăng ký lưu hành số
+        2500502/ĐKLH-BYT-HTTB:
+      </p>
+      <div class="mt-4 rounded-2xl border border-bacha bg-white p-5">
+        <p class="text-sm italic leading-relaxed text-muc/70 text-justify">{mucDichBongold}</p>
+      </div>
+      <p class="mt-4 text-sm leading-relaxed text-muc/70 text-justify">
+        Các mã sản phẩm dưới đây khác nhau ở hình dạng và độ bền nén, phù hợp từng vị trí giải phẫu và tình huống mổ. Phần "ứng dụng phổ biến" của mỗi sản
+        phẩm mô tả theo tài liệu kỹ thuật quốc tế của hãng, không phải một chỉ định hẹp hơn đã đăng ký riêng cho từng mã.
+      </p>
+
+      <h3 class="mt-10 text-lg font-bold text-muc">Hạt và khối, nền tảng của danh mục</h3>
+      <div class="mt-4 space-y-4">
+        {nhomA.map((sp) => <SanPhamCard sp={sp} p={p} />)}
+      </div>
+
+      <h3 class="mt-10 text-lg font-bold text-muc">Giải pháp cho từng tình huống mổ cụ thể</h3>
+      <div class="mt-4 space-y-4">
+        {nhomB.map((sp) => <SanPhamCard sp={sp} p={p} />)}
+      </div>
+
+      <h3 class="mt-10 text-lg font-bold text-muc">Ngoại thần kinh, nhãn hiệu SkuHeal</h3>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+        SkuHeal có giấy chứng nhận đăng ký lưu hành riêng tại Việt Nam, số 2502087/ĐKLH-BYT-HTTB, mục đích sử dụng đã đăng ký:
+      </p>
+      <div class="mt-4 rounded-2xl border border-bacha bg-white p-5">
+        <p class="text-sm italic leading-relaxed text-muc/70 text-justify">{mucDichSkuheal}</p>
+      </div>
+      <div class="mt-4">
+        <SanPhamCard sp={nhomC} p={p} />
+      </div>
+    </section>
+
+    <footer class="border-t border-bacha pt-6">
+      <p class="text-[11px] leading-relaxed text-muc/45">
+        Thông tin công nghệ và bằng chứng lâm sàng do nhà sản xuất Allgens Medical Technology Co., Ltd. cung cấp và tổng hợp từ y văn quốc tế đã công bố.
+        Đây không phải công bố về công dụng điều trị của sản phẩm; công dụng chính thức của từng sản phẩm được ghi tại trang sản phẩm tương ứng, theo đúng
+        hồ sơ đã đăng ký tại Việt Nam.
+      </p>
+      <a href={p('/tin-tuc')} class="mt-4 inline-flex text-sm font-semibold text-duoc hover:text-duoc-dam hover:underline">&larr; Tin tức</a>
+    </footer>
+  </div>
+</Base>
