@@ -21,7 +21,7 @@ cong_nghe:
     mo_ta: "Comprises a robotic arm, a main console and an optional staff console, together with a guide bush, source calibrator and registration tool. Provides spatial positioning and orientation of the guide bush so the surgeon can place compatible surgical instruments accurately during pedicle screw placement."
 muc_dich_su_dung: "CUVIS-spine is intended for use as an aid for precisely locating anatomical structures and for the spatial positioning and orientation of a guide bush to be used by surgeons for navigating and/or guiding compatible surgical instruments in open or percutaneous pedicle screw placement, provided that the required markers and rigid patient anatomy can be identified on 2D or 3D image. (Per section 3.3 of Curexo's CSDT technical dossier; not yet content confirmed by a Vietnamese regulatory authority)"
 canh_bao:
-  - "This product's Vietnam circulation registration is still being updated. The manufacturer's technical dossier (CSDT), as of 01/2026, states there is NO pending market clearance request in Vietnam; the device currently holds certificates in Korea, the US, Indonesia, Taiwan and Malaysia only. Information on this page has not been confirmed by Vietnam's Ministry of Health."
+  - "Note: documentation is still being updated."
 thanh_phan: null
 hoat_chat: []
 quy_cach: "Mobile system comprising a robotic arm, main console, optional staff console, guide bush, source calibrator and registration tool. Model CS200."

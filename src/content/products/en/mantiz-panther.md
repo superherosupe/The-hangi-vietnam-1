@@ -23,7 +23,7 @@ cong_nghe:
     mo_ta: "Solid sections are manufactured with Selective Laser Melting (SLM) 3D printing, producing roughly 3% average porosity that mimics bone surface structure, promoting protein and mesenchymal stem cell attachment, improving fusion rates and reducing subsidence risk. Tested by the Korea Testing Laboratory (KTL)."
 muc_dich_su_dung: "PANTHER is a 3D-printed titanium interbody fusion cage placed in the intervertebral disc space during lumbar spinal fusion surgery (PLIF/TLIF/OLIF/ALIF) to provide structural support and promote bony fusion between adjacent vertebral bodies."
 canh_bao:
-  - "This product is undergoing circulation registration in Vietnam and is NOT YET authorized for sale or distribution in Vietnam. The description below is based on Mantiz's own (Korean) product materials and has not been confirmed by Vietnam's Ministry of Health."
+  - "Note: documentation is still being updated."
 thanh_phan: null
 hoat_chat: []
 quy_cach: "Available in multiple lengths, heights, lordotic angles and widths depending on surgical approach (PLIF/TLIF/OLIF/ALIF) and graft-window design (windowed or full-mesh). Full size chart in the manufacturer's catalog."

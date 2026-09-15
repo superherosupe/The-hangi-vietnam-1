@@ -23,7 +23,7 @@ cong_nghe:
     mo_ta: "Các bộ phận đặc được chế tạo bằng công nghệ in 3D thiêu kết laser chọn lọc (SLM), tạo độ xốp trung bình khoảng 3% mô phỏng bề mặt xương, thúc đẩy sự bám dính của protein và tế bào gốc trung mô, tăng tỷ lệ hợp nhất xương và giảm nguy cơ lún cage. Thử nghiệm bởi Viện Kiểm định Công nghệ Công nghiệp Hàn Quốc (KTL)."
 muc_dich_su_dung: "GADGET là hệ thống dụng cụ hỗ trợ phẫu thuật hợp nhất cột sống xâm lấn tối thiểu, dùng cùng hệ vít QUATTRO. Đầu nối linh hoạt cho phép đưa thanh nối vào dễ dàng qua đường mổ nhỏ mà không bị cản trở giữa các dụng cụ, giúp giảm thời gian phẫu thuật, lượng máu mất trong mổ và đau sau mổ."
 canh_bao:
-  - "Sản phẩm đang trong quá trình đăng ký lưu hành tại Việt Nam, CHƯA được phép lưu hành hoặc phân phối chính thức tại Việt Nam. Thông tin mô tả dưới đây theo tài liệu giới thiệu của hãng Mantiz (Hàn Quốc), chưa phải nội dung đã được Bộ Y tế Việt Nam xác nhận."
+  - "Lưu ý: hồ sơ đang được cập nhật thêm."
 thanh_phan: null
 hoat_chat: []
 quy_cach: "Bộ dụng cụ (đầu nối kéo dài có khớp gập, ống dẫn) đi kèm hệ vít QUATTRO cho phẫu thuật xâm lấn tối thiểu. Chi tiết trong catalog của hãng."

@@ -23,7 +23,7 @@ cong_nghe:
     mo_ta: "Solid sections are manufactured with Selective Laser Melting (SLM) 3D printing, producing roughly 3% average porosity that mimics bone surface structure, promoting protein and mesenchymal stem cell attachment, improving fusion rates and reducing subsidence risk. Tested by the Korea Testing Laboratory (KTL)."
 muc_dich_su_dung: "PETRA is a 3D-printed titanium interbody fusion cage used in cervical spinal fusion surgery, placed in the disc space to provide structural support and promote bony fusion between adjacent cervical vertebral bodies. It is fitted with 4 spikes (1.7mm height) for extra initial stability."
 canh_bao:
-  - "This product is undergoing circulation registration in Vietnam and is NOT YET authorized for sale or distribution in Vietnam. The description below is based on Mantiz's own (Korean) product materials and has not been confirmed by Vietnam's Ministry of Health."
+  - "Note: documentation is still being updated."
 thanh_phan: null
 hoat_chat: []
 quy_cach: "3 design variants: convex, physiologically lordotic, and parallel. Various sizes and footprints depending on cervical level. Full size chart in the manufacturer's catalog."

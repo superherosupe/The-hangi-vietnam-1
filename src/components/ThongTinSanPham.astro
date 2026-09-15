@@ -23,10 +23,11 @@ const khungThanhPhan = (() => {
 })();
 const khungCongNghe = (() => {
   const n = d.cong_nghe.length;
-  if (n === 1) return 'md:grid-cols-1 md:max-w-[33.333%] md:mx-auto';
   if (n === 2) return 'md:grid-cols-2 md:max-w-[66.667%] md:mx-auto';
   return 'md:grid-cols-3';
 })();
+// Chi 1 cong nghe: khong danh so, trinh bay ngang het chieu rong thay vi the doc hep.
+const congNgheMotMuc = d.cong_nghe.length === 1;
 ---
 
 {
@@ -64,20 +65,27 @@ const khungCongNghe = (() => {
             <h3 class="text-center text-sm font-bold uppercase tracking-[0.14em] text-duoc-dam">
               {t('sp.cong_nghe_loi')}
             </h3>
-            <div class={`mt-5 grid gap-4 ${khungCongNghe}`}>
-              {d.cong_nghe.map((cn, i) => (
-                <article class="flex flex-col rounded-2xl bg-gradient-to-br from-duoc-dam via-duoc to-ngoclam p-6 text-white shadow-[0_10px_30px_rgba(14,116,144,0.25)]">
-                  <span
-                    class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/15 font-mono text-[11px] font-medium text-white ring-1 ring-white/30"
-                    aria-hidden="true"
-                  >
-                    0{i + 1}
-                  </span>
-                  <h4 class="mt-3 text-base font-bold leading-snug">{cn.ten}</h4>
-                  <p class="mt-2 text-justify text-sm leading-relaxed text-white/85">{cn.mo_ta}</p>
-                </article>
-              ))}
-            </div>
+            {congNgheMotMuc ? (
+              <div class="mt-5 flex flex-col gap-3 rounded-2xl bg-gradient-to-br from-duoc-dam via-duoc to-ngoclam p-6 text-white shadow-[0_10px_30px_rgba(14,116,144,0.25)] sm:flex-row sm:items-start sm:gap-6 sm:p-7">
+                <h4 class="shrink-0 text-base font-bold leading-snug sm:w-56">{d.cong_nghe[0].ten}</h4>
+                <p class="text-justify text-sm leading-relaxed text-white/85">{d.cong_nghe[0].mo_ta}</p>
+              </div>
+            ) : (
+              <div class={`mt-5 grid gap-4 ${khungCongNghe}`}>
+                {d.cong_nghe.map((cn, i) => (
+                  <article class="flex flex-col rounded-2xl bg-gradient-to-br from-duoc-dam via-duoc to-ngoclam p-6 text-white shadow-[0_10px_30px_rgba(14,116,144,0.25)]">
+                    <span
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/15 font-mono text-[11px] font-medium text-white ring-1 ring-white/30"
+                      aria-hidden="true"
+                    >
+                      0{i + 1}
+                    </span>
+                    <h4 class="mt-3 text-base font-bold leading-snug">{cn.ten}</h4>
+                    <p class="mt-2 text-justify text-sm leading-relaxed text-white/85">{cn.mo_ta}</p>
+                  </article>
+                ))}
+              </div>
+            )}
           </div>
         )}
 

@@ -23,7 +23,7 @@ cong_nghe:
     mo_ta: "Các bộ phận đặc được chế tạo bằng công nghệ in 3D thiêu kết laser chọn lọc (SLM), tạo độ xốp trung bình khoảng 3% mô phỏng bề mặt xương, thúc đẩy sự bám dính của protein và tế bào gốc trung mô, tăng tỷ lệ hợp nhất xương và giảm nguy cơ lún cage. Thử nghiệm bởi Viện Kiểm định Công nghệ Công nghiệp Hàn Quốc (KTL)."
 muc_dich_su_dung: "PETRA là lồng liên thân đốt (cage) in 3D bằng titan dùng cho phẫu thuật hợp nhất cột sống cổ, đặt vào khoang liên thân đốt để nâng đỡ cấu trúc và thúc đẩy hợp nhất xương giữa hai thân đốt sống cổ liền kề. Có 4 gai bám (cao 1.7mm) tăng độ ổn định ban đầu ngay sau khi đặt."
 canh_bao:
-  - "Sản phẩm đang trong quá trình đăng ký lưu hành tại Việt Nam, CHƯA được phép lưu hành hoặc phân phối chính thức tại Việt Nam. Thông tin mô tả dưới đây theo tài liệu giới thiệu của hãng Mantiz (Hàn Quốc), chưa phải nội dung đã được Bộ Y tế Việt Nam xác nhận."
+  - "Lưu ý: hồ sơ đang được cập nhật thêm."
 thanh_phan: null
 hoat_chat: []
 quy_cach: "3 dạng thiết kế: mặt lồi, có độ ưỡn sinh lý, và song song. Nhiều kích cỡ và diện tích tiếp xúc khác nhau tùy vị trí đốt sống cổ. Chi tiết kích thước trong catalog của hãng."

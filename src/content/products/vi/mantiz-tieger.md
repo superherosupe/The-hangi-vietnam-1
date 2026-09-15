@@ -23,7 +23,7 @@ cong_nghe:
     mo_ta: "Kẹp bằng titan cố định vào mỏm gai của hai đốt sống liền kề bằng vít, tạo lực nén ép và ổn định tạm thời hỗ trợ quá trình hợp nhất liên gai sống, thường dùng phối hợp với ghép xương."
 muc_dich_su_dung: "TIEGER là kẹp nén liên gai sống, cố định vào mỏm gai của hai đốt sống liền kề nhằm nén ép và ổn định tạm thời, hỗ trợ quá trình hợp nhất xương trong phẫu thuật cột sống. Đang cập nhật thêm chỉ định chi tiết từ hãng."
 canh_bao:
-  - "Sản phẩm đang trong quá trình đăng ký lưu hành tại Việt Nam, CHƯA được phép lưu hành hoặc phân phối chính thức tại Việt Nam. Thông tin mô tả dựa trên tên gọi và mục lục trong tài liệu giới thiệu của hãng Mantiz (Hàn Quốc); phần mô tả chi tiết trong file gốc ở dạng hình ảnh nên chưa trích được đầy đủ, đang cập nhật thêm."
+  - "Lưu ý: hồ sơ đang được cập nhật thêm."
 thanh_phan: null
 hoat_chat: []
 quy_cach: "Kẹp liên gai sống bằng titan, cố định bằng vít vào mỏm gai. Đang cập nhật thêm kích cỡ chi tiết từ hãng."

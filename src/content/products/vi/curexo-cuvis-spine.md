@@ -21,7 +21,7 @@ cong_nghe:
     mo_ta: "Gồm cánh tay robot, bàn điều khiển chính và bàn điều khiển phụ (tùy chọn), kèm Guide bush, Source Calibrator, Registration Tool. Hỗ trợ định vị không gian và định hướng ống dẫn (guide bush) để phẫu thuật viên đưa dụng cụ phẫu thuật tương thích vào đúng vị trí khi đặt vít cuống sống."
 muc_dich_su_dung: "CUVIS-spine được dùng như một công cụ hỗ trợ xác định chính xác vị trí cấu trúc giải phẫu, định vị và định hướng không gian cho ống dẫn (guide bush) để phẫu thuật viên điều hướng và/hoặc dẫn đường dụng cụ phẫu thuật tương thích trong đặt vít cuống sống qua đường mổ hở hoặc qua da, với điều kiện các điểm đánh dấu cần thiết và cấu trúc giải phẫu cố định của bệnh nhân có thể xác định được trên hình ảnh 2D hoặc 3D. (Theo mục 3.3 hồ sơ mô tả kỹ thuật CSDT của Curexo, chưa phải nội dung đã được cơ quan quản lý Việt Nam xác nhận)"
 canh_bao:
-  - "Sản phẩm đang cập nhật hồ sơ đăng ký lưu hành tại Việt Nam. Hồ sơ kỹ thuật (CSDT) do hãng cung cấp, tính đến 01/2026 ghi nhận CHƯA có yêu cầu cấp phép nào tại Việt Nam đang chờ xử lý; sản phẩm mới có chứng nhận tại Hàn Quốc, Mỹ, Indonesia, Đài Loan và Malaysia. Thông tin trên trang này chưa phải nội dung đã được Bộ Y tế Việt Nam xác nhận."
+  - "Lưu ý: hồ sơ đang được cập nhật thêm."
 thanh_phan: null
 hoat_chat: []
 quy_cach: "Hệ thống di động gồm cánh tay robot, bàn điều khiển chính, bàn điều khiển phụ (tùy chọn), Guide bush, Source Calibrator, Registration Tool. Model CS200."

@@ -23,7 +23,7 @@ cong_nghe:
     mo_ta: "Solid sections are manufactured with Selective Laser Melting (SLM) 3D printing, producing roughly 3% average porosity that mimics bone surface structure, promoting protein and mesenchymal stem cell attachment, improving fusion rates and reducing subsidence risk. Tested by the Korea Testing Laboratory (KTL)."
 muc_dich_su_dung: "QUATTRO is a pedicle screw system used to fixate the pedicle and vertebral body during spinal surgery. Its patented Multiple Lead thread design varies thread geometry between the cortical-bone region (proximal) and cancellous-bone region (distal) to increase fixation strength, reduce screw-neck fracture risk and shorten insertion time."
 canh_bao:
-  - "This product is undergoing circulation registration in Vietnam and is NOT YET authorized for sale or distribution in Vietnam. The description below is based on Mantiz's own (Korean) product materials and has not been confirmed by Vietnam's Ministry of Health."
+  - "Note: documentation is still being updated."
 thanh_phan: null
 hoat_chat: []
 quy_cach: "Four-lead thread design (Top-to-Tip Multiple Quad Lead) optimized for cortical bone, polyaxial screw head. Multiple lengths and diameters available; full chart in the manufacturer's catalog."

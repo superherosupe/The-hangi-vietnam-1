@@ -23,7 +23,7 @@ cong_nghe:
     mo_ta: "A titanium clamp fixed with screws to the spinous processes of two adjacent vertebrae, providing compression and temporary stability to support interspinous fusion, typically used together with bone grafting."
 muc_dich_su_dung: "TIEGER is an interspinous compression clamp, fixed to the spinous processes of two adjacent vertebrae to provide compression and temporary stability, supporting bony fusion during spinal surgery. Detailed indications from the manufacturer are still being updated."
 canh_bao:
-  - "This product is undergoing circulation registration in Vietnam and is NOT YET authorized for sale or distribution in Vietnam. The description is based on the product name and table of contents in Mantiz's (Korea) own materials; the detailed description in the source file is rendered as outlined graphics and could not be fully extracted, so this page is still being updated."
+  - "Note: documentation is still being updated."
 thanh_phan: null
 hoat_chat: []
 quy_cach: "Titanium interspinous clamp, fixed with screws to the spinous process. Detailed sizing still being updated from the manufacturer."

@@ -23,7 +23,7 @@ cong_nghe:
     mo_ta: "Các bộ phận đặc được chế tạo bằng công nghệ in 3D thiêu kết laser chọn lọc (SLM), tạo độ xốp trung bình khoảng 3% mô phỏng bề mặt xương, thúc đẩy sự bám dính của protein và tế bào gốc trung mô, tăng tỷ lệ hợp nhất xương và giảm nguy cơ lún cage. Thử nghiệm bởi Viện Kiểm định Công nghệ Công nghiệp Hàn Quốc (KTL)."
 muc_dich_su_dung: "QUATTRO là hệ vít cuống sống dùng để cố định cuống sống và thân đốt sống trong phẫu thuật cột sống. Thiết kế ren nhiều đường (Multiple Lead) được cấp bằng sáng chế, phân bố ren khác nhau cho vùng xương vỏ (đầu gần) và xương xốp (đầu xa) nhằm tăng lực cố định, giảm nguy cơ gãy cổ vít và rút ngắn thời gian cấy vít."
 canh_bao:
-  - "Sản phẩm đang trong quá trình đăng ký lưu hành tại Việt Nam, CHƯA được phép lưu hành hoặc phân phối chính thức tại Việt Nam. Thông tin mô tả dưới đây theo tài liệu giới thiệu của hãng Mantiz (Hàn Quốc), chưa phải nội dung đã được Bộ Y tế Việt Nam xác nhận."
+  - "Lưu ý: hồ sơ đang được cập nhật thêm."
 thanh_phan: null
 hoat_chat: []
 quy_cach: "Thiết kế ren bốn đường (Top-to-Tip Multiple Quad Lead) tối ưu cho vùng xương vỏ, đầu vít dạng đa trục. Nhiều chiều dài và đường kính khác nhau, chi tiết trong catalog của hãng."

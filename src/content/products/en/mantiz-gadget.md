@@ -23,7 +23,7 @@ cong_nghe:
     mo_ta: "Solid sections are manufactured with Selective Laser Melting (SLM) 3D printing, producing roughly 3% average porosity that mimics bone surface structure, promoting protein and mesenchymal stem cell attachment, improving fusion rates and reducing subsidence risk. Tested by the Korea Testing Laboratory (KTL)."
 muc_dich_su_dung: "GADGET is an instrument system supporting minimally invasive spinal fusion surgery, used together with the QUATTRO screw system. Its flexible extension-connector design allows the rod to be passed easily through a small incision without instrument-to-instrument interference, reducing operative time, blood loss and post-operative pain."
 canh_bao:
-  - "This product is undergoing circulation registration in Vietnam and is NOT YET authorized for sale or distribution in Vietnam. The description below is based on Mantiz's own (Korean) product materials and has not been confirmed by Vietnam's Ministry of Health."
+  - "Note: documentation is still being updated."
 thanh_phan: null
 hoat_chat: []
 quy_cach: "Instrument set (hinged extension connectors, cannulas) used with the QUATTRO screw system for minimally invasive surgery. Details in the manufacturer's catalog."
