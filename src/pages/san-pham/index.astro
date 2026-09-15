@@ -28,5 +28,6 @@ const sanPham = (await getCollection('products', (sp) => sp.id.startsWith('vi/')
     <div id="luoi-sp" class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {sanPham.map((sp, i) => <ProductCard sp={sp} lang={lang} eager={i < 3} />)}
     </div>
+    <nav id="phan-trang" class="mt-10 flex flex-wrap items-center justify-center gap-2" aria-label="Phân trang"></nav>
   </div>
 </Base>

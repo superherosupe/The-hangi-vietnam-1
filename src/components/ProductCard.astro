@@ -14,7 +14,7 @@ const slug = sp.id.split('/').pop()!;
 const href = localePath(lang, `/san-pham/${slug}`);
 ---
 
-<!-- Card san pham: anh, ten, thuong hieu, badge phap ly. KHONG hien cong dung (Muc 6.2) -->
+<!-- Card san pham: chi anh + ten + thuong hieu. KHONG hien cong dung, quy cach hay so cong bo (Muc 6.2) -->
 <article
   class="group relative flex flex-col overflow-hidden rounded-2xl border border-bacha/80 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-duoc/30 hover:shadow-[0_12px_40px_rgba(14,116,144,0.13)]"
   data-nhom={sp.data.nhom}
@@ -22,6 +22,19 @@ const href = localePath(lang, `/san-pham/${slug}`);
   data-search={`${sp.data.ten} ${sp.data.ma_san_pham}`.toLowerCase()}
 >
   <div class="relative aspect-square overflow-hidden bg-gradient-to-br from-bacha/50 to-white p-5">
+    {
+      sp.data.dang_khuyen_mai && (
+        <span
+          class="absolute right-3 top-3 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full bg-hophach text-white shadow-md"
+          title={t('danhmuc.dang_khuyen_mai')}
+          aria-label={t('danhmuc.dang_khuyen_mai')}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="currentColor" />
+          </svg>
+        </span>
+      )
+    }
     <Image
       src={sp.data.anh}
       alt={sp.data.anh_alt}
@@ -38,10 +51,5 @@ const href = localePath(lang, `/san-pham/${slug}`);
         {sp.data.ten}
       </a>
     </h3>
-    <p class="mb-4 mt-1.5 text-[13px] leading-relaxed text-muc/55">{sp.data.quy_cach}</p>
-    <div class="mt-auto border-t border-bacha/70 pt-3">
-      <p class="text-[11px] text-muc/40">{t('danhmuc.so_cong_bo')}</p>
-      <p class="mt-0.5 font-mono text-[11px] text-muc/70">{sp.data.so_luu_hanh_hoac_cong_bo}</p>
-    </div>
   </div>
 </article>

@@ -146,7 +146,9 @@ const hangLoc: { nhan: string; param: string; pills: { nhan: string; giaTri: str
 </style>
 
 <script>
-  // Loc phia client ~1KB: dong bo URL <-> trang thai pill <-> grid. Khong reload trang.
+  // Loc + phan trang phia client: dong bo URL <-> trang thai pill <-> grid. Khong reload trang.
+  // Toan bo san pham van nam trong DOM (khong phan trang kieu SSG) de tim kiem/loc luon quet dung
+  // toan bo danh muc; phan trang chi la lop hien/an tren tap ket qua da loc.
   const luoi = document.getElementById('luoi-sp');
   const the = luoi ? ([...luoi.querySelectorAll('[data-nhom]')] as HTMLElement[]) : [];
   const oHangTomTat = document.getElementById('hang-tom-tat');
@@ -155,23 +157,59 @@ const hangLoc: { nhan: string; param: string; pills: { nhan: string; giaTri: str
   const nutXoa = document.getElementById('xoa-loc');
   const nutXoaTrong = document.getElementById('xoa-loc-trong');
   const oTim = document.getElementById('tim-sp') as HTMLInputElement | null;
+  const oPhanTrang = document.getElementById('phan-trang');
   const PARAMS = ['nhom', 'thuong-hieu'] as const;
+  const TRANG_KICH_THUOC = 12;
+
+  let ketQuaHienTai: HTMLElement[] = the;
+  let trangHienTai = 1;
+
+  function locKetQua(): HTMLElement[] {
+    const u = new URLSearchParams(location.search);
+    const q = (u.get('q') ?? '').toLowerCase();
+    return the.filter(
+      (c) =>
+        PARAMS.every((p) => {
+          const v = u.get(p);
+          return !v || c.getAttribute(`data-${p}`) === v;
+        }) && (!q || (c.dataset.search ?? '').includes(q))
+    );
+  }
+
+  function veLuoiVaTrang() {
+    const tongTrang = Math.max(1, Math.ceil(ketQuaHienTai.length / TRANG_KICH_THUOC));
+    if (trangHienTai > tongTrang) trangHienTai = tongTrang;
+    const batDau = (trangHienTai - 1) * TRANG_KICH_THUOC;
+    const trangNay = new Set(ketQuaHienTai.slice(batDau, batDau + TRANG_KICH_THUOC));
+    for (const c of the) c.classList.toggle('hidden', !trangNay.has(c));
+
+    if (oPhanTrang) {
+      oPhanTrang.innerHTML = '';
+      if (tongTrang > 1) {
+        for (let i = 1; i <= tongTrang; i++) {
+          const nut = document.createElement('button');
+          nut.type = 'button';
+          nut.textContent = String(i);
+          nut.dataset.trang = String(i);
+          nut.setAttribute('aria-current', i === trangHienTai ? 'page' : 'false');
+          nut.className =
+            'h-9 w-9 rounded-full border text-sm font-semibold transition-colors ' +
+            (i === trangHienTai
+              ? 'border-duoc bg-duoc text-white'
+              : 'border-bacha text-muc hover:border-duoc/40 hover:bg-bacha');
+          oPhanTrang.appendChild(nut);
+        }
+      }
+    }
+  }
 
   function apDung() {
     const u = new URLSearchParams(location.search);
     const q = (u.get('q') ?? '').toLowerCase();
     if (oTim && oTim.value.toLowerCase() !== q) oTim.value = q;
-    let dem = 0;
-    for (const c of the) {
-      const hien =
-        PARAMS.every((p) => {
-          const v = u.get(p);
-          return !v || c.getAttribute(`data-${p}`) === v;
-        }) &&
-        (!q || (c.dataset.search ?? '').includes(q));
-      c.classList.toggle('hidden', !hien);
-      if (hien) dem++;
-    }
+    ketQuaHienTai = locKetQua();
+    trangHienTai = 1;
+    const dem = ketQuaHienTai.length;
     if (oDem) oDem.textContent = String(dem);
     const dangLoc = q || PARAMS.some((p) => u.get(p));
     // Chi mot trong hai khoi duoc hien: hang tom tat (co ket qua) HOAC khoi rong (0 ket qua) - tranh lap nut Xoa bo loc
@@ -182,6 +220,7 @@ const hangLoc: { nhan: string; param: string; pills: { nhan: string; giaTri: str
     for (const pill of document.querySelectorAll<HTMLElement>('[data-loc-param]')) {
       pill.setAttribute('aria-pressed', String(u.get(pill.dataset.locParam!) === pill.dataset.locValue));
     }
+    veLuoiVaTrang();
   }
 
   function chuyen(url: string) {
@@ -190,6 +229,13 @@ const hangLoc: { nhan: string; param: string; pills: { nhan: string; giaTri: str
   }
 
   document.addEventListener('click', (e) => {
+    const nutTrang = (e.target as HTMLElement).closest<HTMLElement>('[data-trang]');
+    if (nutTrang) {
+      trangHienTai = Number(nutTrang.dataset.trang);
+      veLuoiVaTrang();
+      luoi?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
     const muc = (e.target as HTMLElement).closest<HTMLElement>('[data-loc-param]');
     if (muc) {
       e.preventDefault();

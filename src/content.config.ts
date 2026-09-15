@@ -74,6 +74,7 @@ const products = defineCollection({
 
         // Hien thi & SEO
         thu_tu: z.number().default(99),
+        dang_khuyen_mai: z.boolean().default(false),
         meta_title: z.string().nullable(),
         meta_description: batBuoc('meta_description (viet tay, khong cat tu bai)'),
         lastUpdated: z

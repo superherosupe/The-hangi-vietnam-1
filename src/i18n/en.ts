@@ -36,6 +36,8 @@ const en: Record<keyof typeof vi, string> = {
   'danhmuc.sap_ra_mat': 'Coming soon',
   'danhmuc.sap_ra_mat_mota': 'Upcoming product lines are undergoing registration in Vietnam.',
   'danhmuc.so_cong_bo': 'Registration no.',
+  'danhmuc.dang_khuyen_mai': 'Current promotion',
+  'danhmuc.xem_them': 'Show more',
 
   'visao.tieude': 'Why The Hangi',
   'visao.1.tieude': 'Transparent registration',

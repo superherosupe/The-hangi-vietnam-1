@@ -34,6 +34,8 @@ export default {
   'danhmuc.sap_ra_mat': 'Sắp ra mắt',
   'danhmuc.sap_ra_mat_mota': 'Các dòng sản phẩm tiếp theo đang trong quá trình đăng ký lưu hành tại Việt Nam.',
   'danhmuc.so_cong_bo': 'Số công bố',
+  'danhmuc.dang_khuyen_mai': 'Đang có ưu đãi',
+  'danhmuc.xem_them': 'Xem thêm',
 
   'visao.tieude': 'Vì sao chọn The Hangi',
   'visao.1.tieude': 'Công bố rõ ràng',
