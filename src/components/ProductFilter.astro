@@ -20,7 +20,6 @@ function dem<T extends string>(layGiaTri: (sp: CollectionEntry<'products'>) => T
 }
 
 const demNhom = dem((sp) => sp.data.nhom);
-const demPhanLoai = dem((sp) => sp.data.phan_loai_phap_ly);
 const demThuongHieu = dem((sp) => sp.data.thuong_hieu);
 
 const hangLoc: { nhan: string; param: string; pills: { nhan: string; giaTri: string; soLuong: number }[] }[] = [
@@ -29,15 +28,6 @@ const hangLoc: { nhan: string; param: string; pills: { nhan: string; giaTri: str
     param: 'nhom',
     pills: [...demNhom].map(([giaTri, soLuong]) => ({
       nhan: t(`nhom.${giaTri}` as Parameters<typeof t>[0]),
-      giaTri,
-      soLuong,
-    })),
-  },
-  {
-    nhan: t('loc.phan_loai'),
-    param: 'phan-loai',
-    pills: [...demPhanLoai].map(([giaTri, soLuong]) => ({
-      nhan: t(`badge.${giaTri}` as Parameters<typeof t>[0]),
       giaTri,
       soLuong,
     })),
@@ -165,7 +155,7 @@ const hangLoc: { nhan: string; param: string; pills: { nhan: string; giaTri: str
   const nutXoa = document.getElementById('xoa-loc');
   const nutXoaTrong = document.getElementById('xoa-loc-trong');
   const oTim = document.getElementById('tim-sp') as HTMLInputElement | null;
-  const PARAMS = ['nhom', 'phan-loai', 'thuong-hieu'] as const;
+  const PARAMS = ['nhom', 'thuong-hieu'] as const;
 
   function apDung() {
     const u = new URLSearchParams(location.search);

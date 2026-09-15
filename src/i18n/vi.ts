@@ -90,7 +90,6 @@ export default {
   'loc.tim': 'Tìm theo tên hoặc mã sản phẩm...',
   'loc.tim_nhan': 'Tìm kiếm sản phẩm',
   'loc.nhom': 'Nhóm sản phẩm',
-  'loc.phan_loai': 'Phân loại',
   'loc.thuong_hieu': 'Thương hiệu',
   'loc.xoa': 'Xóa bộ lọc',
   'loc.tim_thay': 'sản phẩm được tìm thấy',

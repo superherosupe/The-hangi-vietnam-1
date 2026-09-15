@@ -91,7 +91,6 @@ const en: Record<keyof typeof vi, string> = {
   'loc.tim': 'Search by name or product code...',
   'loc.tim_nhan': 'Search products',
   'loc.nhom': 'Product group',
-  'loc.phan_loai': 'Classification',
   'loc.thuong_hieu': 'Brand',
   'loc.xoa': 'Clear filters',
   'loc.tim_thay': 'products found',
