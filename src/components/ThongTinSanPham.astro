@@ -66,8 +66,8 @@ const congNgheMotMuc = d.cong_nghe.length === 1;
               {t('sp.cong_nghe_loi')}
             </h3>
             {congNgheMotMuc ? (
-              <div class="mt-5 flex flex-col gap-3 rounded-2xl bg-gradient-to-br from-duoc-dam via-duoc to-ngoclam p-6 text-white shadow-[0_10px_30px_rgba(14,116,144,0.25)] sm:flex-row sm:items-start sm:gap-6 sm:p-7">
-                <h4 class="shrink-0 text-base font-bold leading-snug sm:w-56">{d.cong_nghe[0].ten}</h4>
+              <div class="mt-5 flex flex-col gap-3 rounded-2xl bg-gradient-to-br from-duoc-dam via-duoc to-ngoclam p-6 text-white shadow-[0_10px_30px_rgba(14,116,144,0.25)] sm:flex-row sm:items-center sm:gap-6 sm:p-7">
+                <h4 class="shrink-0 text-center text-base font-bold leading-snug sm:w-64">{d.cong_nghe[0].ten}</h4>
                 <p class="text-justify text-sm leading-relaxed text-white/85">{d.cong_nghe[0].mo_ta}</p>
               </div>
             ) : (
