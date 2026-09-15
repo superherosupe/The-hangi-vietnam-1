@@ -1,0 +1,324 @@
+---
+import Base from '../../layouts/Base.astro';
+import BannerChuyenMon from '../../components/BannerChuyenMon.astro';
+import { Image } from 'astro:assets';
+import { useT, localePath } from '../../i18n';
+import heThongBaKhoi from '../../assets/cuvis-spine/he-thong-ba-khoi.jpg';
+import soDoPhongMo from '../../assets/cuvis-spine/so-do-phong-mo.jpg';
+import coDinhMarker from '../../assets/cuvis-spine/co-dinh-marker.jpg';
+import buocScan from '../../assets/cuvis-spine/buoc-scan.jpg';
+import buocPlanning from '../../assets/cuvis-spine/buoc-planning.jpg';
+import buocSetupRobot from '../../assets/cuvis-spine/buoc-setup-robot.jpg';
+import buocBatVit from '../../assets/cuvis-spine/buoc-bat-vit.jpg';
+import buocNavigation from '../../assets/cuvis-spine/buoc-navigation.jpg';
+
+const lang = 'vi' as const;
+const t = useT(lang);
+const p = (href: string) => localePath(lang, href);
+
+const mucLuc = [
+  { href: '#cong-nghe', nhan: 'Công nghệ' },
+  { href: '#quy-trinh', nhan: 'Quy trình 5 bước' },
+  { href: '#bang-chung', nhan: 'Bằng chứng lâm sàng' },
+  { href: '#phap-ly', nhan: 'Tình trạng pháp lý' },
+];
+
+const quyTrinh = [
+  {
+    so: 1,
+    tieuDe: 'Gắn thanh đánh dấu vào bệnh nhân',
+    moTa:
+      'Trước khi mổ, bác sĩ cố định một thanh đánh dấu nhỏ mang các quả cầu phản quang vào xương gần vùng mổ, qua da hoặc qua đường mổ nhỏ. Đây là cách duy nhất để hệ thống biết đốt sống của bệnh nhân đang ở đâu trong phòng mổ suốt ca phẫu thuật.',
+    anh: coDinhMarker,
+    anhAlt: 'Cố định thanh đánh dấu bệnh nhân dạng kim vào xương',
+  },
+  {
+    so: 2,
+    tieuDe: 'Chụp ảnh và ghép tọa độ',
+    moTa:
+      'Máy chụp ảnh trong phòng mổ (C-arm 2D hoặc máy 3D) chụp lại đốt sống cần mổ. Phần mềm tự động ghép ảnh vừa chụp với vị trí thật của bệnh nhân, bước này gọi là "đăng ký" (registration), quan trọng nhất trong toàn bộ quy trình vì mọi bước sau đều dựa vào độ chính xác của bước này.',
+    anh: buocScan,
+    anhAlt: 'Màn hình phần mềm hướng dẫn từng bước chụp ảnh trong lúc mổ',
+  },
+  {
+    so: 3,
+    tieuDe: 'Lập kế hoạch đường vít',
+    moTa:
+      'Trên ảnh vừa chụp, bác sĩ tự chọn vị trí, góc, đường kính và chiều dài vít phù hợp cho từng đốt sống, xem trước kết quả trên nhiều góc nhìn CT khác nhau trước khi xác nhận. Toàn bộ quyết định lâm sàng vẫn do bác sĩ đưa ra, phần mềm chỉ hỗ trợ hiển thị và tính toán.',
+    anh: buocPlanning,
+    anhAlt: 'Màn hình phần mềm lập kế hoạch đường vít trên ảnh CT',
+  },
+  {
+    so: 4,
+    tieuDe: 'Robot di chuyển đến đúng vị trí',
+    moTa:
+      'Sau khi bác sĩ xác nhận kế hoạch, cánh tay robot mới bắt đầu tự di chuyển, đưa đầu tác động cuối đến đúng vị trí và góc đã lập, rồi khóa cứng tại đó. Đây là phần "tự động" duy nhất của hệ thống: robot chỉ giữ hướng, không tự khoan hay tự bắt vít.',
+    anh: buocSetupRobot,
+    anhAlt: 'Màn hình xác nhận cánh tay robot đã vào đúng vị trí',
+  },
+  {
+    so: 5,
+    tieuDe: 'Bác sĩ tự tay đưa dụng cụ qua khung dẫn hướng',
+    moTa:
+      'Bác sĩ đưa khoan, ta rô rồi đến vít qua một khung dẫn hướng nhỏ đã được gắn cố định vào đầu cánh tay robot, giống như ngắm qua một "ống ngắm" cơ khí luôn chỉ đúng hướng đã lập kế hoạch. Toàn bộ thao tác khoan và bắt vít vẫn do bàn tay bác sĩ thực hiện từ đầu đến cuối.',
+    anh: buocBatVit,
+    anhAlt: 'Đưa tuốc nơ vít qua khung dẫn hướng để bắt vít vào xương',
+  },
+];
+---
+
+<Base
+  title="CUVIS-spine: robot dẫn đường đặt vít cuống sống | The Hangi Việt Nam"
+  description="CUVIS-spine của Curexo (Hàn Quốc) là robot dẫn đường hỗ trợ đặt vít cuống sống, bác sĩ vẫn tự tay thao tác dụng cụ. Sản phẩm hiện chưa có giấy đăng ký lưu hành tại Việt Nam."
+  lang={lang}
+  path="/tin-tuc/cuvis-spine-robot-dan-duong-cot-song"
+  ogImage={heThongBaKhoi}
+  ogImageAlt="Hệ thống CUVIS-spine gồm cánh tay robot và các bàn điều khiển"
+>
+  <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+    <BannerChuyenMon lang={lang} />
+
+    <nav class="mt-6 font-mono text-xs text-muc/50" aria-label="Breadcrumb">
+      <a href={p('/')} class="hover:text-duoc hover:underline">{t('chung.trang_chu')}</a>
+      <span aria-hidden="true"> / </span>
+      <a href={p('/tin-tuc')} class="hover:text-duoc hover:underline">Tin tức</a>
+      <span aria-hidden="true"> / </span>
+      <span class="text-muc/80">CUVIS-spine</span>
+    </nav>
+
+    <div class="mt-6 rounded-2xl border-2 border-hophach bg-hophach-nhat p-5">
+      <p class="font-mono text-[11px] font-bold uppercase tracking-wide text-hophach">Lưu ý quan trọng trước khi đọc</p>
+      <p class="mt-2 text-sm leading-relaxed text-muc/85 text-justify">
+        CUVIS-spine hiện <strong>chưa có giấy đăng ký lưu hành tại Việt Nam</strong>. Sản phẩm đang trong quá trình chuẩn bị hồ sơ, <strong>chưa được phép
+        phân phối hay chào bán</strong> tại thị trường Việt Nam dưới bất kỳ hình thức nào. Toàn bộ nội dung dưới đây chỉ nhằm giới thiệu công nghệ, dựa trên
+        hồ sơ kỹ thuật của hãng và các phê duyệt tại nước ngoài, không phải công bố công dụng đã được cơ quan quản lý y tế Việt Nam xác nhận.
+      </p>
+    </div>
+
+    <header class="mt-6 border-b border-bacha pb-8">
+      <p class="inline-flex items-center rounded-full bg-bacha px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-duoc-dam">
+        Công nghệ robot phẫu thuật · CUREXO
+      </p>
+      <h1 class="mt-4 text-3xl font-bold tracking-tight text-muc sm:text-4xl md:text-[2.6rem]">CUVIS-spine: robot dẫn đường đặt vít cuống sống</h1>
+      <p class="mt-3 max-w-2xl text-base leading-relaxed text-muc/70">
+        CUVIS-spine là hệ thống robot dẫn đường của Curexo (Hàn Quốc), hỗ trợ phẫu thuật viên đặt vít cuống sống chính xác hơn trong phẫu thuật cột sống.
+        Bài viết giải thích cách hệ thống hoạt động và bằng chứng lâm sàng đã công bố, không phải tài liệu chào bán.
+      </p>
+
+      <dl class="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-bacha bg-bacha sm:grid-cols-4">
+        <div class="bg-white p-4">
+          <dt class="text-[11px] font-semibold uppercase tracking-wide text-muc/50">Nhà sản xuất</dt>
+          <dd class="mt-1 text-sm font-bold text-muc">Curexo, Hàn Quốc</dd>
+        </div>
+        <div class="bg-white p-4">
+          <dt class="text-[11px] font-semibold uppercase tracking-wide text-muc/50">Model</dt>
+          <dd class="mt-1 font-mono text-sm font-bold text-muc">CS200</dd>
+        </div>
+        <div class="bg-white p-4">
+          <dt class="text-[11px] font-semibold uppercase tracking-wide text-muc/50">ĐKLH Việt Nam</dt>
+          <dd class="mt-1 text-sm font-bold text-hophach">Chưa có</dd>
+        </div>
+        <div class="bg-white p-4">
+          <dt class="text-[11px] font-semibold uppercase tracking-wide text-muc/50">Phân loại dự kiến</dt>
+          <dd class="mt-1 text-sm font-bold text-muc">Thiết bị y tế loại B</dd>
+        </div>
+      </dl>
+    </header>
+
+    <nav class="sticky top-[60px] z-30 -mx-4 overflow-x-auto border-b border-bacha bg-white/95 px-4 backdrop-blur sm:mx-0 sm:px-0" aria-label="Mục lục bài viết">
+      <ol class="flex gap-1 whitespace-nowrap py-2.5 text-sm font-semibold">
+        {
+          mucLuc.map((m) => (
+            <li>
+              <a href={m.href} class="block rounded-full px-3 py-1.5 text-muc/60 transition-colors hover:bg-bacha hover:text-duoc-dam">
+                {m.nhan}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+
+    <section id="cong-nghe" class="scroll-mt-28 border-b border-bacha py-10">
+      <div class="rounded-2xl border-l-4 border-duoc bg-bacha/50 p-5">
+        <p class="font-mono text-[11px] font-bold uppercase tracking-wide text-duoc-dam">Câu định vị một dòng</p>
+        <p class="mt-2 text-sm leading-relaxed text-muc/80 text-justify">
+          CUVIS-spine <strong>không phải robot tự mổ thay bác sĩ</strong>. Đây là hệ thống dẫn đường: cánh tay robot chỉ giữ đúng vị trí và góc đã lập kế
+          hoạch trên ảnh CT, còn phẫu thuật viên vẫn tự tay đưa khoan, ta rô và vít qua khung dẫn hướng. Có thể hình dung robot như một giá đỡ định vị
+          chính xác đến từng milimet, không phải một cánh tay tự động thực hiện thao tác mổ.
+        </p>
+      </div>
+
+      <p class="mt-6 text-sm leading-relaxed text-muc/80 text-justify">
+        Trước khi vít được bắt vào xương, hệ thống cần biết chính xác vị trí cột sống của bệnh nhân trong phòng mổ, vì ảnh CT chụp trước đó và cơ thể thật
+        trên bàn mổ là hai hệ tọa độ khác nhau. Một camera hồng ngoại (hệ thống theo dõi quang học, gắn trên bàn điều khiển chính) liên tục quan sát các
+        thanh đánh dấu phản quang gắn trên bệnh nhân, dụng cụ và robot để biết vị trí thật của từng thứ theo thời gian thực, tương tự nguyên lý GPS nhưng
+        trong phạm vi một phòng mổ.
+      </p>
+
+      <figure class="mt-6">
+        <div class="overflow-hidden rounded-xl bg-black/5">
+          <Image src={heThongBaKhoi} alt="Ba khối chính của CUVIS-spine: cánh tay robot, bàn điều khiển chính, bàn điều khiển phụ" width={1000} class="w-full object-contain" />
+        </div>
+        <figcaption class="mt-2 text-[12px] leading-relaxed text-muc/50">
+          Hệ thống gồm ba khối: cánh tay robot (trái), bàn điều khiển chính mang camera theo dõi quang học (giữa), bàn điều khiển phụ tùy chọn (phải).
+        </figcaption>
+      </figure>
+
+      <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-bacha bg-bacha sm:grid-cols-4">
+        <div class="bg-white p-4">
+          <p class="font-mono text-xl font-bold text-duoc-dam">5 bậc tự do</p>
+          <p class="mt-1 text-xs leading-snug text-muc/60">Cánh tay robot ngoài, tải trọng 3kg, theo tài liệu kỹ thuật của hãng</p>
+        </div>
+        <div class="bg-white p-4">
+          <p class="font-mono text-xl font-bold text-duoc-dam">2D &amp; 3D</p>
+          <p class="mt-1 text-xs leading-snug text-muc/60">Tương thích cả máy chụp C-arm 2D lẫn máy chụp 3D trong phòng mổ</p>
+        </div>
+        <div class="bg-white p-4">
+          <p class="font-mono text-xl font-bold text-duoc-dam">97,99%</p>
+          <p class="mt-1 text-xs leading-snug text-muc/60">Tỷ lệ vít đạt mức an toàn lâm sàng trong nghiên cứu độc lập, xem mục Bằng chứng lâm sàng</p>
+        </div>
+        <div class="bg-white p-4">
+          <p class="font-mono text-xl font-bold text-duoc-dam">Nền tảng mở</p>
+          <p class="mt-1 text-xs leading-snug text-muc/60">Không đi kèm máy chụp ảnh riêng, dùng chung với thiết bị đã có sẵn trong phòng mổ</p>
+        </div>
+      </div>
+
+      <figure class="mt-8">
+        <div class="overflow-hidden rounded-xl bg-black/5">
+          <Image src={soDoPhongMo} alt="Sơ đồ bố trí robot, bàn điều khiển, camera theo dõi quang học quanh bàn mổ" width={1000} class="w-full object-contain" />
+        </div>
+        <figcaption class="mt-2 text-[12px] leading-relaxed text-muc/50">
+          Ba khối của hệ thống được bố trí theo sơ đồ cố định quanh bàn mổ, để camera theo dõi quang học luôn nhìn thấy cả bệnh nhân lẫn robot, không bị
+          che khuất trong lúc mổ.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section id="quy-trinh" class="scroll-mt-28 border-b border-bacha py-10">
+      <h2 class="text-2xl font-bold tracking-tight text-muc">Quy trình phẫu thuật, năm bước chính</h2>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+        Toàn bộ quy trình vẫn xoay quanh bàn tay và quyết định của phẫu thuật viên, robot chỉ tham gia ở bước 4.
+      </p>
+
+      <div class="mt-8 space-y-10">
+        {
+          quyTrinh.map((b, i) => (
+            <div class={`grid items-center gap-6 md:grid-cols-2 md:gap-10 ${i % 2 === 1 ? 'md:[&>*:first-child]:order-2' : ''}`}>
+              <div>
+                <span class="font-mono text-xs font-bold text-ngoclam">Bước {b.so}</span>
+                <h3 class="mt-1 text-lg font-bold text-muc">{b.tieuDe}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-muc/75 text-justify">{b.moTa}</p>
+              </div>
+              <div class="overflow-hidden rounded-xl bg-black/5">
+                <Image src={b.anh} alt={b.anhAlt} width={800} class="w-full object-contain" />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-10 rounded-2xl border border-bacha bg-white p-5">
+        <h3 class="text-sm font-bold text-duoc-dam">Theo dõi liên tục trong lúc mổ</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muc/75 text-justify">
+          Trong suốt ca mổ, camera theo dõi quang học liên tục quan sát vị trí thanh đánh dấu gắn trên xương bệnh nhân. Nếu đốt sống bị xê dịch, hệ thống
+          cập nhật lại vị trí dẫn hướng theo. Với những trường hợp xê dịch lớn, quy trình cần thực hiện lại từ bước chụp ảnh, không chỉ dựa vào dữ liệu
+          theo dõi liên tục.
+        </p>
+        <figure class="mt-4">
+          <div class="overflow-hidden rounded-xl bg-black/5">
+            <Image src={buocNavigation} alt="Màn hình theo dõi vị trí dụng cụ theo thời gian thực trên ảnh CT" width={1000} class="w-full object-contain" />
+          </div>
+          <figcaption class="mt-2 text-[12px] leading-relaxed text-muc/50">
+            Màn hình theo dõi thời gian thực vị trí dụng cụ so với đường vít đã lập kế hoạch, trên nhiều góc nhìn CT lẫn mô hình 3D.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="bang-chung" class="scroll-mt-28 border-b border-bacha py-10">
+      <h2 class="text-2xl font-bold tracking-tight text-muc">Bằng chứng lâm sàng</h2>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+        Một nghiên cứu độc lập, đã qua bình duyệt, là bằng chứng đáng tin cậy nhất hiện có cho CUVIS-spine, khác với các báo cáo hiệu năng nội bộ của hãng.
+      </p>
+
+      <div class="mt-6 rounded-2xl border border-duoc/30 bg-bacha/40 p-5">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h3 class="text-base font-bold text-muc">Đánh giá định lượng ba chiều độ chính xác đặt vít cuống sống</h3>
+          <span class="font-mono text-[11px] font-semibold text-duoc-dam">Neurospine · 2023</span>
+        </div>
+        <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+          <strong class="text-muc/85">Nguồn: </strong>
+          Ha BJ, Lee JM, Yoon SJ và cộng sự. "Three-Dimensional Quantitative Assessment of Pedicle Screw Accuracy in Clinical Utilization of a New Robotic
+          System in Spine Surgery: A Multicenter Study." <em>Neurospine</em>. 2023;20(3):1028 đến 1039. doi:10.14245/ns.2346552.276
+        </p>
+        <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+          <strong class="text-muc/85">Thiết kế: </strong>
+          Hồi cứu đa trung tâm, 113 bệnh nhân, 448 vít cuống sống đặt bằng CUVIS-spine. Độ chính xác đánh giá bằng CT sau mổ, đối chiếu với kế hoạch trước
+          mổ, phân loại theo thang Gertzbein-Robbins (GRS).
+        </p>
+        <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+          <strong class="text-muc/85">Kết quả: </strong>
+          439 trên 448 vít (97,99%) đạt hạng A hoặc B, tức nằm hoàn toàn trong cuống sống hoặc xuyên vỏ xương dưới 2mm, mức được xem là an toàn về lâm
+          sàng. Không ghi nhận tổn thương thần kinh mạch máu, nhiễm trùng hay phải mổ lại trong loạt ca này.
+        </p>
+      </div>
+
+      <div class="mt-5 rounded-2xl border border-hophach/40 bg-hophach-nhat/60 p-5">
+        <p class="font-mono text-[11px] font-bold uppercase tracking-wide text-hophach">Giới hạn của nghiên cứu</p>
+        <ul class="mt-2 space-y-1.5 text-sm leading-relaxed text-muc/75">
+          <li>Thiết kế hồi cứu, không có nhóm đối chứng mổ bằng tay để so sánh trực tiếp.</li>
+          <li>Không có dữ liệu theo dõi dài hạn sau mổ, chỉ đánh giá tại thời điểm chụp CT ngay sau phẫu thuật.</li>
+          <li>Nghiên cứu thực hiện tại các trung tâm ở Hàn Quốc, chưa có dữ liệu tương tự tại Việt Nam.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="phap-ly" class="scroll-mt-28 py-10">
+      <h2 class="text-2xl font-bold tracking-tight text-muc">Tình trạng pháp lý</h2>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+        CUVIS-spine đã được phê duyệt lưu hành tại một số thị trường <strong>ở nước ngoài</strong>, nhưng những phê duyệt này không có giá trị tại Việt
+        Nam và không đồng nghĩa sản phẩm được phép phân phối tại đây.
+      </p>
+
+      <div class="mt-5 overflow-x-auto rounded-2xl border border-bacha">
+        <table class="w-full min-w-[560px] border-collapse text-sm">
+          <thead class="bg-bacha text-left text-[11px] font-bold uppercase tracking-wide text-muc/60">
+            <tr>
+              <th class="px-4 py-3">Thị trường</th>
+              <th class="px-4 py-3">Căn cứ phê duyệt tại nước đó</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-bacha">
+            <tr><td class="px-4 py-3 font-semibold text-muc">Hàn Quốc</td><td class="px-4 py-3 text-muc/75">MFDS (Bộ An toàn Thực phẩm và Dược phẩm Hàn Quốc) phê duyệt</td></tr>
+            <tr><td class="px-4 py-3 font-semibold text-muc">Hoa Kỳ</td><td class="px-4 py-3 text-muc/75">FDA cấp phép 510(k) số K223558, thiết bị Class II</td></tr>
+            <tr><td class="px-4 py-3 font-semibold text-muc">Indonesia</td><td class="px-4 py-3 text-muc/75">Chứng nhận lưu hành tại Indonesia</td></tr>
+            <tr><td class="px-4 py-3 font-semibold text-muc">Đài Loan</td><td class="px-4 py-3 text-muc/75">Chứng nhận lưu hành tại Đài Loan</td></tr>
+            <tr><td class="px-4 py-3 font-semibold text-muc">Malaysia</td><td class="px-4 py-3 text-muc/75">Chứng nhận lưu hành tại Malaysia</td></tr>
+            <tr class="bg-hophach-nhat"><td class="px-4 py-3 font-bold text-hophach">Việt Nam</td><td class="px-4 py-3 font-semibold text-hophach">Chưa cấp phép, đang trong quá trình chuẩn bị hồ sơ</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-[12px] leading-relaxed text-muc/50">
+        Các số hiệu và cơ quan phê duyệt trên đều thuộc thẩm quyền nước ngoài, không phải xác nhận của cơ quan quản lý y tế Việt Nam.
+      </p>
+    </section>
+
+    <div class="rounded-2xl border-2 border-hophach bg-hophach-nhat p-5">
+      <p class="font-mono text-[11px] font-bold uppercase tracking-wide text-hophach">Nhắc lại</p>
+      <p class="mt-2 text-sm leading-relaxed text-muc/85 text-justify">
+        CUVIS-spine <strong>chưa có giấy đăng ký lưu hành tại Việt Nam</strong> tính đến thời điểm bài viết này được đăng. Bài viết chỉ nhằm mục đích giới
+        thiệu công nghệ đến cán bộ y tế và người quan tâm, <strong>không phải lời chào bán</strong> và không nên hiểu là sản phẩm đã được phép phân phối
+        tại Việt Nam.
+      </p>
+    </div>
+
+    <footer class="mt-8 border-t border-bacha pt-6">
+      <p class="text-[11px] leading-relaxed text-muc/45">
+        Thông tin tổng hợp từ hồ sơ kỹ thuật do Curexo, Inc. cung cấp, trang chủ chính thức curexo.com, cơ sở dữ liệu 510(k) của FDA, và bài báo khoa học
+        đã bình duyệt trên tạp chí Neurospine. Đây không phải nội dung quảng cáo hay công bố công dụng đã được cơ quan quản lý Việt Nam xác nhận.
+      </p>
+      <a href={p('/tin-tuc')} class="mt-4 inline-flex text-sm font-semibold text-duoc hover:text-duoc-dam hover:underline">&larr; Tin tức</a>
+    </footer>
+  </div>
+</Base>
