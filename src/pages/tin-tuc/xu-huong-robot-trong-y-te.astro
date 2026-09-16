@@ -1,0 +1,506 @@
+---
+import Base from '../../layouts/Base.astro';
+import BannerChuyenMon from '../../components/BannerChuyenMon.astro';
+import { Image } from 'astro:assets';
+import { useT, localePath } from '../../i18n';
+import cuvisHeThong from '../../assets/cuvis-spine/he-thong-ba-khoi.jpg';
+import cuvisPlanning from '../../assets/cuvis-spine/buoc-planning.jpg';
+
+const lang = 'vi' as const;
+const t = useT(lang);
+const p = (href: string) => localePath(lang, href);
+
+const mucLuc = [
+  { href: '#boicanh', nhan: 'Bối cảnh' },
+  { href: '#nhomrobot', nhan: 'Robot y tế gồm những gì' },
+  { href: '#dongluc', nhan: 'Vì sao tăng trưởng' },
+  { href: '#raocan', nhan: 'Rào cản' },
+  { href: '#vietnam', nhan: 'Việt Nam' },
+  { href: '#tuonglai', nhan: 'Xu hướng tiếp theo' },
+];
+
+const daVinciTheoNam = [
+  { nam: '2022', trieu: '1,875 triệu', tang: '', cao: 59.5 },
+  { nam: '2023', trieu: '2,286 triệu', tang: '+22%', cao: 72.5 },
+  { nam: '2024', trieu: '2,683 triệu', tang: '+17%', cao: 85.1 },
+  { nam: '2025', trieu: '3,153 triệu', tang: '+18%', cao: 100 },
+];
+
+const nhomRobot = [
+  {
+    so: '01',
+    ten: 'Robot phẫu thuật',
+    mota: 'Cánh tay robot hỗ trợ bác sĩ mổ chính xác hơn, ít xâm lấn hơn. Gồm cả robot đa khoa (da Vinci) lẫn robot chuyên khoa hẹp như cột sống, khớp gối.',
+    hl: true,
+  },
+  {
+    so: '02',
+    ten: 'Robot phục hồi chức năng',
+    mota: 'Exoskeleton, robot tập đi, robot hỗ trợ tập vận động tay sau đột quỵ hoặc chấn thương.',
+  },
+  {
+    so: '03',
+    ten: 'Robot hậu cần bệnh viện',
+    mota: 'Tự vận chuyển mẫu xét nghiệm, thuốc, đồ vải trong bệnh viện, giảm tải nhân sự cho việc di chuyển thủ công.',
+  },
+  {
+    so: '04',
+    ten: 'Robot khám từ xa',
+    mota: 'Gắn camera, màn hình trên khung di động, giúp bác sĩ hội chẩn từ xa, hữu ích cho vùng sâu vùng xa.',
+  },
+  {
+    so: '05',
+    ten: 'Phần mềm AI chẩn đoán',
+    mota: 'Không phải robot vật lý, nhưng thường được xếp chung xu hướng tự động hóa y tế: đọc ảnh X-quang, CT, MRI hỗ trợ bác sĩ.',
+  },
+];
+
+const nguon = [
+  { bac: 1, noidung: 'Số ca mổ da Vinci theo năm 2022-2025, mốc 20 triệu ca cộng dồn', ten: 'Intuitive Surgical, thông cáo kết quả kinh doanh Q4/2025', href: 'https://isrg.intuitive.com/news-releases/news-release-details/intuitive-announces-preliminary-fourth-quarter-and-full-year-5' },
+  { bac: 1, noidung: '49 robot phẫu thuật được FDA cấp phép 2015-2023', ten: 'npj Digital Medicine (Nature), rà soát hệ thống', href: 'https://www.nature.com/articles/s41746-024-01102-y' },
+  { bac: 1, noidung: 'Phân loại thiết bị hỗ trợ phẫu thuật máy tính', ten: 'FDA.gov, Computer-Assisted Surgical Systems', href: 'https://www.fda.gov/medical-devices/surgery-devices/computer-assisted-surgical-systems' },
+  { bac: 1, noidung: 'Rào cản tiếp cận robot y tế giữa nước thu nhập cao và thấp', ten: 'PMC/NIH, Global strategies for the diffusion of robotic surgery', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12606782/' },
+  { bac: 1, noidung: 'Đường cong học tập phẫu thuật robot (RATS/VATS)', ten: 'PMC, Systematic review of learning curves in robot-assisted surgery', href: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6996634/' },
+  { bac: 1, noidung: 'Phát biểu BS Lê Quan Anh Tuấn, quỹ hỗ trợ 280 tỷ đồng', ten: 'Vinmec.com, phỏng vấn chính thức', href: 'https://www.vinmec.com/vie/bai-viet/bs-le-quan-anh-tuan-phau-thuat-robot-phai-danh-cho-so-dong' },
+  { bac: 1, noidung: 'Ca mổ robot CORI tại Vinmec Đà Nẵng, 04/2026', ten: 'Vinmec.com', href: 'https://www.vinmec.com/vie/bai-viet/phau-thuat-thay-khop-goi-bang-robot-cori-tai-vinmec-da-nang' },
+  { bac: 1, noidung: 'FV Hospital khai trương trung tâm da Vinci Xi', ten: 'FV Hospital, thông cáo chính thức', href: 'https://www.fvhospital.com/en/news/fv-hospital-launches-fv-da-vinci-robotic-surgery-centre/' },
+  { bac: 2, noidung: 'Vinmec ra mắt mạng lưới 9 hệ thống robot, 5 thành phố', ten: 'Hospital Management Asia (đăng lại từ Vinmec)', href: 'https://www.hospitalmanagementasia.com/news/vinmec-launches-vietnams-first-integrated-high-tech-robotic-surgery-network/' },
+  { bac: 2, noidung: 'Quy mô thị trường robot phẫu thuật toàn cầu 10,6 → 22,9 tỷ USD', ten: 'GlobeNewswire, tóm tắt báo cáo trả phí', href: 'https://www.globenewswire.com/news-release/2026/09/07/3357001/0/en/global-surgical-robots-market-to-reach-10-6-billion-in-2026-driven-by-ai-integration-and-minimally-invasive-surgery.html' },
+  { bac: 2, noidung: 'Tăng trưởng khu vực châu Á Thái Bình Dương, Đông Nam Á', ten: 'UnivDatos, Southeast Asia Surgical Robotics Market', href: 'https://univdatos.com/reports/southeast-asia-surgical-robotics-market' },
+];
+---
+
+<Base
+  title="Xu hướng ứng dụng robot trong y học | The Hangi Việt Nam"
+  description="Toàn cảnh xu hướng robot y tế: số liệu đã kiểm chứng từ FDA, Intuitive Surgical, các tạp chí bình duyệt, và vị trí của Việt Nam trong bức tranh đó."
+  lang={lang}
+  path="/tin-tuc/xu-huong-robot-trong-y-te"
+  ogImage={cuvisHeThong}
+  ogImageAlt="Hệ thống robot CUVIS-spine"
+>
+  <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+    <BannerChuyenMon lang={lang} />
+
+    <nav class="mt-6 font-mono text-xs text-muc/50" aria-label="Breadcrumb">
+      <a href={p('/')} class="hover:text-duoc hover:underline">{t('chung.trang_chu')}</a>
+      <span aria-hidden="true"> / </span>
+      <a href={p('/tin-tuc')} class="hover:text-duoc hover:underline">Tin tức</a>
+      <span aria-hidden="true"> / </span>
+      <span class="text-muc/80">Xu hướng robot trong y học</span>
+    </nav>
+
+    <header class="mt-6 border-b border-bacha pb-8">
+      <p class="inline-flex items-center rounded-full bg-bacha px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-duoc-dam">
+        Công nghệ &amp; Xu hướng
+      </p>
+      <h1 class="mt-4 text-3xl font-bold tracking-tight text-muc sm:text-4xl md:text-[2.6rem]">Robot trong y học: từ công nghệ thử nghiệm đến tiêu chuẩn điều trị</h1>
+      <p class="mt-3 max-w-2xl text-base leading-relaxed text-muc/70">
+        Từ một ý tưởng viễn tưởng cách đây ba thập kỷ, robot y tế đã trở thành thiết bị thường trực ở hàng nghìn bệnh viện. Bài viết tổng hợp bối cảnh toàn ngành,
+        những con số đã được kiểm chứng, và vị trí của Việt Nam trong bức tranh đó, trước khi đi sâu vào từng dòng sản phẩm cụ thể ở các bài tiếp theo.
+      </p>
+
+      <dl class="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-bacha bg-bacha sm:grid-cols-4">
+        <div class="bg-white p-4">
+          <dt class="text-[11px] font-semibold uppercase tracking-wide text-muc/50">Ca mổ da Vinci</dt>
+          <dd class="mt-1 text-sm font-bold text-muc">20 triệu+ (đến 2025)</dd>
+        </div>
+        <div class="bg-white p-4">
+          <dt class="text-[11px] font-semibold uppercase tracking-wide text-muc/50">Robot được FDA cấp phép</dt>
+          <dd class="mt-1 text-sm font-bold text-muc">49 hệ thống (2015-2023)</dd>
+        </div>
+        <div class="bg-white p-4">
+          <dt class="text-[11px] font-semibold uppercase tracking-wide text-muc/50">Tăng trưởng 2025</dt>
+          <dd class="mt-1 text-sm font-bold text-muc">~18%/năm</dd>
+        </div>
+        <div class="bg-white p-4">
+          <dt class="text-[11px] font-semibold uppercase tracking-wide text-muc/50">Vinmec, 06/2026</dt>
+          <dd class="mt-1 text-sm font-bold text-muc">9 hệ thống, 5 thành phố</dd>
+        </div>
+      </dl>
+    </header>
+
+    <nav class="sticky top-[60px] z-30 -mx-4 overflow-x-auto border-b border-bacha bg-white/95 px-4 backdrop-blur sm:mx-0 sm:px-0" aria-label="Mục lục bài viết">
+      <ol class="flex gap-1 whitespace-nowrap py-2.5 text-sm font-semibold">
+        {
+          mucLuc.map((m) => (
+            <li>
+              <a href={m.href} class="block rounded-full px-3 py-1.5 text-muc/60 transition-colors hover:bg-bacha hover:text-duoc-dam">
+                {m.nhan}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+
+    <!-- 1: BOI CANH -->
+    <section id="boicanh" class="scroll-mt-28 border-b border-bacha py-10">
+      <h2 class="text-2xl font-bold tracking-tight text-muc">Bối cảnh: một công nghệ đã qua giai đoạn thử nghiệm</h2>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70">Cách đo lường rõ ràng nhất không phải là những lời quảng bá, mà là số ca mổ thật đã thực hiện.</p>
+
+      <p class="mt-6 text-[17px] leading-relaxed text-muc/85 text-justify">
+        Khi hệ thống da Vinci đầu tiên được Cục Quản lý Thực phẩm và Dược phẩm Hoa Kỳ (FDA) cấp phép năm 2000, phẫu thuật robot còn là một khái niệm xa lạ, chỉ có
+        ở vài trung tâm nghiên cứu. Hơn hai thập kỷ sau, riêng một hãng này đã cộng dồn hơn <strong>20 triệu ca mổ</strong> trên toàn cầu tính đến cuối năm 2025,
+        theo công bố chính thức của Intuitive Surgical. Đây không phải con số marketing, mà trích từ báo cáo tài chính gửi Ủy ban Chứng khoán Hoa Kỳ (SEC), tài
+        liệu bắt buộc phải chính xác vì ảnh hưởng trực tiếp đến giá cổ phiếu công ty.
+      </p>
+
+      <div class="mt-6 rounded-2xl border border-bacha bg-white p-6 shadow-sm">
+        <p class="text-sm font-bold text-muc">Số ca mổ dùng hệ thống da Vinci trên toàn cầu, theo năm</p>
+        <p class="mt-0.5 text-xs text-muc/50">Di chuột hoặc chạm vào từng cột để xem số liệu và mức tăng trưởng so với năm trước</p>
+        <div
+          class="mt-6 flex h-[190px] items-end gap-4 border-b border-muc/20 px-1 sm:gap-6"
+          role="img"
+          aria-label="Biểu đồ cột số ca mổ da Vinci toàn cầu: 2022 khoảng 1,875 triệu ca, 2023 khoảng 2,286 triệu ca (tăng 22%), 2024 khoảng 2,683 triệu ca (tăng 17%), 2025 khoảng 3,153 triệu ca (tăng 18%)"
+        >
+          {
+            daVinciTheoNam.map((b, i) => (
+              <div class="group relative flex h-full flex-1 flex-col items-center justify-end" tabindex="0">
+                {b.tang && (
+                  <span class="absolute -top-5 font-mono text-[11px] text-ngoclam opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+                    {b.tang}
+                  </span>
+                )}
+                <span class="mb-1.5 font-mono text-[13px] font-bold text-muc opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+                  {b.trieu}
+                </span>
+                <div
+                  class:list={['w-full max-w-16 rounded-t-md transition-colors', i === daVinciTheoNam.length - 1 ? 'bg-duoc group-hover:bg-duoc-dam' : 'bg-bacha group-hover:bg-duoc/40']}
+                  style={`height:${b.cao}%`}
+                />
+                <span class="mt-2.5 text-xs font-semibold text-muc/50">{b.nam}</span>
+              </div>
+            ))
+          }
+        </div>
+        <p class="mt-4 border-t border-bacha pt-3 text-xs leading-relaxed text-muc/50">
+          Trục bắt đầu từ 0 để không phóng đại mức tăng. Số liệu tổng hợp từ hồ sơ 10-Q và thông cáo kết quả kinh doanh quý 4 của Intuitive Surgical gửi SEC, cộng
+          dồn số ca tại Mỹ và ngoài Mỹ theo từng năm. Đây là số liệu của riêng hệ thống da Vinci, không đại diện cho toàn bộ ngành robot y tế, nhưng là chỉ dấu tốt
+          nhất hiện có vì là hãng dẫn đầu và có dữ liệu công khai minh bạch nhất.
+        </p>
+      </div>
+
+      <p class="mt-6 text-sm leading-relaxed text-muc/70 text-justify">
+        Bên cạnh đó, cơ quan quản lý cũng ghi nhận mức tăng tương tự ở diện rộng hơn: một nghiên cứu hệ thống đăng trên <em>npj Digital Medicine</em> (Nature) rà
+        soát toàn bộ hồ sơ cấp phép của FDA, ghi nhận <strong>49 hệ thống robot phẫu thuật khác nhau</strong> được cấp phép lưu hành tại Mỹ trong giai đoạn 2015
+        đến 2023, trải khắp các chuyên khoa từ ngoại tổng quát, tim mạch, đến chỉnh hình và thần kinh.
+      </p>
+
+      <div class="mt-6 rounded-2xl border border-bacha bg-white p-6 shadow-sm">
+        <p class="text-sm font-bold text-muc">49 hệ thống robot phẫu thuật được FDA cấp phép (2015 đến 2023)</p>
+        <p class="mt-0.5 text-xs text-muc/50">Mỗi ô vuông là một hệ thống. Ô đậm: chỉ dừng ở mức "hỗ trợ" bác sĩ thao tác (Level 1), không tự ra quyết định</p>
+        <div class="mt-5 flex flex-wrap gap-[6px]" aria-hidden="true">
+          {Array.from({ length: 42 }).map(() => <span class="h-3.5 w-3.5 flex-none rounded-[3px] bg-duoc" />)}
+          {Array.from({ length: 7 }).map(() => <span class="h-3.5 w-3.5 flex-none rounded-[3px] bg-bacha" />)}
+        </div>
+        <p class="mt-4 border-t border-bacha pt-3 text-xs leading-relaxed text-muc/50">
+          42/49 hệ thống (86%) ở mức tự động Level 1 "Robot Assistance"; chỉ 6% đạt Level 3 "Conditional Autonomy". Tuyệt đại đa số robot phẫu thuật hiện nay vẫn
+          là công cụ hỗ trợ, không tự ra quyết định lâm sàng. Nguồn: npj Digital Medicine.
+        </p>
+      </div>
+
+      <p class="mt-6 text-sm leading-relaxed text-muc/70 text-justify">
+        Về quy mô tài chính, các hãng nghiên cứu thị trường đưa ra nhiều ước tính khác nhau tùy phương pháp luận. Theo một báo cáo được trích dẫn rộng rãi, thị
+        trường robot phẫu thuật toàn cầu đạt khoảng <strong>10,6 tỷ USD năm 2026</strong>, dự báo tăng lên <strong>22,9 tỷ USD vào năm 2035</strong>, tương đương
+        tốc độ tăng trưởng kép gần <strong>9%/năm</strong>. Các báo cáo khác đưa ra con số cao hơn hoặc thấp hơn đáng kể, nên đọc đây như một khoảng ước tính chứ
+        không phải một con số tuyệt đối.
+      </p>
+    </section>
+
+    <!-- 2: NHOM ROBOT -->
+    <section id="nhomrobot" class="scroll-mt-28 border-b border-bacha py-10">
+      <h2 class="text-2xl font-bold tracking-tight text-muc">Robot y tế gồm những gì: năm nhóm chính</h2>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70">
+        Khi nhắc đến "robot y tế", phần lớn người ngoài ngành chỉ nghĩ đến robot mổ. Thực tế công nghệ này đã lan ra nhiều mảng khác của bệnh viện.
+      </p>
+
+      <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        {
+          nhomRobot.map((n) => (
+            <div class:list={['rounded-2xl border p-4', n.hl ? 'border-duoc bg-bacha' : 'border-bacha bg-white']}>
+              <span class="font-mono text-xs font-bold text-duoc">{n.so}</span>
+              <h4 class="mt-2 text-[15px] font-bold text-muc">{n.ten}</h4>
+              <p class="mt-1.5 text-[13px] leading-relaxed text-muc/65">{n.mota}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <h3 class="mt-10 text-lg font-bold text-muc">Ví dụ cụ thể: robot dẫn đường cột sống CUVIS-spine</h3>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+        Trong nhóm robot phẫu thuật, một ví dụ cụ thể ngay tại Việt Nam là <strong>CUVIS-spine</strong> của Curexo (Hàn Quốc), robot dẫn đường hỗ trợ đặt vít
+        cuống sống trong phẫu thuật cột sống, hiện do <strong>The Hangi Việt Nam</strong> phân phối. Khác với hình dung phổ biến về "robot tự mổ", CUVIS-spine
+        chỉ giữ đúng vị trí và góc đã lập kế hoạch trên ảnh chụp, còn phẫu thuật viên vẫn là người trực tiếp thao tác dụng cụ, một mô hình bán tự động phổ biến
+        ở phần lớn robot chỉnh hình hiện nay, không riêng CUVIS-spine.
+      </p>
+
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
+        <figure class="m-0">
+          <div class="overflow-hidden rounded-xl bg-black/5">
+            <Image src={cuvisHeThong} alt="Hệ thống CUVIS-spine gồm cánh tay robot và các bàn điều khiển" width={800} class="w-full object-contain" />
+          </div>
+          <figcaption class="mt-2 text-[12px] leading-relaxed text-muc/50">
+            Ba khối chính: cánh tay robot, bàn điều khiển chính mang camera theo dõi quang học, bàn điều khiển phụ.
+          </figcaption>
+        </figure>
+        <figure class="m-0">
+          <div class="overflow-hidden rounded-xl bg-black/5">
+            <Image src={cuvisPlanning} alt="Màn hình phần mềm lập kế hoạch đường vít trên ảnh CT của CUVIS-spine" width={800} class="w-full object-contain" />
+          </div>
+          <figcaption class="mt-2 text-[12px] leading-relaxed text-muc/50">
+            Màn hình lập kế hoạch: bác sĩ tự chọn vị trí, góc, kích thước vít trên ảnh CT trước khi robot dẫn hướng.
+          </figcaption>
+        </figure>
+      </div>
+      <p class="mt-3 text-[12px] leading-relaxed text-muc/45">
+        Nguồn ảnh: User Manual CS200, CUREXO. Bài viết chuyên sâu riêng về CUVIS-spine, gồm quy trình vận hành và bằng chứng lâm sàng chi tiết, đã có tại
+        <a href={p('/tin-tuc/cuvis-spine-robot-dan-duong-cot-song')} class="font-semibold text-duoc hover:underline"> mục Tin tức</a>. Bài này chỉ dùng CUVIS-spine
+        làm ví dụ minh họa cho xu hướng chung.
+      </p>
+    </section>
+
+    <!-- 3: DONG LUC -->
+    <section id="dongluc" class="scroll-mt-28 border-b border-bacha py-10">
+      <h2 class="text-2xl font-bold tracking-tight text-muc">Vì sao ngành này tăng trưởng nhanh</h2>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70">Ba lực đẩy chính, cộng thêm một thay đổi công nghệ đang mở rộng đối tượng sử dụng.</p>
+
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl border border-bacha bg-white p-5">
+          <h4 class="text-sm font-bold text-muc">Nhu cầu ít xâm lấn</h4>
+          <p class="mt-1.5 text-sm leading-relaxed text-muc/70">Bệnh nhân ngày càng ưu tiên phẫu thuật vết mổ nhỏ, ít đau, hồi phục nhanh, một xu hướng robot đáp ứng tốt hơn mổ mở truyền thống.</p>
+        </div>
+        <div class="rounded-2xl border border-bacha bg-white p-5">
+          <h4 class="text-sm font-bold text-muc">Gánh nặng bệnh mạn tính tăng</h4>
+          <p class="mt-1.5 text-sm leading-relaxed text-muc/70">Ung thư, tim mạch, bệnh cơ xương khớp gia tăng khiến số ca cần can thiệp ngoại khoa tăng theo, đòi hỏi độ chính xác cao hơn.</p>
+        </div>
+        <div class="rounded-2xl border border-bacha bg-white p-5">
+          <h4 class="text-sm font-bold text-muc">Robot gọn hơn, rẻ hơn</h4>
+          <p class="mt-1.5 text-sm leading-relaxed text-muc/70">Thế hệ robot mới cần ít diện tích phòng mổ hơn, vốn đầu tư ban đầu thấp hơn, mở khả năng tiếp cận cho bệnh viện vừa và nhỏ.</p>
+        </div>
+        <div class="rounded-2xl border border-bacha bg-white p-5">
+          <h4 class="text-sm font-bold text-muc">Chuyên khoa hóa ngày càng sâu</h4>
+          <p class="mt-1.5 text-sm leading-relaxed text-muc/70">Ngày càng nhiều hệ thống thiết kế riêng cho một chuyên khoa hẹp (cột sống, khớp gối), như CUVIS-spine chỉ chuyên cho cột sống.</p>
+        </div>
+      </div>
+
+      <h3 class="mt-10 text-lg font-bold text-muc">Vai trò của AI: không thay bác sĩ, mà tăng độ chính xác</h3>
+      <div class="mt-4 flex flex-wrap items-center gap-6 rounded-2xl border border-bacha bg-white p-6">
+        <div
+          class="relative flex h-32 w-32 flex-none items-center justify-center rounded-full"
+          style="background:conic-gradient(var(--color-duoc) 40%, var(--color-bacha) 0)"
+          role="img"
+          aria-label="Biểu đồ tròn: AI hỗ trợ giúp cải thiện độ chính xác thao tác khoảng 40%"
+        >
+          <div class="flex h-24 w-24 flex-col items-center justify-center rounded-full bg-white">
+            <b class="font-mono text-xl font-bold text-muc">+40%</b>
+            <span class="text-[10px] text-muc/50">độ chính xác</span>
+          </div>
+        </div>
+        <p class="min-w-[220px] flex-1 text-sm leading-relaxed text-muc/70 text-justify">
+          Một tổng hợp 25 nghiên cứu bình duyệt (06/2025) cho thấy robot phẫu thuật có tích hợp AI hỗ trợ giúp cải thiện độ chính xác thao tác khoảng
+          <strong>40%</strong> so với khi không có AI hỗ trợ. Đây là mức cải thiện tổng hợp trung bình, mức thực tế thay đổi theo từng loại thao tác.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4: RAO CAN -->
+    <section id="raocan" class="scroll-mt-28 border-b border-bacha py-10">
+      <h2 class="text-2xl font-bold tracking-tight text-muc">Rào cản và một góc nhìn cân bằng</h2>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70">Robot y tế không phải câu chuyện một chiều toàn màu hồng. Phần này cố tình nêu rõ những giới hạn thật.</p>
+
+      <h3 class="mt-8 text-lg font-bold text-muc">Chi phí và khoảng cách tiếp cận</h3>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+        Rào cản lớn nhất vẫn là chi phí: đầu tư ban đầu cao, cộng thêm vật tư tiêu hao định kỳ cho mỗi ca. Một nghiên cứu công bố trên PMC (NIH) về chiến lược phổ
+        cập phẫu thuật robot toàn cầu ghi nhận: robot y tế đã lan rộng nhanh ở các nước thu nhập cao, nhưng việc phổ biến vẫn rất hạn chế ở khu vực nguồn lực hạn
+        hẹp, do rào cản tài chính, hạ tầng và đào tạo nhân lực.
+      </p>
+
+      <div class="mt-5 rounded-2xl border-l-4 border-duoc bg-bacha/60 p-5">
+        <p class="text-[17px] italic leading-relaxed text-muc">"Phẫu thuật robot chỉ ý nghĩa khi dành cho số đông."</p>
+        <p class="mt-2.5 text-xs leading-relaxed text-muc/55">
+          TTƯT.TS.BS Lê Quan Anh Tuấn, trả lời phỏng vấn trên Vinmec, nhấn mạnh công nghệ chỉ thực sự có giá trị khi hệ thống bảo hiểm và cơ chế hỗ trợ chi phí
+          giúp nhiều bệnh nhân tiếp cận được, không riêng nhóm có khả năng chi trả cao.
+        </p>
+      </div>
+
+      <h3 class="mt-8 text-lg font-bold text-muc">Đường cong học tập, không phải cứ mua robot là mổ tốt ngay</h3>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+        Một tổng quan hệ thống về đường cong học tập trong phẫu thuật robot (PMC) cho một ví dụ cụ thể: với phẫu thuật cắt thùy phổi, số ca cần thực hiện để bác
+        sĩ đạt độ thành thạo ngắn hơn khi có robot hỗ trợ.
+      </p>
+
+      <div class="mt-5 rounded-2xl border border-bacha bg-white p-6">
+        <p class="text-sm font-bold text-muc">Số ca cần để đạt độ thành thạo, cắt thùy phổi qua nội soi</p>
+        <p class="mt-0.5 text-xs text-muc/50">Khoảng số ca ghi nhận trong các nghiên cứu đã tổng hợp, không phải một con số cố định</p>
+        <div class="mt-6 space-y-4">
+          <div class="grid grid-cols-[110px_1fr] items-center gap-3 sm:grid-cols-[130px_1fr]">
+            <span class="text-xs font-semibold text-muc/70">Có robot<br /><span class="font-normal text-muc/45">(RATS)</span></span>
+            <div class="relative h-6 rounded-lg bg-bacha">
+              <div class="absolute inset-y-[3px] flex items-center justify-center rounded-md bg-duoc px-2 font-mono text-[11px] font-bold text-white" style="left:14%;width:20%">20-28 ca</div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[110px_1fr] items-center gap-3 sm:grid-cols-[130px_1fr]">
+            <span class="text-xs font-semibold text-muc/70">Nội soi thường<br /><span class="font-normal text-muc/45">(VATS)</span></span>
+            <div class="relative h-6 rounded-lg bg-bacha">
+              <div class="absolute inset-y-[3px] flex items-center justify-center rounded-md bg-ngoclam px-2 font-mono text-[11px] font-bold text-white" style="left:20%;width:20%">28-35 ca</div>
+            </div>
+          </div>
+          <div class="grid grid-cols-[110px_1fr] gap-3 pt-1 text-[10.5px] font-mono text-muc/40 sm:grid-cols-[130px_1fr]">
+            <span /><div class="flex justify-between"><span>0</span><span>10</span><span>20</span><span>30</span><span>40 ca</span></div>
+          </div>
+        </div>
+        <p class="mt-5 border-t border-bacha pt-3 text-xs leading-relaxed text-muc/50">RATS: nội soi lồng ngực có robot hỗ trợ. VATS: nội soi lồng ngực thường. Nguồn: PMC, tổng quan hệ thống đường cong học tập trong phẫu thuật robot.</p>
+      </div>
+
+      <p class="mt-5 text-sm leading-relaxed text-muc/70 text-justify">
+        Nhưng điều quan trọng hơn con số trên: bản thân tổng quan này cũng cảnh báo số ca đã mổ không phải thước đo đáng tin cậy duy nhất cho tay nghề, và các
+        nghiên cứu hiện có còn thiếu tính đồng nhất về phương pháp đánh giá. Nói cách khác, mua robot không tự động tạo ra kết quả tốt, quy trình đào tạo và tổ
+        chức ê-kíp vẫn là yếu tố quyết định.
+      </p>
+
+      <div class="mt-5 rounded-xl border-l-2 border-muc/20 bg-transparent py-1 pl-4 text-sm leading-relaxed text-muc/55">
+        Vingroup, đơn vị vận hành hệ thống Vinmec, đã lập một quỹ hỗ trợ bệnh nhân trị giá 280 tỷ đồng dành riêng cho phẫu thuật robot, đưa chi phí thực tế người
+        bệnh phải trả về gần tương đương mổ nội soi thông thường.
+      </div>
+
+      <h3 class="mt-8 text-lg font-bold text-muc">Chính sách bảo hiểm chưa đồng bộ</h3>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+        Ở nhiều thị trường, bảo hiểm y tế chưa chi trả đầy đủ hoặc đồng nhất cho phẫu thuật robot so với mổ truyền thống, khiến quyết định đầu tư của bệnh viện và
+        lựa chọn của bệnh nhân vẫn còn dè dặt ở một số nơi, kể cả tại các nước có hạ tầng y tế phát triển.
+      </p>
+    </section>
+
+    <!-- 5: VIET NAM -->
+    <section id="vietnam" class="scroll-mt-28 border-b border-bacha py-10">
+      <h2 class="text-2xl font-bold tracking-tight text-muc">Việt Nam trong bức tranh chung</h2>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70">Không còn là câu chuyện ở đâu đó bên ngoài, robot y tế đã hiện diện thật tại các bệnh viện lớn trong nước.</p>
+
+      <p class="mt-6 text-sm leading-relaxed text-muc/70 text-justify">
+        Tốc độ tăng trưởng khu vực châu Á Thái Bình Dương được ước tính khoảng <strong>21%/năm</strong>, cao hơn mức trung bình toàn cầu quanh
+        <strong>17%/năm</strong>, theo một báo cáo thị trường khu vực. Đây là con số ước tính từ báo cáo thương mại, nên đọc như một chỉ dấu xu hướng hơn là số
+        liệu tuyệt đối.
+      </p>
+
+      <div class="mt-5 rounded-2xl border border-bacha bg-white p-6">
+        <p class="text-sm font-bold text-muc">Tốc độ tăng trưởng robot phẫu thuật: khu vực so với toàn cầu</p>
+        <p class="mt-0.5 text-xs text-muc/50">Đơn vị: %/năm, theo ước tính của một báo cáo thị trường khu vực</p>
+        <div class="mt-6 space-y-3.5">
+          {
+            [
+              { nhan: 'Châu Á Thái Bình Dương', phu: '', pct: 21, rong: 84, hl: true },
+              { nhan: 'Trung bình toàn cầu', phu: '', pct: '~17', rong: 68, hl: false },
+              { nhan: 'Đông Nam Á', phu: 'riêng mảng da Vinci, 2025', pct: 24, rong: 96, hl: false },
+            ].map((r) => (
+              <div class="grid grid-cols-[1fr_54px] items-center gap-3 sm:grid-cols-[150px_1fr_54px]">
+                <span class="hidden text-xs font-semibold text-muc/70 sm:block">
+                  {r.nhan}
+                  {r.phu && <small class="block font-normal text-muc/40">{r.phu}</small>}
+                </span>
+                <div class="col-span-2 flex items-center gap-3 sm:col-span-1">
+                  <span class="text-xs font-semibold text-muc/70 sm:hidden">{r.nhan}</span>
+                  <div class="h-4 flex-1 overflow-hidden rounded-full bg-bacha">
+                    <div class:list={['h-full rounded-full', r.hl ? 'bg-duoc' : 'bg-line-strong bg-ngoclam/60']} style={`width:${r.rong}%`} />
+                  </div>
+                </div>
+                <span class="text-right font-mono text-sm font-bold text-muc">{r.pct}%</span>
+              </div>
+            ))
+          }
+        </div>
+        <p class="mt-5 border-t border-bacha pt-3 text-xs leading-relaxed text-muc/50">Nguồn: UnivDatos, Southeast Asia Surgical Robotics Market. Số liệu ước tính từ báo cáo thị trường trả phí, chỉ đọc được phần tóm tắt công khai.</p>
+      </div>
+
+      <h3 class="mt-10 text-lg font-bold text-muc">Hai mạng lưới lớn đã hình thành</h3>
+      <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-xl bg-bacha p-4 text-center">
+          <b class="block text-sm text-duoc-dam">FV Hospital</b>
+          <span class="mt-1 block text-[12px] text-muc/55">Da Vinci Xi, khai trương 03/2026, bệnh viện thứ 4 tại VN có da Vinci</span>
+        </div>
+        <div class="rounded-xl bg-bacha p-4 text-center">
+          <b class="block text-sm text-duoc-dam">Vinmec, 5 thành phố</b>
+          <span class="mt-1 block text-[12px] text-muc/55">9 hệ thống robot kích hoạt đồng loạt, 06/2026</span>
+        </div>
+        <div class="rounded-xl bg-bacha p-4 text-center">
+          <b class="block text-sm text-duoc-dam">Vinmec Đà Nẵng</b>
+          <span class="mt-1 block text-[12px] text-muc/55">Ca thay khớp gối robot đầu tiên tại miền Trung, 04/2026</span>
+        </div>
+        <div class="rounded-xl bg-bacha p-4 text-center">
+          <b class="block text-sm text-duoc-dam">Nhiều cơ sở khác</b>
+          <span class="mt-1 block text-[12px] text-muc/55">Đang trong lộ trình đầu tư, chưa công bố đầy đủ</span>
+        </div>
+      </div>
+
+      <h3 class="mt-10 text-lg font-bold text-muc">Một ca mổ thật để hình dung cụ thể</h3>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70 text-justify">
+        Ngày 3/4/2026, Vinmec Đà Nẵng thực hiện ca thay khớp gối toàn phần đầu tiên tại miền Trung Việt Nam bằng robot <strong>CORI</strong> (Smith+Nephew) tích
+        hợp AI, cho bệnh nhân nữ 63 tuổi, thoái hóa khớp gối giai đoạn 4.
+      </p>
+
+      <div class="mt-5 flex flex-wrap items-baseline gap-4">
+        <span class="font-mono text-5xl font-bold text-duoc-dam sm:text-6xl">&lt;1mm</span>
+        <p class="max-w-[34ch] text-sm leading-relaxed text-muc/65">
+          Sai số định vị của ca mổ, theo bài viết chính thức của Vinmec. Ca mổ kéo dài khoảng 1 giờ, không cần chụp CT trước mổ vì hệ thống dựng mô hình 3D ngay
+          trong lúc mổ, bệnh nhân có thể đứng và đi lại có hỗ trợ ngay sau ca mổ.
+        </p>
+      </div>
+      <p class="mt-4 text-sm leading-relaxed text-muc/70 text-justify">Chi phí được bảo hiểm y tế và quỹ hỗ trợ của bệnh viện chi trả, tương đương chi phí thay khớp thông thường.</p>
+
+      <p class="mt-5 text-xs leading-relaxed text-muc/45">
+        Ca mổ trên dùng robot CORI, không phải CUVIS-spine. Ví dụ này cho thấy bức tranh chung tại Việt Nam đã có nhiều hệ thống khác nhau cùng vận hành, không
+        riêng một hãng nào, giữ đúng tinh thần khách quan của bài tổng quan.
+      </p>
+    </section>
+
+    <!-- 6: TUONG LAI -->
+    <section id="tuonglai" class="scroll-mt-28 py-10">
+      <h2 class="text-2xl font-bold tracking-tight text-muc">Xu hướng tiếp theo</h2>
+      <p class="mt-2 text-sm leading-relaxed text-muc/70">Ba hướng phát triển rõ nhất trong 2 đến 3 năm tới, theo các nghiên cứu và phân tích ngành đã dẫn ở trên.</p>
+
+      <ol class="mt-5 space-y-3 text-sm leading-relaxed text-muc/75">
+        <li class="text-justify"><strong class="text-muc">1. AI tích hợp sâu hơn vào giai đoạn lập kế hoạch</strong>, không chỉ hỗ trợ trong lúc mổ như hiện nay, giúp cá thể hóa kế hoạch phẫu thuật theo từng bệnh nhân.</li>
+        <li class="text-justify"><strong class="text-muc">2. Robot ngày càng nhỏ gọn, chi phí giảm dần</strong>, mở rộng khả năng tiếp cận ra bệnh viện tuyến tỉnh, không chỉ giới hạn ở bệnh viện tuyến trung ương và tư nhân cao cấp.</li>
+        <li class="text-justify"><strong class="text-muc">3. Phẫu thuật từ xa (telesurgery)</strong>: bác sĩ điều khiển robot ở một địa điểm khác, vẫn đang ở giai đoạn thử nghiệm hạn chế, nên xem đây là hướng dài hạn hơn là xu hướng gần.</li>
+      </ol>
+
+      <p class="mt-5 text-sm leading-relaxed text-muc/70 text-justify">
+        Ba xu hướng trên là bối cảnh chung của toàn ngành. Các bài tiếp theo trên Tin tức The Hangi Việt Nam sẽ đi sâu vào một mảng cụ thể hơn: xu hướng robot
+        trong chấn thương chỉnh hình, và cách vận hành thực tế của CUVIS-spine.
+      </p>
+
+      <h3 class="mt-10 text-base font-bold text-muc">Nguồn tham khảo</h3>
+      <p class="mt-2 text-xs leading-relaxed text-muc/50">Xếp theo độ tin cậy: bậc 1 là nguồn sơ cấp/quản lý nhà nước và tạp chí bình duyệt, bậc 2 là báo cáo thị trường thương mại, đọc như ước tính.</p>
+      <div class="mt-4 overflow-x-auto rounded-2xl border border-bacha">
+        <table class="w-full min-w-[600px] border-collapse text-sm">
+          <thead class="bg-bacha text-left text-[11px] font-bold uppercase tracking-wide text-muc/60">
+            <tr><th class="px-4 py-3">Bậc</th><th class="px-4 py-3">Nội dung trích dẫn</th><th class="px-4 py-3">Nguồn</th></tr>
+          </thead>
+          <tbody class="divide-y divide-bacha">
+            {
+              nguon.map((n) => (
+                <tr>
+                  <td class="px-4 py-3 align-top">
+                    <span class:list={['rounded-full px-2 py-0.5 font-mono text-[10px] font-bold', n.bac === 1 ? 'bg-bacha text-duoc-dam' : 'bg-hophach-nhat text-hophach']}>
+                      Bậc {n.bac}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3 align-top text-muc/75">{n.noidung}</td>
+                  <td class="px-4 py-3 align-top">
+                    <a href={n.href} target="_blank" rel="noopener" class="font-semibold text-duoc hover:text-duoc-dam hover:underline">{n.ten}</a>
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="border-t border-bacha pt-6">
+      <p class="text-[11px] leading-relaxed text-muc/45">
+        Bài viết tổng hợp từ các nguồn đã liệt kê ở trên, phục vụ mục đích cung cấp thông tin chung về xu hướng công nghệ, không phải tài liệu quảng cáo hay công
+        bố công dụng của bất kỳ sản phẩm cụ thể nào. Thông tin về CUVIS-spine chỉ mang tính minh họa, chi tiết đầy đủ xem tại bài viết riêng về sản phẩm.
+      </p>
+      <a href={p('/tin-tuc')} class="mt-4 inline-flex text-sm font-semibold text-duoc hover:text-duoc-dam hover:underline">&larr; Tin tức</a>
+    </footer>
+  </div>
+</Base>

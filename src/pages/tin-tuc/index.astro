@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import { useT, localePath, BASE } from '../../i18n';
 import caGr1 from '../../assets/lam-sang/gr1-han-cot-song-co.jpg';
+import cuvisHeThong from '../../assets/cuvis-spine/he-thong-ba-khoi.jpg';
 
 const lang = 'vi' as const;
 const t = useT(lang);
@@ -13,13 +14,22 @@ const baiViet = (await getCollection('tinTuc', (e) => e.id.startsWith('vi/') && 
 );
 
 // Bai viet ky thuat rieng, khong nam trong content collection tinTuc, ghim len dau danh sach.
-const baiVietGhim = {
-  href: localePath(lang, '/tin-tuc/xuong-nhan-tao-collagen-khoang-hoa'),
-  anh: caGr1,
-  ngay: '15/09/2026',
-  tieuDe: 'Xương nhân tạo collagen khoáng hóa: công nghệ và bằng chứng lâm sàng',
-  moTa: 'Cơ chế công nghệ collagen khoáng hóa của Allgens Medical (BONGOLD, SkuHeal), cùng bằng chứng lâm sàng quốc tế cho từng dòng sản phẩm.',
-};
+const baiVietGhim = [
+  {
+    href: localePath(lang, '/tin-tuc/xu-huong-robot-trong-y-te'),
+    anh: cuvisHeThong,
+    ngay: '16/09/2026',
+    tieuDe: 'Robot trong y học: từ công nghệ thử nghiệm đến tiêu chuẩn điều trị',
+    moTa: 'Toàn cảnh xu hướng robot y tế: số liệu từ FDA, Intuitive Surgical, các tạp chí bình duyệt, và vị trí của Việt Nam trong bức tranh đó.',
+  },
+  {
+    href: localePath(lang, '/tin-tuc/xuong-nhan-tao-collagen-khoang-hoa'),
+    anh: caGr1,
+    ngay: '15/09/2026',
+    tieuDe: 'Xương nhân tạo collagen khoáng hóa: công nghệ và bằng chứng lâm sàng',
+    moTa: 'Cơ chế công nghệ collagen khoáng hóa của Allgens Medical (BONGOLD, SkuHeal), cùng bằng chứng lâm sàng quốc tế cho từng dòng sản phẩm.',
+  },
+];
 
 const ngayHienThi = (iso: string) => iso.split('-').reverse().join('/');
 ---
@@ -37,20 +47,24 @@ const ngayHienThi = (iso: string) => iso.split('-').reverse().join('/');
     </p>
 
     <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      <a
-        href={baiVietGhim.href}
-        class="group flex flex-col overflow-hidden rounded-2xl border border-bacha/70 bg-white transition-all hover:-translate-y-1 hover:border-duoc/20 hover:shadow-[0_12px_40px_rgba(14,116,144,0.13)]"
-      >
-        <div class="aspect-[16/10] overflow-hidden bg-bacha">
-          <Image src={baiVietGhim.anh} alt="" width={480} class="h-full w-full object-cover" loading="eager" />
-        </div>
-        <div class="flex flex-1 flex-col p-6">
-          <p class="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ngoclam">{baiVietGhim.ngay}</p>
-          <h3 class="mt-2 text-base font-bold leading-snug text-muc group-hover:text-duoc">{baiVietGhim.tieuDe}</h3>
-          <p class="mt-2 flex-1 text-[12.5px] leading-relaxed text-muc/55 line-clamp-3">{baiVietGhim.moTa}</p>
-          <span class="mt-4 text-xs font-semibold text-duoc group-hover:underline">Đọc tiếp &rarr;</span>
-        </div>
-      </a>
+      {
+        baiVietGhim.map((bai) => (
+          <a
+            href={bai.href}
+            class="group flex flex-col overflow-hidden rounded-2xl border border-bacha/70 bg-white transition-all hover:-translate-y-1 hover:border-duoc/20 hover:shadow-[0_12px_40px_rgba(14,116,144,0.13)]"
+          >
+            <div class="aspect-[16/10] overflow-hidden bg-bacha">
+              <Image src={bai.anh} alt="" width={480} class="h-full w-full object-cover" loading="eager" />
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <p class="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ngoclam">{bai.ngay}</p>
+              <h3 class="mt-2 text-base font-bold leading-snug text-muc group-hover:text-duoc">{bai.tieuDe}</h3>
+              <p class="mt-2 flex-1 text-[12.5px] leading-relaxed text-muc/55 line-clamp-3">{bai.moTa}</p>
+              <span class="mt-4 text-xs font-semibold text-duoc group-hover:underline">Đọc tiếp &rarr;</span>
+            </div>
+          </a>
+        ))
+      }
 
       {
         baiViet.map((bai) => {
